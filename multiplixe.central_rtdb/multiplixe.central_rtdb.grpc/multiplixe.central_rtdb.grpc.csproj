@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="protos\rtdb.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Firebase.Database" Version="1.0.0" />
+    <PackageReference Include="FirebaseAdmin" Version="1.16.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.empresas.client" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="protos\rtdb.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.enfileirador.grpc.Protos";
+
+package multiplixe.enfileirador.grpc;
+
+service Enfileirador {
+	rpc Enfileirar(ItemMessage) returns (ResponseMessage);
+} 
+
+message ItemMessage {
+	string NomeFila = 1;
+	string Json = 2;
+}
+
+message ResponseMessage {
+	bool Ok = 1;
+}

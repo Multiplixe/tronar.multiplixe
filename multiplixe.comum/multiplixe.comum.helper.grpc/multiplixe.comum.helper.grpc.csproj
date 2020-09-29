@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.comum.helper.grpc</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Tronar</Company>
+    <Title>Helper</Title>
+
+    <PackageTags>GRPC Helper</PackageTags>
+    <PackageDescription>
+      Pacote com helpers de GRPC do Multiplixe.
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.Client" Version="2.31.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+  </ItemGroup>
+
+</Project>

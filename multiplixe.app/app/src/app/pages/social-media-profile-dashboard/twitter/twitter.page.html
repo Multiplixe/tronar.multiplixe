@@ -1,0 +1,41 @@
+<ion-content *ngIf="showContent()">
+
+  <div class="falkol-logged-in falkol-bg falkol-bg-img-top" style="background-image: url('/assets/img/bg_in.png');">
+
+    <app-header></app-header>
+
+    <main>
+
+      <div class="falkol-ranking-header">
+        <div class="falkol-title">
+          <h2>Twitter</h2>
+        </div>
+      </div>
+
+      <div class="falkol-box">
+
+        <p>Para conquistar Pixels com o Twitter você precisa interagir com a conta da Falkol da seguinte forma:</p>
+
+        <app-list-items bgColorClass="social-media-1-bg"
+          [items]="['Curtir os tweets (retweet não são contabilizados);']"></app-list-items>
+
+      </div>
+
+      <div class="form-buttons form-icon-buttons form-profile-buttons">
+
+        <p *ngIf="dashboard.profiles.length > 0">Sua conexão</p>
+
+        <app-social-media-connection-display [socialMediaEnum]="socialMediaTwitter" [profile]="profile"
+          *ngFor="let profile of dashboard.profiles"></app-social-media-connection-display>
+
+        <app-social-media-connection-action (actionChild)="connect()" [socialMediaEnum]="socialMediaTwitter"
+          *ngIf="dashboard.profiles.length == 0"></app-social-media-connection-action>
+
+      </div>
+
+    </main>
+    <footer></footer>
+
+  </div>
+
+</ion-content>

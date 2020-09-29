@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "protos/evento.proto";
+import "protos/response.proto";
+
+option csharp_namespace = "multiplixe.registrador_de_eventos.grpc.Protos";
+
+package multiplixe.registrador_de_eventos.grpc.Protos;
+
+service Twitch {
+	rpc RegistrarPing(PingEventoMessage) returns (ResponseMessage); 
+}
+
+message PingEventoMessage {
+	EventoMessage Evento = 1;
+	int64 Ultimo = 2;
+	int64 Atual = 3;
+	int32 ToleranciaSegundos = 4;
+    int32 FrequenciaMinutos  = 5;
+    int32 PausaMilissegundos  = 6;
+}

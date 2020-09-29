@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.dto", "multiplixe.facebook.dto\multiplixe.facebook.dto.csproj", "{1B2377FA-E7F3-42EF-A89E-32FA19D7104C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.reacao.triador", "multiplixe.facebook.reacao.triador\multiplixe.facebook.reacao.triador.csproj", "{6B09F8A9-924C-47EF-81EB-EB2941ED9527}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.triador.ws", "multiplixe.facebook.triador.ws\multiplixe.facebook.triador.ws.csproj", "{6630F297-C264-4C37-BA19-A64317A0DC95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.reacao.pontuador.console", "multiplixe.facebook.reacao.pontuador.console\multiplixe.facebook.reacao.pontuador.console.csproj", "{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.facebook.triador.console", "multiplixe.facebook.triador.console\multiplixe.facebook.triador.console.csproj", "{D67F1BF5-D8B9-4395-AF32-16236B1C0279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B2377FA-E7F3-42EF-A89E-32FA19D7104C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B2377FA-E7F3-42EF-A89E-32FA19D7104C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B2377FA-E7F3-42EF-A89E-32FA19D7104C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B2377FA-E7F3-42EF-A89E-32FA19D7104C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B09F8A9-924C-47EF-81EB-EB2941ED9527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B09F8A9-924C-47EF-81EB-EB2941ED9527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B09F8A9-924C-47EF-81EB-EB2941ED9527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B09F8A9-924C-47EF-81EB-EB2941ED9527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6630F297-C264-4C37-BA19-A64317A0DC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6630F297-C264-4C37-BA19-A64317A0DC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6630F297-C264-4C37-BA19-A64317A0DC95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6630F297-C264-4C37-BA19-A64317A0DC95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87891D58-26CD-49EC-BF76-AFA86D4F11E4}
+	EndGlobalSection
+EndGlobal

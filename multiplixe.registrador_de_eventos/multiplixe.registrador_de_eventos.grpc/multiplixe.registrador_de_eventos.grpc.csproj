@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\evento.proto" />
+    <None Remove="Protos\facebook.proto" />
+    <None Remove="Protos\response.proto" />
+    <None Remove="servicos\facebook\facebook.proto" />
+    <None Remove="servicos\twitch\twitch.proto" />
+    <None Remove="servicos\twitter\twitter.proto" />
+    <None Remove="servicos\youtube\youtube.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
+    <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\evento.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\facebook.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\response.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\twitch.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\twitter.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\youtube.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

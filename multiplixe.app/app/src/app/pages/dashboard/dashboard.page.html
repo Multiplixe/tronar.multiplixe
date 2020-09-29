@@ -1,0 +1,121 @@
+<ion-content>
+
+  <div class="falkol-logged-in falkol-bg falkol-bg-img-top" style="background-image: url('/assets/img/bg_in.png');">
+
+    <app-header></app-header>
+
+    <main  *ngIf="showContent()">
+
+      <div class="falkol-title">
+        <h2>Olá {{nickname}},</h2>
+      </div>
+      <div class="falkol-picture-container" style="display: none;">
+        <div class="form-inputs">
+          <div class="form-group form-file-group m-0">
+            <input type="file" id="profile-pic" class="form-input-file" placeholder="&nbsp;" required>
+            <label for="profile-pic" class="form-label-file">
+              <div class="falkol-picture-link">
+                <img src="/assets/img/icon_photo.png" alt="Alterar foto de fundo">
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="falkol-px-container">
+
+        <div class="falkol-box">
+
+          <div class="falkol-px">
+            <div class="falkol-px-icon">
+              <img src="/assets/img/icon_coin.png" alt="">
+            </div>
+            <div class="falkol-px-title">
+              <div class="falkol-title">
+                <h2>
+                  {{dashboardDto.score.pointing.value}} pixels
+                </h2>
+              </div>
+              <p class="falkol-px-update" style="display: none;">
+                Atualizado em 09/07/20, às 14:24
+              </p>
+            </div>
+          </div>
+
+          <div class="falkol-px-progress-container" *ngIf="dashboardDto.hasConnection">
+            <div class="falkol-px-progress">
+              <div class="falkol-px-progress-bar">
+
+                <div [ngStyle]="{'width.%' : item.percent }" *ngFor="let item of dashboardDto.score.socialMedias">
+
+                  <span class="falkol-px-progress-bar-fill" *ngIf="item.percent > 0"
+                    [ngClass]="['social-media-'+item.id+'-bg', 'social-media-'+item.id+'-color']">
+                    <p class="falkol-px-progress-bar-label">
+                      {{item.percent}}%
+                    </p>
+                  </span>
+
+                </div>
+
+              </div>
+              <div class="falkol-px-progress-list">
+                <div class="falkol-px-progress-list-item" *ngFor="let item of dashboardDto.score.socialMedias">
+                  <div class="falkol-px-progress-list-item-color"
+                  [ngClass]="['social-media-'+item.id+'-bg']"></div>
+                  <div class="falkol-px-progress-list-item-title">
+                    <h4>{{item.name}}</h4>
+                  </div>
+                  <div class="falkol-px-progress-list-item-count">
+                    <h4 *ngIf="item.connected">{{item.points}} {{item.points <=  1 ? 'pixel' : 'pixels'}}</h4>
+                    <a *ngIf="!item.connected" routerDirection="root" routerLink="/r/minhas-conexoes">Conectar</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div  *ngIf="!dashboardDto.hasConnection">
+            <p>Você ainda não tem conexões com redes sociais</p>
+
+            <div class="form-buttons">
+              <div class="form-btn-group">
+                <button type="button" class="form-btn form-btn-submit" (click)="connected()">
+                  Conectar
+                </button>
+              </div>
+            </div>            
+
+          </div>
+
+        </div>
+
+        <div class="falkol-px align-items-center" *ngIf="ranking > 0">
+
+          <div class="falkol-px-icon">
+            <a routerDirection="root" routerLink="/r/ranking">
+
+              <img src="/assets/img/cup.png" *ngIf="ranking == 1" alt="">
+              <img src="/assets/img/icon_badge.png" *ngIf="ranking != 1" alt="">
+            </a>
+          </div>
+          <div class="falkol-ranking-title">
+            <div class="falkol-title m-0">
+              <a routerDirection="root" routerLink="/r/ranking">
+                <h2>
+                  {{ranking}} Ranking
+                </h2>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+    <footer></footer>
+
+  </div>
+
+
+
+</ion-content>

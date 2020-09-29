@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.comum.exceptions</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Tronar</Company>
+    <Title>Exceptions</Title>
+
+    <PackageTags>Exception</PackageTags>
+    <PackageDescription>
+      Pacote de exceptions do Multiplixe.
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+</Project>

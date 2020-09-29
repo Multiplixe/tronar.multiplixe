@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\classificador.proto" />
+    <None Remove="Protos\ranking.proto" />
+    <None Remove="Protos\usuarios.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
+    <PackageReference Include="multiplixe.central_rtdb.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.empresas.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.classificador.classificacao\multiplixe.classificador.classificacao.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.nivel\multiplixe.classificador.nivel.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.pontuacao\multiplixe.classificador.pontuacao.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.ranking\multiplixe.classificador.ranking.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.usuario\multiplixe.classificador.usuario.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\classificador.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\ranking.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\usuarios.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

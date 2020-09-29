@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.usuarios.grpc.protos";
+
+package multiplixe.usuarios.grpc.protos;
+
+service Token {
+	rpc Registrar(TokenRequest) returns (TokenResponse);
+	rpc Obter(TokenFiltro) returns (TokenResponse);
+}
+
+message TokenFiltro {
+	string UsuarioId = 1;
+	int32 Tipo = 3;
+}
+
+message TokenRequest {
+	string UsuarioId = 1;
+	string Valor = 2;
+	int32 Tipo = 3;
+}
+
+message TokenResponse {
+	int32 HttpStatusCode = 1;
+	string Valor = 2;
+}

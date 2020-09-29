@@ -1,0 +1,36 @@
+<ion-content *ngIf="showContent()">
+
+  <div class="falkol-social falkol-bg falkol-bg-img-top" style="background-image: url('/assets/img/bg.png');">
+
+    <app-header></app-header>
+
+    <main class="falkol-main">
+
+      <div class="falkol-ranking-header">
+        <div class="falkol-title">
+          <h2>Minhas conexões</h2>
+        </div>
+      </div>
+
+      <p class="falkol-text-info">Para começar a conquistar os pixels, conecte suas redes sociais.</p>
+
+      <div class="form-buttons form-icon-buttons form-profile-buttons">
+
+        <app-social-media-connection [profilesConnected]="socialMediaProfiles.twitter"
+          [socialMediaEnum]="socialMediaTwitter"></app-social-media-connection>
+
+        <app-social-media-connection [profilesConnected]="socialMediaProfiles.facebook"
+          [socialMediaEnum]="socialMediaFacebook"></app-social-media-connection>
+
+        <app-social-media-connection [profilesConnected]="socialMediaProfiles.twitch"
+          [socialMediaEnum]="socialMediaTwitch"></app-social-media-connection>
+
+        <app-social-media-connection [profilesConnected]="socialMediaProfiles.youtube"
+          [socialMediaEnum]="socialMediaYoutube"></app-social-media-connection>
+      </div>
+
+    </main>
+
+  </div>
+
+</ion-content>

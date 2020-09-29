@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.empresas.client</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Rene</Company>
+    <Title>Client de empresa</Title>
+
+    <PackageTags>Empresas</PackageTags>
+    <PackageDescription>
+      CLient de acesso aos serviços de empresa.
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.1</PackageVersion>
+
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

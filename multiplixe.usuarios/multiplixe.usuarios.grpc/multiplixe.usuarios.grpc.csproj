@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="protos\entries.proto" />
+    <None Remove="protos\perfil.proto" />
+    <None Remove="protos\token.proto" />
+    <None Remove="protos\usuario.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
+    <PackageReference Include="multiplixe.central_rtdb.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.usuarios.perfil\multiplixe.usuarios.perfil.csproj" />
+    <ProjectReference Include="..\multiplixe.usuarios.token\multiplixe.usuarios.token.csproj" />
+    <ProjectReference Include="..\multiplixe.usuarios.usuario\multiplixe.usuarios.usuario.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="protos\entries.proto" GrpcServices="Server" />
+    <Protobuf Include="protos\perfil.proto" GrpcServices="Server" />
+    <Protobuf Include="protos\token.proto" GrpcServices="Server" />
+    <Protobuf Include="protos\usuario.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

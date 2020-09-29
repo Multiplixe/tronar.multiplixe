@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.classificador.grpc.Protos";
+
+package multiplixe.classificador.grpc.Protos;
+
+service Usuarios {
+	rpc Registrar(UsuarioRequest) returns (UsuarioResponse);
+	rpc Sincronizar(UsuarioRequest) returns (UsuarioResponse);
+	rpc Deletar(UsuarioRequest) returns (UsuarioResponse);
+}
+
+message UsuarioRequest {
+	string Id = 1;
+	string EmpresaId = 2;
+}
+
+message UsuarioResponse {
+	int32 HttpStatusCode = 1;
+}

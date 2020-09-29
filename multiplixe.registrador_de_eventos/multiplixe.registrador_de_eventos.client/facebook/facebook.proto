@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "Protos/evento.proto";
+import "Protos/response.proto";
+
+option csharp_namespace = "multiplixe.registrador_de_eventos.grpc.Protos";
+
+package multiplixe.registrador_de_eventos.grpc.Protos;
+
+service Facebook  {
+	rpc RegistrarReacao(ReacaoEventoMessage) returns (ResponseMessage); 
+	rpc UltimaReacao(UltimaReacaoMessage) returns (ResponseMessage); 
+}

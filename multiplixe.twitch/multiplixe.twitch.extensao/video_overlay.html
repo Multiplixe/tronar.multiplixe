@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Falkol</title>
+
+    <style>
+
+        #app>div {
+            color: #fff;
+            font-size: small;
+            overflow: hidden;
+        }
+
+        #app>div>* {
+            float: left;
+            margin-right: 5px 10px;
+        }
+
+        #registered {
+            padding: 3px;
+            background-color: #00091d;
+            border-radius: 50px;
+            transition: width 0.7s;
+            width: 24px;
+            border: 1px solid #000;
+            height: 24px;
+        }
+
+        #registered:hover {
+            width: 200px;
+        }
+
+        .start-hidden {
+            display: none;
+        }
+
+        #title-extension {
+            position: absolute;
+            top: 0px;
+            left: 36px;
+            color: #ccc;
+            text-transform: none;
+        }
+
+        /* .show-score {
+            width: 200px;
+        } */
+
+        .message {
+            margin: 0;
+            padding: 4px 0 0 10px;
+            height: 24px;
+            color: #fff;
+            list-style-type: none;
+            list-style: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+
+    </style>
+
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    <script src="jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="viewer.js?v=3" type="text/javascript"></script>
+
+</head>
+
+<body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+
+    <div id="app" class="full-height hide-score">
+
+        <div id="no-register" class="start-hidden">
+            <img src="logo-1.png" width="24px" />
+            <p id="title-extension">Conecte-se no App da Falkol para ganhar pontos</p>
+        </div>
+
+        <div id="registered" class="start-hidden">
+            <img src="logo-1.png" width="24px" />
+            <p id="message-score" class="message" style="display: none;">Agora você tem  <b id="pointing-total"></b> <span id="pointing-total-one">pixel</span><span id="pointing-total-n">pixels</span></p>
+            <p id="message-start" class="message" style="display: none;">Conectado ao App Falkol</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

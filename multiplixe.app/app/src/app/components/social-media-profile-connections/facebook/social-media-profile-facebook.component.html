@@ -1,0 +1,17 @@
+<div class="form-btn-group">
+  
+  <div>
+    <button type="button" class="form-btn" [class.active]="hasConnected()"  (click)="ok()">
+      <div class="form-btn-icon">
+        <img class="form-btn-icon-img" src="/assets/img/icon_fb.png" alt="">
+      </div>
+      Facebook
+      <div class="form-btn-photo" *ngIf="hasConnected()">
+        <div class="form-btn-photo-box">
+          <img class="form-btn-photo-img" src="{{profile.imageUrl}}" alt="">
+        </div>
+      </div>      
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>multiplixe.registrador_de_eventos.client</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Rene</Company>
+    <Title>Registrador de Eventos Client</Title>
+
+    <PackageTags>Registrador;eventos</PackageTags>
+    <PackageDescription>
+      Registra e consulta eventos para os triadores
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <None Remove="facebook\facebook.proto" />
+    <None Remove="Protos\evento.proto" />
+    <None Remove="Protos\response.proto" />
+    <None Remove="twitch\twitch.proto" />
+    <None Remove="twitter\twitter.proto" />
+    <None Remove="youtube\youtube.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="Google.Protobuf" Version="3.9.1" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.23.2" />
+    <PackageReference Include="Grpc.Tools" Version="2.23.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="facebook\facebook.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\evento.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\response.proto" GrpcServices="Client" />
+    <Protobuf Include="twitch\twitch.proto" GrpcServices="Client" />
+    <Protobuf Include="twitter\twitter.proto" GrpcServices="Client" />
+    <Protobuf Include="youtube\youtube.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.usuarios.client", "multiplixe.usuarios.client\multiplixe.usuarios.client.csproj", "{DDACB99D-DC70-43F9-890A-29F7953CFFB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.usuarios.grpc", "multiplixe.usuarios.grpc\multiplixe.usuarios.grpc.csproj", "{66EE8B56-F2BC-481F-84CB-3E63AC258A31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.usuarios.usuario", "multiplixe.usuarios.usuario\multiplixe.usuarios.usuario.csproj", "{158C44B6-EEA7-4AF6-A6D1-85EF6BDC7117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.usuarios.perfil", "multiplixe.usuarios.perfil\multiplixe.usuarios.perfil.csproj", "{2B9FC845-DC96-4BE4-9E96-FE0AEC40BCBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.usuarios.token", "multiplixe.usuarios.token\multiplixe.usuarios.token.csproj", "{E61E8155-5733-4A69-A785-E898677BAF1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.usuarios.avatar.console", "multiplixe.usuarios.avatar.console\multiplixe.usuarios.avatar.console.csproj", "{7B90CBA0-C237-424F-8448-3B48234385EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDACB99D-DC70-43F9-890A-29F7953CFFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDACB99D-DC70-43F9-890A-29F7953CFFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDACB99D-DC70-43F9-890A-29F7953CFFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDACB99D-DC70-43F9-890A-29F7953CFFB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66EE8B56-F2BC-481F-84CB-3E63AC258A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66EE8B56-F2BC-481F-84CB-3E63AC258A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66EE8B56-F2BC-481F-84CB-3E63AC258A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66EE8B56-F2BC-481F-84CB-3E63AC258A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{158C44B6-EEA7-4AF6-A6D1-85EF6BDC7117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{158C44B6-EEA7-4AF6-A6D1-85EF6BDC7117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{158C44B6-EEA7-4AF6-A6D1-85EF6BDC7117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{158C44B6-EEA7-4AF6-A6D1-85EF6BDC7117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9FC845-DC96-4BE4-9E96-FE0AEC40BCBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9FC845-DC96-4BE4-9E96-FE0AEC40BCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9FC845-DC96-4BE4-9E96-FE0AEC40BCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9FC845-DC96-4BE4-9E96-FE0AEC40BCBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61E8155-5733-4A69-A785-E898677BAF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61E8155-5733-4A69-A785-E898677BAF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61E8155-5733-4A69-A785-E898677BAF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61E8155-5733-4A69-A785-E898677BAF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B90CBA0-C237-424F-8448-3B48234385EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B90CBA0-C237-424F-8448-3B48234385EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B90CBA0-C237-424F-8448-3B48234385EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B90CBA0-C237-424F-8448-3B48234385EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B385BA5-5B7A-4EF2-A1D3-B4FD9615EB2A}
+	EndGlobalSection
+EndGlobal

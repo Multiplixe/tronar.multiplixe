@@ -1,0 +1,81 @@
+<div class="form-group">
+  <input type="text" id="name" maxlength="128" class="form-input" placeholder="&nbsp;" required
+    [(ngModel)]="user.name.value">
+  <label for="name" class="form-label">Nome completo</label>
+
+  <img class="form-validation icon-invalid" src="/assets/img/icon_invalid.png" alt=""
+    *ngIf="isInvalidStatus(user.name)">
+  <img class="form-validation icon-valid" src="/assets/img/icon_valid.png" alt="" *ngIf="isValidStatus(user.name)">
+
+</div>
+
+<div class="form-group">
+
+  <input type="text" id="nickname" maxlength="32" class="form-input" placeholder="&nbsp;" required
+    [(ngModel)]="user.nickname.value">
+  <label for="nickname" class="form-label">Apelido</label>
+  <img class="form-validation icon-invalid" src="/assets/img/icon_invalid.png" alt=""
+    *ngIf="isInvalidStatus(user.nickname)">
+  <img class="form-validation icon-valid" src="/assets/img/icon_valid.png" alt="" *ngIf="isValidStatus(user.nickname)">
+
+</div>
+
+<div class="form-group">
+  <p class="form-notification" *ngIf="isAlreadyError(user.nickname)">
+    Este apelido já está sendo usado por outra pessoa.
+  </p>
+</div>
+
+<div class="form-group">
+  <input type="text" id="email" maxlength="128" class="form-input" placeholder="&nbsp;" required
+    [(ngModel)]="user.email.value">
+  <label for="email" class="form-label">E-mail</label>
+
+  <img class="form-validation icon-invalid" src="/assets/img/icon_invalid.png" alt=""
+    *ngIf="isInvalidStatus(user.email)">
+  <img class="form-validation icon-valid" src="/assets/img/icon_valid.png" alt="" *ngIf="isValidStatus(user.email)">
+
+</div>
+
+<div class="form-group">
+  <p class="form-notification" *ngIf="isAlreadyError(user.email)">
+    Este e-mail já foi cadastrado anteriormente.
+  </p>
+
+</div>
+
+<div *ngIf="isRegister">
+
+  <div class="form-group">
+    <input type="password" id="password" class="form-input" placeholder="&nbsp;" required
+      [(ngModel)]="user.password.value">
+    <label for="password" class="form-label">Senha</label>
+
+    <img class="form-validation icon-invalid" src="/assets/img/icon_invalid.png" alt=""
+      *ngIf="isInvalidStatus(user.password)">
+    <img class="form-validation icon-valid" src="/assets/img/icon_valid.png" alt=""
+      *ngIf="isValidStatus(user.password)">
+
+  </div>
+
+  <div class="form-group">
+    <p class="form-notification" *ngIf="isInvalidError(user.password)">A senha deve ter no mínimo 6 caracteres
+    </p>
+  </div>
+
+  <div class="form-group m-0">
+    <input type="password" id="confirm-password" class="form-input" placeholder="&nbsp;" required
+      [(ngModel)]="user.confirmPassword">
+    <label for="confirm-password" class="form-label">Confirme a senha</label>
+
+    <img class="form-validation icon-invalid" src="/assets/img/icon_invalid.png" alt=""
+      *ngIf="isDifferentCode(user.password)">
+
+  </div>
+
+  <div class="form-group">
+    <p class="form-notification" *ngIf="isDifferentCode(user.password)">A confirmação de senha não é igual a
+      senha informada.</p>
+  </div>
+
+</div>

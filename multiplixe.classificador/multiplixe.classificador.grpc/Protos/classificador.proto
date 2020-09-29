@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.classificador.grpc.Protos";
+
+package multiplixe.classificador.grpc.Protos;
+
+service Classificador {
+	rpc ObterClassificacao(ClassificacaoRequest) returns (ClassificacaoResponse);
+	rpc ObterPontuacaoTotal(ClassificacaoRequest) returns (PontuacaoResponse);
+}
+
+message ClassificacaoRequest {
+	string UsuarioId = 1;
+}
+
+message ClassificacaoMessage {
+	PontuacaoMessage Pontuacao = 1;
+	NivelMessage Nivel = 2;
+	RankingPosicaoMessage Ranking = 3;
+	repeated RedeSocialMessage RedesSociais = 4;
+}
+
+message RedeSocialMessage {
+	int32 id = 1;
+	string Nome = 2;
+	int32 Pontos = 3;
+	int32 Percent = 4;
+	bool Conectado = 5;
+}
+
+message PontuacaoMessage {
+	int32 Valor = 1;
+}
+
+message RankingPosicaoMessage {
+	int32 Valor = 1;
+}
+
+message NivelMessage {
+	int32 Id = 1;
+	string Nome = 2;
+	bool Mudou = 3;
+}
+
+message ClassificacaoResponse {
+	int32 HttpStatusCode = 1;
+	ClassificacaoMessage Classificacao = 2;
+}
+
+message PontuacaoResponse {
+	int32 HttpStatusCode = 1;
+	PontuacaoMessage Pontuacao = 2;
+}

@@ -1,0 +1,34 @@
+syntax = "proto3"; 
+
+option csharp_namespace = "multiplixe.registrador_de_eventos.grpc.Protos";
+
+package multiplixe.registrador_de_eventos.grpc.Protos;
+
+message EventoMessage {
+	string Id = 1;
+	string UsuarioId = 2;
+	string PostId = 4;
+	string PerfilId = 5;
+	int64 DataEvento = 6;
+	string Json = 8;
+}
+
+message ReacaoEventoMessage  {
+	EventoMessage Evento = 1;
+	string Intensidade = 2;
+	TipoEventoEnumMessage Tipo = 3;
+}
+
+enum TipoEventoEnumMessage {
+	tipoEnum = 0;
+	curtida = 1;
+	descurtida = 2;
+	ping = 3;
+}
+
+message UltimaReacaoMessage {
+	string UsuarioId = 1;
+	string PostId = 2;
+}
+
+

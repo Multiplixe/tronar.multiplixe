@@ -1,0 +1,58 @@
+<ion-content *ngIf="showContent()">
+
+  <div class="falkol-logged-in falkol-bg falkol-bg-img-top" style="background-image: url('/assets/img/bg_in.png');">
+
+    <app-header></app-header>
+
+    <main>
+
+      <div class="falkol-ranking-header">
+        <div class="falkol-title">
+          <h2>Ranking</h2>
+        </div>
+        <div class="falkol-share" *ngIf="rankingChanged"> 
+          <img class="falkol-share-icon" src="/assets/img/icon_refresh2.png" alt="" (click)="load()">
+        </div>
+      </div>
+      <div class="falkol-table">
+        <div class="falkol-table-head">
+          <div class="falkol-table-head-pos">
+            <h3>Posição</h3>
+          </div>
+          <div class="falkol-table-head-name">
+          </div>
+          <div class="falkol-table-head-score">
+            <h3>Pixels</h3>
+          </div>
+        </div>
+        <ul class="falkol-table-list">
+          <!-- style="xbackground-image: url('/assets/img/bg_in.png');" -->
+          <li class="falkol-table-list-item" *ngFor="let placing of ranking.placing">
+            <div class="falkol-table-list-item-pos">
+              <img src="/assets/img/cup.png" *ngIf="placing.value == '1'" alt="">
+              <img src="/assets/img/icon_badge.png" *ngIf="placing.value != '1'" alt="">
+            </div>
+            <div class="falkol-table-list-item-name">
+              <p>{{placing.value}}</p>
+              <div class="falkol-table-list-item-photo">
+                <img src="{{placing.imageUrl}}" alt="">
+              </div>
+              <h4>
+                {{placing.nickname}}
+              </h4>
+            </div>
+            <div class="falkol-table-list-item-score">
+              <h4>{{placing.points}}</h4>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <p><i>Atualizado em {{ranking.date | date:'short'}}</i></p>
+
+    </main>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.api", "multiplixe.api\multiplixe.api.csproj", "{EB43C2FD-3D08-454B-82C7-3DF0D10A2087}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.api.auth", "multiplixe.api.auth\multiplixe.api.auth.csproj", "{C0CA67F9-B793-4015-8799-E25CF8EF6AC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB43C2FD-3D08-454B-82C7-3DF0D10A2087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB43C2FD-3D08-454B-82C7-3DF0D10A2087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB43C2FD-3D08-454B-82C7-3DF0D10A2087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB43C2FD-3D08-454B-82C7-3DF0D10A2087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0CA67F9-B793-4015-8799-E25CF8EF6AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CA67F9-B793-4015-8799-E25CF8EF6AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CA67F9-B793-4015-8799-E25CF8EF6AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CA67F9-B793-4015-8799-E25CF8EF6AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEA4B4D3-01D5-495B-B350-DDEF2153E0C0}
+	EndGlobalSection
+EndGlobal

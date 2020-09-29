@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "protos/evento.proto";
+import "protos/response.proto";
+
+option csharp_namespace = "multiplixe.registrador_de_eventos.grpc.Protos";
+
+package multiplixe.registrador_de_eventos.grpc.Protos;
+
+service Twitter {
+	rpc RegistrarReacao(ReacaoEventoMessage) returns (ResponseMessage); 
+	rpc UltimaReacao(UltimaReacaoMessage) returns (ResponseMessage); 
+}

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.comum.triador</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Tronar</Company>
+    <Title>Helper</Title>
+
+    <PackageTags>Triador</PackageTags>
+    <PackageDescription>
+      Pacote base para triadores de eventos
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.registrador_de_eventos.client" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

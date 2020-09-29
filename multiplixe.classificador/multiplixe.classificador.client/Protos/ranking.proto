@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.classificador.grpc.Protos";
+
+package multiplixe.classificador.grpc.Protos;
+
+service Ranking {
+	rpc Obter(RankingRequest) returns (RankingResponse);
+}
+
+message RankingRequest {
+	string UsuarioId = 1;
+}
+
+message RankingResponse {
+	int32 HttpStatusCode = 1;
+	RankingMessage Ranking = 2;
+}
+
+message PosicaoMessage {
+	string UsuarioId = 1;
+	int32 Pontos = 4;
+	int32 Valor = 5;
+	bool UsuarioAtual = 6;
+}
+
+message RankingMessage {
+	int64 DataProcessamento = 1;
+	repeated PosicaoMessage Posicoes = 2;
+}

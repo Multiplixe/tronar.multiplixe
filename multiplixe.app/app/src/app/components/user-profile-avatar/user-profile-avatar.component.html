@@ -1,0 +1,10 @@
+<div class="falkol-profile-picture-container">
+  <div class="falkol-profile-picture" [ngStyle]="{'width.px' : size, 'height.px' : size}">
+    <div class="falkol-profile-picture-img-box">
+      <ion-img [src]="imageUrl"></ion-img>
+    </div>
+    <div class="falkol-profile-skin" *ngIf="showSkin">
+      <img class="" src="/assets/img/icon_skin.png" alt="">
+    </div>
+  </div>
+</div>

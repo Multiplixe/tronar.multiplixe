@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="game.core.dto" Version="3.28.9" />
+    <PackageReference Include="game.core.enums" Version="1.6.1" />
+    <PackageReference Include="game.core.interfaces" Version="2.7.7" />
+    <PackageReference Include="game.core.services.pontuador" Version="1.5.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.facebook.dto\multiplixe.facebook.dto.csproj" />
+  </ItemGroup>
+
+</Project>

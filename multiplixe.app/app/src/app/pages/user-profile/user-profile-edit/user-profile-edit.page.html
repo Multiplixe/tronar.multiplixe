@@ -1,0 +1,51 @@
+<ion-content *ngIf="showContent()">
+
+  <div class="falkol-register falkol-bg" style="background-image: url('/assets/img/bg.png');">
+
+    <app-header></app-header>
+
+    <main class="falkol-main">
+
+      <div class="falkol-ranking-header">
+        <div class="falkol-title">
+          <h2>Perfil</h2>
+        </div>
+      </div>
+
+      <div class="falkol-form">
+
+        <div class="form-inputs">
+
+          <div class="form-group" *ngIf="messagesStep.isAndReset(1, 5)">
+            <p>Alteração realizada com sucesso!</p>
+          </div>
+
+          <div class="form-group">
+            <app-user-profile-avatar [size]="150"></app-user-profile-avatar>
+
+            <a routerDirection="root" routerLink="/r/perfil/avatar" class="form-link-avatar">Alterar foto do
+              perfil</a>
+
+          </div>
+
+          <app-user-profile-form [user]="user"></app-user-profile-form>
+
+
+        </div>
+
+        <div class="form-buttons">
+          <div class="form-btn-group">
+            <button type="button" class="form-btn form-btn-submit" (click)="update()">
+              Alterar
+            </button>
+          </div>
+        </div>
+
+
+      </div>
+
+    </main>
+
+  </div>
+
+</ion-content>

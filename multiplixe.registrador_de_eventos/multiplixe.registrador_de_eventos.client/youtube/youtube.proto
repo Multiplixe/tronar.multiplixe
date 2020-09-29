@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "Protos/evento.proto";
+import "Protos/response.proto";
+
+option csharp_namespace = "multiplixe.registrador_de_eventos.grpc.Protos";
+
+package multiplixe.registrador_de_eventos.grpc.Protos;
+
+service Youtube {
+	rpc RegistrarLiveHashtag(LiveHashtagEventoMessage) returns (ResponseMessage); 
+	rpc VerificarExistenciaLiveHashtag(VerificarLiveHashtagMessage) returns (ResponseMessage); 
+}
+
+message LiveHashtagEventoMessage {
+	EventoMessage Evento = 1;
+	string Hashtag = 2;
+}
+
+message VerificarLiveHashtagMessage {
+	string UsuarioId = 1;
+	string PostId = 2;
+	string Hashtag = 3;
+}

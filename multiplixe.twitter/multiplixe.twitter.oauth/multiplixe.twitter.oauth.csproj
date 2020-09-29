@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.twitter.oauth</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Tronar</Company>
+    <Title>Oauth do Twitter</Title>
+
+    <PackageTags>Tronar;Twitter</PackageTags>
+    <PackageDescription>
+      Projeto oauth para conexão Twitter
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.2</PackageVersion>
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.twitter.dto" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

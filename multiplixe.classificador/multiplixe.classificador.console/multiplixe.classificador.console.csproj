@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>1.0.4</Version>
+    <Authors>Tronar</Authors>
+    <Product>Multiplixe</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0-preview.7.20364.11" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.7.20364.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.8" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.classificador.classificacao\multiplixe.classificador.classificacao.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.nivel\multiplixe.classificador.nivel.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.pontuacao\multiplixe.classificador.pontuacao.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

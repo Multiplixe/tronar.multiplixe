@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.twitch.ping</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Tronar</Company>
+    <Title>Evento Ping do Twitch</Title>
+
+    <PackageTags>Twitch;Ping</PackageTags>
+    <PackageDescription>
+      Projeto relacionado ao evento ping do Twitch
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+  <ItemGroup>
+
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.8" />
+
+    <PackageReference Include="multiplixe.classificador.client" Version="1.0.0" />
+
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+
+    <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
+
+    <PackageReference Include="multiplixe.twitch.dto" Version="1.0.3" />
+
+    <PackageReference Include="multiplixe.usuarios.client" Version="1.0.0" />
+
+  </ItemGroup>
+
+</Project>

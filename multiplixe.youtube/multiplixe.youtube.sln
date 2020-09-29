@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.youtube.livehashtag.console", "multiplixe.youtube.livehashtag.console\multiplixe.youtube.livehashtag.console.csproj", "{F90D261B-D37B-45CF-B5ED-3177392A5539}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.youtube.livehashtag.triador", "multiplixe.youtube.livehashtag.triador\multiplixe.youtube.livehashtag.triador.csproj", "{A8207FF3-7F85-45CE-8204-6A8A9C1D3EE1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.youtube.livehashtag.pontuador.console", "multiplixe.youtube.livehashtag.pontuador.console\multiplixe.youtube.livehashtag.pontuador.console.csproj", "{7905E1D0-93D2-472B-BEC2-6863E7B84100}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mutiplixe.youtube.dto", "mutiplixe.youtube.dto\mutiplixe.youtube.dto.csproj", "{BDC2544A-119F-4603-9E99-4722620D4F6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.youtube.triador.console", "multiplixe.youtube.triador.console\multiplixe.youtube.triador.console.csproj", "{424EF2A1-AFEF-4F07-B1B9-0BA836641016}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F90D261B-D37B-45CF-B5ED-3177392A5539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90D261B-D37B-45CF-B5ED-3177392A5539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90D261B-D37B-45CF-B5ED-3177392A5539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90D261B-D37B-45CF-B5ED-3177392A5539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8207FF3-7F85-45CE-8204-6A8A9C1D3EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8207FF3-7F85-45CE-8204-6A8A9C1D3EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8207FF3-7F85-45CE-8204-6A8A9C1D3EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8207FF3-7F85-45CE-8204-6A8A9C1D3EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7905E1D0-93D2-472B-BEC2-6863E7B84100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7905E1D0-93D2-472B-BEC2-6863E7B84100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7905E1D0-93D2-472B-BEC2-6863E7B84100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7905E1D0-93D2-472B-BEC2-6863E7B84100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC2544A-119F-4603-9E99-4722620D4F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC2544A-119F-4603-9E99-4722620D4F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC2544A-119F-4603-9E99-4722620D4F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC2544A-119F-4603-9E99-4722620D4F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{424EF2A1-AFEF-4F07-B1B9-0BA836641016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424EF2A1-AFEF-4F07-B1B9-0BA836641016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424EF2A1-AFEF-4F07-B1B9-0BA836641016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424EF2A1-AFEF-4F07-B1B9-0BA836641016}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0762F5C1-6FA2-4270-B99C-967B57C4163E}
+	EndGlobalSection
+EndGlobal

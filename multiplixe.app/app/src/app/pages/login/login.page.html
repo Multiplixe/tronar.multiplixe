@@ -1,0 +1,95 @@
+<ion-content *ngIf="displayControl.is('1')">
+
+  <div class="falkol-login falkol-bg" style="background-image: url('/assets/img/bg.png');">
+
+    <header class="falkol-header">
+      <div class="falkol-logo">
+        <a routerDirection="root" routerLink="login" title="Falkol">
+          <img src="/assets/img/logo.png" alt="Falkol" title="Falkol">
+        </a>
+      </div>
+    </header>
+
+    <main class="falkol-main">
+      <div class="falkol-form">
+
+        <div class="form-group  m-0">
+          <input type="email" id="email" class="form-input" placeholder="&nbsp;" required [(ngModel)]="login.email">
+          <label for="email" class="form-label">Email</label>
+        </div>
+
+        <div class="form-group">
+          <p class="form-notification" *ngIf="messages.is('auth/invalid-email')">
+            E-mail inválido
+          </p>
+          <p class="form-notification" *ngIf="messages.is('auth/user-not-found')">
+            E-mail não cadastrado
+          </p>
+
+          <p class="form-notification" *ngIf="messages.is('auth/too-many-requests')">
+            Você excedeu o número de tentativas inválidas. Tente novamente mais tarde.</p>
+        </div>
+
+
+        <div class="form-group">
+          <input type="password" id="password" class="form-input" placeholder="&nbsp;" required
+            [(ngModel)]="login.password">
+          <label for="password" class="form-label">Senha</label>
+          <p class="form-notification" *ngIf="messages.is('auth/wrong-password')">
+            Senha incorreta, tente novamente.
+          </p>
+        </div>
+
+        <div class="form-remember">
+          <div class="form-group" style="visibility: hidden;">
+            <input type="checkbox" name="remember" id="remember" class="form-input-checkbox">
+            <label for="remember">Lembrar senha</label>
+          </div>
+          <a routerDirection="root" routerLink="/esqueci-minha-senha">Esqueceu a senha</a>
+        </div>
+
+        <div class="form-buttons">
+          <div class="form-btn-group">
+            <button type="submit" class="form-btn form-btn-submit" (click)="authenticate()">
+              Entrar
+            </button>
+          </div>
+          <div class="form-btn-group m-0">
+            <a routerDirection="root" routerLink="/cadastro" title="Registrar">
+              <button type="button" class="form-btn">
+                Registrar
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="falkol-links">
+        <ul class="falkol-links-list">
+          <li class="falkol-links-item">
+            <a href="https://www.twitch.tv/falkoloficial/" target="_blank" title="Falkol Twitch">
+              <!-- class="active" -->
+              <img class="falkol-links-icon" src="/assets/img/icon_twitch.png" alt="Falkol Twitch">
+            </a>
+          </li>
+          <li class="falkol-links-item">
+            <a href="https://www.facebook.com/FalkolOficial" target="_blank" title="Falkol Facebook">
+              <img class="falkol-links-icon" src="/assets/img/icon_fb.png" alt="Falkol Facebook">
+            </a>
+          </li>
+          <li class="falkol-links-item">
+            <a href="https://twitter.com/FalkolOficial" target="_blank" title="Falkol Twitter">
+              <img class="falkol-links-icon" src="/assets/img/icon_twitter.png" alt="Falkol Twitter">
+            </a>
+          </li>
+        </ul>
+
+        <app-legal-links></app-legal-links>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</ion-content>

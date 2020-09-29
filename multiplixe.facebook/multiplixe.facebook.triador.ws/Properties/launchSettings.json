@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "multiplixe.facebook.triador.ws": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

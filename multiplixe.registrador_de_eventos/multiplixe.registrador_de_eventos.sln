@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.registrador_de_eventos.client", "multiplixe.registrador_de_eventos.client\multiplixe.registrador_de_eventos.client.csproj", "{0F0C8D95-CE4D-4F97-A0BB-0D881648545D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.registrador_de_eventos.grpc", "multiplixe.registrador_de_eventos.grpc\multiplixe.registrador_de_eventos.grpc.csproj", "{68A4E08D-BE60-456D-859B-B5CE6F54E24F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F0C8D95-CE4D-4F97-A0BB-0D881648545D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0C8D95-CE4D-4F97-A0BB-0D881648545D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0C8D95-CE4D-4F97-A0BB-0D881648545D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0C8D95-CE4D-4F97-A0BB-0D881648545D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A4E08D-BE60-456D-859B-B5CE6F54E24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A4E08D-BE60-456D-859B-B5CE6F54E24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A4E08D-BE60-456D-859B-B5CE6F54E24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A4E08D-BE60-456D-859B-B5CE6F54E24F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FB490B5-D078-45D5-BD7C-3B8017697442}
+	EndGlobalSection
+EndGlobal

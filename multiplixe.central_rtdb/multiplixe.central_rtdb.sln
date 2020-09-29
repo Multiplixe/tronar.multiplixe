@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.central_rtdb.grpc", "multiplixe.central_rtdb.grpc\multiplixe.central_rtdb.grpc.csproj", "{79130755-4BBE-4712-8938-D7A0CA56C518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.central_rtdb.client", "multiplixe.central_rtdb.client\multiplixe.central_rtdb.client.csproj", "{BB9C30B0-A100-44B1-8BED-FD581398ACE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79130755-4BBE-4712-8938-D7A0CA56C518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79130755-4BBE-4712-8938-D7A0CA56C518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79130755-4BBE-4712-8938-D7A0CA56C518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79130755-4BBE-4712-8938-D7A0CA56C518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9C30B0-A100-44B1-8BED-FD581398ACE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9C30B0-A100-44B1-8BED-FD581398ACE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9C30B0-A100-44B1-8BED-FD581398ACE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9C30B0-A100-44B1-8BED-FD581398ACE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {418CDB04-C4E3-445A-9858-DC28032451EA}
+	EndGlobalSection
+EndGlobal

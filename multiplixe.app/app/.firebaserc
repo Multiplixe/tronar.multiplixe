@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "multipixel-falkol"
+  },
+  "targets": {
+    "multipixel-falkol": {
+      "hosting": {
+        "app": [
+          "multipixel-falkol"
+        ]
+      }
+    }
+  }
+}

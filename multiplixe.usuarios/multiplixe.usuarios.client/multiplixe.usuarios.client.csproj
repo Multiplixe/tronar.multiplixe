@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.usuarios.client</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Tronar</Company>
+    <Title>Usuários</Title>
+
+    <PackageTags>Usuarios</PackageTags>
+    <PackageDescription>
+      Serviços relacionados aos usuários.
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+
+  <ItemGroup>
+    <None Remove="protos\entries.proto" />
+    <None Remove="protos\perfil.proto" />
+    <None Remove="protos\token.proto" />
+    <None Remove="protos\usuario.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.9.1" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.23.2" />
+    <PackageReference Include="Grpc.Tools" Version="2.23.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="protos\entries.proto" GrpcServices="Client" />
+    <Protobuf Include="protos\perfil.proto" GrpcServices="Client" />
+    <Protobuf Include="protos\token.proto" GrpcServices="Client" />
+    <Protobuf Include="protos\usuario.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>

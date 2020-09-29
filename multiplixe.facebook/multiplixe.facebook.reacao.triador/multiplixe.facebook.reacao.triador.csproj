@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.triador" Version="1.0.0" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.registrador_de_eventos.client" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.facebook.dto\multiplixe.facebook.dto.csproj" />
+  </ItemGroup>
+
+</Project>

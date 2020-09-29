@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.central_rtdb.grpc.protos";
+
+service RTDB {
+	rpc RegistrarAtividade(AtividadeRequest) returns (Response);
+	rpc RegistrarAtividadeComum(AtividadeRequest) returns (Response);
+	rpc Iniciar(IniciarRequest) returns (Response);
+	rpc Deletar(DeletarRequest) returns (Response);
+}
+
+message AtividadeRequest {
+	string UsuarioId = 1;
+	string Nome = 2;
+	string Json = 3;
+}
+
+
+message Response {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+}
+
+message IniciarRequest {
+	string UsuarioId = 1;
+}
+
+message DeletarRequest {
+	string UsuarioId = 1;
+}
+

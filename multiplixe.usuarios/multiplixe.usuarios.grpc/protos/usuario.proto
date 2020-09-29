@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "protos/entries.proto";
+
+option csharp_namespace = "multiplixe.usuarios.grpc.protos";
+
+package multiplixe.usuarios.grpc.protos;
+
+service Usuario {
+	rpc Registrar(UsuarioRegistroRequest) returns (UsuarioRegistroResponse);
+	rpc Atualizar(UsuarioAtualizacaoRequest) returns (UsuarioAtualizacaoResponse);
+	rpc Obter(UsuarioFiltroRequest) returns (UsuarioResponse);
+	rpc Listar(UsuarioFiltroRequest) returns (UsuarioResponse);
+}
+
+message UsuarioRegistroRequest {
+	EntryString Nome  = 1;
+	EntryString Apelido = 2;
+	EntryString Email  = 3;
+	EntryString Senha = 4;
+	string EmpresaId = 5;
+	string Id = 6;
+}
+
+message UsuarioMessage {
+	string Id = 1;
+	string Nome  = 2;
+	string Apelido = 3;
+	string Email = 4;
+	string EmpresaId = 5;
+	int64  DataCadastro = 6;
+}
+
+message UsuarioRegistroResponse {
+	int32 HttpStatusCode = 1;  
+	UsuarioRegistroRequest Usuario = 2;
+}
+
+message UsuarioResponse {
+	int32 HttpStatusCode = 1;  
+	UsuarioMessage Usuario = 2;
+	repeated UsuarioMessage Usuarios = 3;
+}
+
+message UsuarioFiltroRequest {
+	string EmpresaId = 1;
+	string Email = 2;
+	string Apelido = 3;
+	string UsuarioId = 4;
+	repeated string UsuariosIdLista = 5;
+}
+
+message UsuarioAtualizacaoRequest {
+	EntryString Nome  = 1;
+	EntryString Apelido = 2;
+	EntryString Email = 3;
+	string Id = 4;
+	string EmpresaId = 5;
+}
+
+message UsuarioAtualizacaoResponse {
+	int32 HttpStatusCode = 1;  
+	UsuarioAtualizacaoRequest Usuario = 2;
+}

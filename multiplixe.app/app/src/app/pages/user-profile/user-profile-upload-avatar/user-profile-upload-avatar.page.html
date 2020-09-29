@@ -1,0 +1,46 @@
+<ion-content>
+
+  <div class="falkol-register falkol-bg falkol-bg-img-top" style="background-image: url('/assets/img/bg.png');">
+
+    <app-header></app-header>
+
+    <main>
+
+            
+
+
+      <div class="image-cropper-container"  *ngIf="displayControl.is(1)">
+
+        <image-cropper [maintainAspectRatio]="true" [aspectRatio]="1" format="png,jpg,jpeg"
+          (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+          [imageBase64]="imageBase64" (loadImageFailed)="loadImageFailed()" style="max-height: 300px;">
+        </image-cropper>
+
+        <p (click)="cancel()">trocar foto</p>
+
+      </div>
+
+      <div ngfDrop multiple="0" selectable="1" [(validDrag)]="validComboDrag" [(files)]="files" accept="image/*"
+        [maxSize]="maxSize" class="upload-drop-zone hand" [class.upload-drag-invalid]="validComboDrag===false"
+        [class.upload-drag-valid]="validComboDrag" (filesChange)="selectImage()" [(lastInvalids)]="error"
+        title="Arraste uma foto para inserir no seu perfil" *ngIf="displayControl.is(0)">
+
+        <app-user-profile-avatar [size]="150"></app-user-profile-avatar>
+
+        Selecionar uma foto
+
+      </div>
+
+      <div class="form-buttons">
+        <div class="form-btn-group">
+          <button type="button" class="form-btn form-btn-submit" (click)="upload()" [disabled]="disabledButton()">
+            Ok
+          </button>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+option csharp_namespace = "multiplixe.registrador_de_eventos.grpc.Protos";
+
+package multiplixe.registrador_de_eventos.grpc.Protos;
+
+message ResponseMessage {
+	bool Ok = 1;
+	string Id = 2;
+	string Error = 3;
+	bool Existe = 4;
+	google.protobuf.Any Item = 5;
+}
+

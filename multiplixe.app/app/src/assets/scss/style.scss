@@ -1,0 +1,944 @@
+*,
+:before,
+:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+    color: #ffffff;
+    background-color: #00091b;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    &:visited {
+        color: #ffffff;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+li,
+p {
+    color: #ffffff;
+}
+
+#loader {
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    position: absolute;
+    background-color: #00091b;
+    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+#loader > div {
+    width: 63px;
+    height: 63px;
+    margin-top: 50%;
+}
+
+#loader > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#loader > p {
+    padding: 0 10px;
+}
+
+#loader > div:after {
+    content: " ";
+    display: block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+[class].m-0 {
+    margin: 0;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.falkol-text-info {
+    font-size: 0.875rem;
+    color: #ffffff;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+}
+
+.falkol-menu {
+    background-color: #00091b;
+    height: 100vh;
+    width: 100%;
+    padding: 60px 30px 30px;
+    position: fixed;
+    transition: all 0.3s ease-in-out;
+    left: -260px;
+    &.menu-open {
+        left: 0;
+        + .falkol-bg {
+            transform: translateX(260px);
+        }
+    }
+    &-header {
+        .falkol-profile-picture-container {
+            .falkol-profile-picture {
+                width: 90px;
+                height: 90px;
+                margin-left: 0;
+                .falkol-profile-skin {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+        }
+    }
+    .falkol-title h2 {
+        font-size: 1.5rem;
+        margin: 15px 0 20px;
+    }
+    .falkol-px-menu {
+        .falkol-px-row {
+            display: flex;
+            .falkol-px-item {
+                display: flex;
+                align-items: center;
+                line-height: 1;
+                margin-right: 20px;
+                &-title * {
+                    margin: 0;
+                    font-size: 1rem;
+                }
+                .falkol-px-icon {
+                    width: 20px;
+                    margin-right: 5px;
+                }
+            }
+        }
+        .falkol-px-update {
+            font-size: 0.75rem;
+            color: #858997;
+            margin: 10px auto;
+        }
+    }
+    .falkol-menu-list {
+        padding: 0;
+        margin: 15px 0;
+        list-style-type: none;
+        .falkol-menu-item {
+            padding: 15px 0;
+            &-link {
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 1rem;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+    .form-input,
+    .form-label {
+        width: 100%;
+        height: 3rem;
+        font-size: 1rem;
+        color: #ffffff;
+    }
+    .form-input {
+        border: 0;
+        border-bottom: 1px solid #4583f0;
+        outline: none;
+        transition: all 0.2s ease-in-out;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .form-label {
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        font-size: 1rem;
+        cursor: text;
+        transition: all 0.2s ease-in-out;
+    }
+    .form-input:focus {
+        border-bottom: 1px solid #4583f0;
+    }
+    .form-input:valid {
+        border-bottom: 1px solid #02b7d1;
+    }
+    .form-input:invalid {
+        box-shadow: none;
+    }
+    .form-input:focus:invalid,
+    .form-input:not(:placeholder-shown):invalid {
+        border-bottom-color: #ff0808;
+    }
+    .form-input:not(:placeholder-shown) + .form-label {
+        color: #ffffff;
+        font-size: 0.875rem;
+        top: -30px;
+        pointer-events: none;
+    }
+    .form-input:valid + .form-label,
+    .form-input:focus + .form-label {
+        color: #ffffff;
+        font-size: 0.875rem;
+        top: -30px;
+        pointer-events: none;
+    }
+
+    .form-validation {
+        position: absolute;
+        width: 18px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+    .form-notification {
+        font-size: 0.75rem;
+        color: #ff0808;
+        // visibility: hidden;
+    }
+    &.form-file-group {
+        text-align: center;
+        .form-input-file {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+    .form-link-avatar {
+        cursor: pointer;
+        position: relative;
+        color: #2664d3;
+        display: block;
+        text-align: center;
+    }
+}
+
+.form-remember {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    margin-bottom: 30px;
+    .form-group {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        .form-input-checkbox {
+            margin: 5px 5px 5px 0;
+        }
+    }
+    a {
+        color: #4583f0;
+    }
+}
+
+.legal-links {
+    a {
+        color: #4583f0;
+    }
+    * {
+        font-size: 12px;
+        color: #4583f0;
+    }
+    span {
+        padding: 0 10px;
+    }
+}
+
+.form-buttons {
+    .form-btn-group {
+        margin-bottom: 20px;
+        .form-btn {
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffffff;
+            border-radius: 8px;
+            height: 60px;
+            background-color: transparent;
+            background-color: #2664d3;
+            border: 0px;
+            outline: none;
+            cursor: pointer;
+            &.form-btn-submit {
+                background-color: #2664d3;
+                border: 0px;
+            }
+        }
+    }
+}
+
+.form-icon-buttons {
+    .form-btn-group {
+        margin-bottom: 12px;
+        .form-btn {
+            background-color: #2664d3;
+            border-color: #2664d3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1.5rem;
+            transition: all 0.2s ease-out;
+            &::after {
+                content: "";
+                flex: 1;
+            }
+            &:hover,
+            &.active {
+                background-color: #555e76;
+                border: 0px;
+            }
+            .form-btn-icon {
+                flex: 1;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                .form-btn-icon-img {
+                    max-width: 25px;
+                    max-height: 30px;
+                }
+            }
+        }
+    }
+}
+
+.form-profile-buttons {
+    .form-btn-group {
+        .form-btn {
+            &::after {
+                content: "";
+                flex: 0; //##1
+            }
+            &.active {
+                &::after {
+                    content: "";
+                    flex: 0;
+                }
+            }
+            &-photo {
+                flex: 1;
+                text-align: right;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                &-box {
+                    border-radius: 50%;
+                    border: 2px solid #ffffff;
+                    overflow: hidden;
+                    object-fit: cover;
+                    object-position: center;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+        }
+    }
+}
+
+.falkol-bg {
+    background-size: cover;
+    background-position: center center;
+    // height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background-attachment: fixed;
+    padding: 0 15px 15px;
+    background-color: #00091b;
+    transition: all 0.3s ease-in-out;
+}
+
+.falkol-bg-img-top {
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.falkol-title {
+    h2 {
+        margin: 0 auto 30px;
+        font-size: 2em;
+        font-weight: bold;
+    }
+}
+.falkol-subtitle {
+    h3 {
+        margin: 0 auto 20px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+}
+
+.falkol-profile-picture-container {
+    .falkol-profile-picture {
+        margin: 0 auto 10px;
+        position: relative;
+
+        &-img-box {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            overflow: hidden;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            margin: auto;
+        }
+    }
+    .falkol-profile-skin {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: -15px;
+        bottom: 0;
+    }
+}
+
+.falkol-back {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    a {
+        color: #ffffff;
+    }
+}
+
+.falkol-header {
+    &-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 0;
+        .img-menu {
+            height: 20px;
+        }
+    }
+}
+
+.falkol-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .falkol-home-logo {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.falkol-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .falkol-header {
+        padding: 50px 0 30px;
+        .falkol-logo {
+            width: 100px;
+        }
+    }
+    .falkol-main {
+        .falkol-links {
+            .falkol-links-list {
+                margin: 30px auto;
+                padding: 0;
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .falkol-links-item {
+                    margin: 0 8px;
+                    a {
+                        display: block;
+                        padding: 8px;
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        display: flex;
+                        background-color: #747d8d;
+                        border: 1px solid #747d8d;
+                        &:hover,
+                        &:focus,
+                        &:active,
+                        &.active {
+                            background-color: #4583f0;
+                            border: 1px solid #4583f0;
+                        }
+                    }
+                    .falkol-links-icon {
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.falkol-forgot {
+    padding: 40px 15px;
+    .falkol-main {
+        display: block;
+    }
+    .falkol-title {
+        h2 {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.falkol-register,
+.falkol-social {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .falkol-header {
+        padding: 30px 0;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        &::after {
+            content: "";
+            flex: 1;
+        }
+        .falkol-back {
+            text-align: left;
+            flex: 1;
+        }
+        .falkol-logo {
+            margin: auto;
+            width: 100px;
+            flex-basis: 100px;
+            align-self: center;
+        }
+    }
+    .falkol-form {
+        display: flex;
+        flex-direction: column;
+        .form-inputs {
+            flex-grow: 1;
+        }
+    }
+}
+
+.falkol-social {
+    .falkol-main {
+        margin-top: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .form-icon-buttons {
+        flex: 1;
+    }
+}
+
+.falkol-logged-in {
+    .falkol-title {
+        margin-bottom: 30px;
+    }
+    .falkol-picture-container {
+        display: flex;
+        justify-content: flex-end;
+        .falkol-picture-link {
+            img {
+                height: 30px;
+            }
+        }
+    }
+}
+.falkol-px-container {
+    margin: 10px auto 20px;
+    .falkol-px {
+        display: flex;
+        .falkol-px-icon {
+            flex-basis: 35px;
+            margin-right: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .falkol-px-title {
+            margin-bottom: 20px;
+            .falkol-title {
+                margin-bottom: 10px;
+                h2 {
+                    margin-bottom: 0;
+                    line-height: 1;
+                }
+            }
+        }
+        .falkol-px-update {
+            font-size: 0.875rem;
+            color: #858997;
+            margin: 0;
+        }
+        .falkol-px-total {
+            font-size: 0.875rem;
+            margin: 0;
+            color: #2664d3;
+        }
+        .falkol-ranking-title {
+            flex-grow: 1;
+            .falkol-title,
+            h2 {
+                margin: 0;
+            }
+        }
+        .falkol-px-link {
+            justify-self: flex-end;
+            a {
+                color: #2664d3;
+            }
+        }
+    }
+}
+.falkol-box {
+    border-radius: 20px;
+    background-color: #202028;
+    padding: 30px;
+    margin-bottom: 15px;
+    &-title {
+        margin: 15px auto;
+    }
+    &-label,
+    &-label > * {
+        font-size: 0.875rem;
+        margin: 0 auto 5px;
+    }
+}
+.falkol-px-progress-container {
+    display: flex;
+    align-items: center;
+
+    .falkol-px-skin {
+        width: 45px;
+        margin-right: 20px;
+    }
+    .falkol-px-progress {
+        flex: 1;
+        &-count,
+        &-count * {
+            text-align: right;
+            color: #858997;
+            font-size: 0.875rem;
+            font-weight: normal;
+            margin: 0;
+        }
+        &-bar {
+            height: 5px;
+            margin: 8px 0;
+            width: 100%;
+            border-radius: 3px;
+            background-color: #474d5e;
+            position: relative;
+            display: flex;
+
+            &-fill {
+                display: block;
+                height: 100%;
+                position: relative;
+                &:first-child {
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+                &:last-child {
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                }
+            }
+            &-label {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -1rem;
+                font-size: 0.75rem;
+                margin: 0;
+                text-align: center;
+                color: inherit;
+            }
+        }
+        &-info,
+        &-info * {
+            color: #ffffff;
+            font-size: 0.75rem;
+            margin: 0;
+        }
+        &-list {
+            margin: 20px 0;
+            &-item {
+                display: flex;
+                align-items: center;
+                margin: 10px auto;
+                &-color {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
+                &-title,
+                &-title > * {
+                    color: #858997;
+                    font-size: 0.875rem;
+                    margin: 0;
+                    font-weight: normal;
+                }
+                &-count,
+                &-count > * {
+                    flex: 1;
+                    text-align: right;
+                    color: #ffffff;
+                    font-size: 0.875rem;
+                    font-weight: normal;
+                    font-weight: normal;
+                    margin: 0;
+                }
+                &-count > a {
+                    color: #2664d3;
+                }
+            }
+        }
+    }
+}
+.falkol-carousel-container {
+    // overflow: hidden;
+    width: 100vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    .falkol-carousel {
+        display: flex;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        user-select: none;
+        display: flex;
+        cursor: grabbing;
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+        // &:before,
+        // &:after {
+        //     flex: 1 0 20%;
+        //     content: ' ';
+        // }
+        &-item {
+            flex: 0 0 33.3333%;
+            padding: 10px;
+            position: relative;
+
+            &.active {
+                .falkol-carousel-item-img {
+                    transform: scale(1.2);
+                    filter: none;
+                }
+                .falkol-carousel-item-title {
+                    display: block;
+                }
+            }
+            &-img {
+                filter: grayscale(1);
+            }
+
+            &-title {
+                display: none;
+            }
+
+            &-title,
+            &-title > * {
+                font-size: 0.75rem;
+                text-align: center;
+                color: #858997;
+                font-weight: normal;
+            }
+        }
+    }
+}
+.falkol-ranking {
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        .falkol-title,
+        .falkol-title > * {
+            margin-bottom: 0;
+        }
+    }
+}
+.falkol-table {
+    &-head {
+        display: flex;
+        text-align: center;
+        font-size: 0.875rem;
+        margin-bottom: 10px;
+        & * {
+            margin: 0;
+        }
+        &-name {
+            flex: 1;
+        }
+    }
+    &-list {
+        margin-left: -15px;
+        margin-right: -15px;
+        list-style-type: none;
+        padding: 0;
+        &-item {
+            width: 100%;
+            height: 100px;
+            background-position: center;
+            background-size: cover;
+            padding: 20px 15px;
+            border-bottom: 2px solid #122a54;
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.5);
+            &:first-of-type {
+                border-top: 2px solid #122a54;
+            }
+
+            &-pos {
+                width: 75px;
+                padding-right: 15px;
+                display: flex;
+                align-items: center;
+                img {
+                    max-height: 100%;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+            &-name {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                * {
+                    margin: 0;
+                    font-weight: bold;
+                }
+            }
+            &-photo {
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                margin: auto 8px;
+                border: 3px solid #ffffff;
+                img {
+                    object-position: center;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+.falkol-share {
+    &-icon {
+        width: 30px;
+    }
+}
+
+.social-media-1-color {
+    color: #1da1f2 !important;
+}
+
+.social-media-1-bg {
+    background-color: #1da1f2 !important;
+}
+
+.social-media-2-color {
+    color: #4267b2 !important;
+}
+
+.social-media-2-bg {
+    background-color: #4267b2 !important;
+}
+
+.social-media-3-color {
+    color: #6441a4 !important;
+}
+
+.social-media-3-bg {
+    background-color: #6441a4 !important;
+}
+
+.social-media-4-color {
+    color: #c13584 !important;
+}
+
+.social-media-4-bg {
+    background-color: #c13584 !important;
+}
+
+.social-media-5-color {
+    color: #ff0000 !important;
+}
+
+.social-media-5-bg {
+    background-color: #ff0000 !important;
+}
+
+.upload-drop-zone {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    margin: 30px 0;
+}
+
+.image-cropper-container {
+    width: 100%;
+    margin: 30px 0;
+    max-height: 500px;
+}

@@ -1,0 +1,64 @@
+<app-loader></app-loader>
+<app-pwa-update></app-pwa-update>
+
+<ion-split-pane contentId="restricted-content">
+  <ion-menu contentId="restricted-content" type="overlay" (ionDidOpen)="ionDidOpen()">
+    <ion-content>
+
+      <div id="falkolMenu" class="falkol-menu menu-open">
+
+        <div class="falkol-menu-header" *ngIf="displayControl.is(1)">
+
+          <app-user-profile-avatar [size]="90" [showSkin]="true"></app-user-profile-avatar>
+
+          <div class="falkol-title">
+            <h2>{{nickname}}</h2>
+          </div>
+          <div class="falkol-px-menu">
+            <div class="falkol-px-row">
+              <div class="falkol-px-item">
+                <div class="falkol-px-icon">
+                  <img src="/assets/img/icon_coin.png" alt="">
+                </div>
+                <div class="falkol-px-item-title">
+                  <h3>
+                    {{dashboardDto.score.pointing.value}}
+                  </h3>
+                </div>
+              </div>
+              <div class="falkol-px-item">
+                <div class="falkol-px-icon">
+                  <img src="/assets/img/cup.png" *ngIf="ranking == 1" alt="">
+                  <img src="/assets/img/icon_badge.png" *ngIf="ranking != 1" alt="">
+                </div>
+                <div class="falkol-px-item-title">
+                  <h3>
+                    {{ranking}}
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <p class="falkol-px-update" style="display: none;">
+              Atualizado em 09/07/20, às 14:24
+            </p>
+          </div>
+          <ul class="falkol-menu-list">
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+              <li class="falkol-menu-item">
+                <a class="falkol-menu-item-link" routerDirection="root" [routerLink]="p.url">{{ p.title }}</a>
+              </li>
+            </ion-menu-toggle>
+            <li class="falkol-menu-item">
+              <a class="falkol-menu-item-link" (click)="logoff()">Sair</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <app-legal-links></app-legal-links>
+
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="restricted-content"></ion-router-outlet>
+
+</ion-split-pane>

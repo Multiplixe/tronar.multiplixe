@@ -1,0 +1,48 @@
+<ion-content>
+
+  <div class="falkol-register falkol-bg" style="background-image: url('/assets/img/bg.png');">
+
+    <header class="falkol-header">
+      <div class="falkol-back">
+        <a class="falkol-back-link" routerDirection="root" routerLink="/login">
+          Login
+        </a>
+      </div>
+      <div class="falkol-logo">
+        <a routerDirection="root" routerLink="/login">
+          <img src="/assets/img/logo.png" alt="Falkol">
+        </a>
+      </div>
+    </header>
+
+    <main class="falkol-main">
+
+      <div class="falkol-form">
+
+        <div class="form-inputs">
+
+          <app-user-profile-form [user]="user" [isRegister]="true"></app-user-profile-form>
+          
+          <div class="form-group">
+          </div>
+
+          <!-- <div class="form-group" style="display: none;">
+            <input type="checkbox" name="remember" id="remember" class="form-input-checkbox">
+            <label for="remember">Declaro que li e aceito os termos de uso</label>
+          </div> -->
+
+        </div>
+        <div class="form-buttons">
+          <div class="form-btn-group">
+            <button type="button" class="form-btn form-btn-submit" (click)="register()">
+              Avançar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</ion-content>
