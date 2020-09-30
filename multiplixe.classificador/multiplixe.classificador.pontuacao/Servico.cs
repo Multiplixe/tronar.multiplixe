@@ -46,7 +46,61 @@ namespace multiplixe.classificador.pontuacao
                 redesSociais.Add(redesocial);
             }
 
+            ProcessarPorcentagem(redesSociais);
+
             return redesSociais;
+        }
+
+
+
+        private void ProcessarPorcentagem(List<dto.classificacao.RedeSocial> redesSociais)
+        {
+            var total = redesSociais.Sum(s => s.Percent);
+
+            if (total != 100 && total > 0)
+            {
+                var decimais = new List<dynamic>();
+                var diferenca = 100 - total;
+
+                for (var i = 0; i < redesSociais.Count; i++)
+                {
+                    var percent = (redesSociais[i].Pontos * 100.0) / total;
+                    var d = percent - Math.Truncate(percent);
+                    decimais.Add(new { valor = d, index = i });
+                }
+
+                var maiorValorDecimal = decimais.OrderByDescending(o => o.valor).First();
+
+                redesSociais[maiorValorDecimal.index].Percent += diferenca;
+            }
+        }
+
+
+        private void _ProcessarPorcentagem(List<dto.classificacao.RedeSocial> redesSociais)
+        {
+            var result = new List<int>();
+
+            var percentTotal = redesSociais.Sum(s => s.Percent);
+
+            if (percentTotal != 100 && percentTotal > 0)
+            {
+                var diferenca = 100 - percentTotal;
+
+                var group = redesSociais.GroupBy(
+                                  g => g.Pontos,
+                                  c => c.Pontos,
+                                  (key, pontos) => new
+                                  {
+                                      key = key,
+                                      count = pontos.Count()
+                                  });
+
+                var valorUnico = group.OrderBy(f => f.count).First();
+
+                var indexValorUnico = redesSociais.FindIndex(f => f.Pontos == valorUnico.key);
+
+                redesSociais[indexValorUnico].Percent += diferenca;
+            }
         }
 
         public void ProcessarIndividual(Guid usuarioId)

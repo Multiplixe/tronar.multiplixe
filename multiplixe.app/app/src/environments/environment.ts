@@ -7,8 +7,8 @@ export const appEnvironment = {
 };
 
 export const apiEnvironment = {
-  host: "https://app.falkol.gg/api/",
-  _host: "http://localhost:63623/"
+  _host: "https://app.falkol.gg/api/",
+  host: "http://localhost:63623/"
 }
 
 export const facebookEnvironment = {
