@@ -93,7 +93,6 @@ namespace multiplixe.facebook.triador.console
                         Console.WriteLine(ex.Message);
                         Console.WriteLine("*************************************************************");
                     }
-
                 };
 
                 Console.WriteLine("Triador Facebook aguardando...");

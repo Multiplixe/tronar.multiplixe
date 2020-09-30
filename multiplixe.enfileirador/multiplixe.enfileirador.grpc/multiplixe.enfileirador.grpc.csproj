@@ -5,9 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\enfileirador.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
-    <PackageReference Include="multiplixe.enfileirador.core" Version="1.0.2" />
+    <PackageReference Include="multiplixe.enfileirador.core" Version="1.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\enfileirador.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

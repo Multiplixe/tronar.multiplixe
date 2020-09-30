@@ -5,7 +5,7 @@ namespace multiplixe.ferramentas.comum
 {
     public  class Log
     {
-        private static string path = @"C:\inetpub\wwwroot\tronar.gamificacao\multipixel.ferramentas\Log.txt";
+        private static string path = @"C:\logs\multiplixe";
         public static void Reset()
         {
             File.WriteAllText(path, string.Empty);
@@ -15,7 +15,12 @@ namespace multiplixe.ferramentas.comum
         {
             Console.WriteLine(text);
 
-            using (var sw = File.AppendText(path))
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            using (var sw = File.AppendText(Path.Combine(path, "publicador-log.txt")))
             {
                 sw.WriteLine(text);
             }

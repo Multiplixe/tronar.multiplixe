@@ -17,7 +17,8 @@ namespace multiplixe.enfileirador.core
         private static string filaPontuadorReacaoTwitter = "pontuador.reacao.twitter";
         private static string filaPontuadorPingTwitch = "pontuador.ping.twitch";
         private static string filaPontuadorLiveHashtagYoutube = "pontuador.live.hashtag.youtube";
-        private static string filaPontuador = "pontuador";
+        
+        private static string filaConsolidador = "consolidador";
 
         private static string filaClassificador = "classificador.v2";
 
@@ -71,9 +72,9 @@ namespace multiplixe.enfileirador.core
             return Obtem(filaPontuadorLiveHashtagYoutube);
         }
 
-        public static dto.EnfileiradorConfig Pontuador()
+        public static dto.EnfileiradorConfig Consolidador()
         {
-            return Obtem(filaPontuador);
+            return Obtem(filaConsolidador);
         }
 
         public static dto.EnfileiradorConfig Classificador()
@@ -127,7 +128,7 @@ namespace multiplixe.enfileirador.core
                 filaNotificadorEmail,
                 filaNotificadorPush,
                 filaVerificacao,
-                filaPontuador,
+                filaConsolidador,
                 filaPosClassificador,
                 filaNotificadorTwitchPubSub,
                 filaAvatar

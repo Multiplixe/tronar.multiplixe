@@ -15,12 +15,12 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.2</PackageVersion>    
+    <PackageVersion>1.0.3</PackageVersion>    
     
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

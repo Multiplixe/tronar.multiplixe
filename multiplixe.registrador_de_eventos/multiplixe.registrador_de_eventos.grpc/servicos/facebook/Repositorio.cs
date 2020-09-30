@@ -10,9 +10,9 @@ namespace multiplixe.registrador_de_eventos.grpc.servicos.facebook
         {
         }
 
-        public void RegistrarReacao(Guid id, Guid usuarioId, string postId, string perfilId, DateTime dataEvento, string intensidade, int tipo)
+        public void RegistrarReacao(Guid id, Guid usuarioId, string postId, string perfilId, DateTime dataEvento, string json, string intensidade, int tipo)
         {
-            var dapper = base.ParametrosDapperEvento(id, usuarioId, postId, perfilId, dataEvento, string.Empty);
+            var dapper = base.ParametrosDapperEvento(id, usuarioId, postId, perfilId, dataEvento, json);
 
             dapper
                 .AddParameter("_intensidade", intensidade)

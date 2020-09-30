@@ -25,6 +25,7 @@ namespace multiplixe.registrador_de_eventos.grpc.servicos.twitter
                 reacao.Evento.PostId,
                 reacao.Evento.PerfilId,
                 new DateTime(reacao.Evento.DataEvento),
+                reacao.Evento.Json,
                 (int)reacao.Tipo);
 
             return Task.FromResult(new ResponseMessage

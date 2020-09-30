@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

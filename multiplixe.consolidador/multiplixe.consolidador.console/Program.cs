@@ -10,7 +10,7 @@ using System.IO;
 using System.Text;
 using coredto = multiplixe.comum.dto;
 
-namespace multiplixe.pontuador.console
+namespace multiplixe.consolidador.console
 {
     class Program
     {
@@ -28,14 +28,21 @@ namespace multiplixe.pontuador.console
                                         .AddSingleton<IConfiguration>(configuration)
                                         .AddTransient<DapperHelper>()
                                         .AddTransient<EnfileiradorClient>()
+                                        .AddTransient<eventos.Repositorio>()
+                                        .AddTransient<eventos.Servico>()
+                                        .AddTransient<pontuacao.Repositorio>()
+                                        .AddTransient<pontuacao.Servico>()
+                                        .AddTransient<saldo.Repositorio>()
+                                        .AddTransient<saldo.Servico>()
                                         .AddTransient<Repositorio>()
                                         .AddTransient<Servico>()
                                         .BuildServiceProvider();
 
             var enfileiradorClient = serviceProvider.GetService<EnfileiradorClient>();
+            
             var servico = serviceProvider.GetService<Servico>();
 
-            var filaConfig = enfileiradorClient.Pontuador();
+            var filaConfig = enfileiradorClient.Consolidador();
 
             var factory = new ConnectionFactory() { HostName = filaConfig.HostName };
             using (var connection = factory.CreateConnection())
@@ -55,20 +62,21 @@ namespace multiplixe.pontuador.console
 
                 consumer.Received += (model, ea) =>
                 {
+                    var body = ea.Body;
+                    var json = Encoding.UTF8.GetString(body.ToArray());
+
+                    var ponto = DeserializadorHelper.Deserializar<coredto.Ponto>(json);
+
                     try
                     {
-                        var body = ea.Body;
-                        var json = Encoding.UTF8.GetString(body.ToArray());
-
-                        var ponto = DeserializadorHelper.Deserializar<coredto.Ponto>(json);
-
                         Console.WriteLine("--------------------------------------------");
                         Console.WriteLine("Evento: {0}", ponto.EventoId);
                         Console.WriteLine("Empresa: {0}", ponto.EmpresaId);
+                        Console.WriteLine("UsuarioId: {0}", ponto.UsuarioId);
                         Console.WriteLine("Post: {0}", ponto.PostId);
                         Console.WriteLine("Data: {0}", DateTimeHelper.Now());
 
-                        servico.RegistrarExtrato(ponto);
+                        servico.Processar(ponto);
 
                         Console.WriteLine("Processou");
 
@@ -79,6 +87,8 @@ namespace multiplixe.pontuador.console
                     }
                     catch (Exception ex)
                     {
+                        servico.Rollback(ponto);
+
                         Console.WriteLine("*************************************************************");
                         Console.WriteLine("Erro");
                         Console.WriteLine(ex.Message);
@@ -87,7 +97,7 @@ namespace multiplixe.pontuador.console
 
                 };
 
-                Console.WriteLine("Pontuador extrato aguardando...");
+                Console.WriteLine("Consolidador aguardando...");
                 Console.ReadLine();
             }
         }

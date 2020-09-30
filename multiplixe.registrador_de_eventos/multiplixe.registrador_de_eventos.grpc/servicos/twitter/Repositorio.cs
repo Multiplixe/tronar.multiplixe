@@ -10,9 +10,9 @@ namespace multiplixe.registrador_de_eventos.grpc.servicos.twitter
         {
         }
 
-        public void RegistrarReacao(Guid id, Guid usuarioId, string postId, string perfilId, DateTime dataEvento, int tipo)
+        public void RegistrarReacao(Guid id, Guid usuarioId, string postId, string perfilId, DateTime dataEvento, string json, int tipo)
         {
-            var dapper = base.ParametrosDapperEvento(id, usuarioId, postId, perfilId, dataEvento, string.Empty);
+            var dapper = base.ParametrosDapperEvento(id, usuarioId, postId, perfilId, dataEvento, json);
 
             dapper
                 .AddParameter("_tipo", tipo)

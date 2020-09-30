@@ -33,7 +33,7 @@ namespace multiplixe.comum.pontuador
         {
             if (!ponto.Pontos.Equals(0))
             {
-                this.enfileiradorClient.EnfileirarParaPontuador(ponto);
+                this.enfileiradorClient.EnfileirarParaConsolidador(ponto);
             }
         }
     }

@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.1" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
-    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
     <PackageReference Include="multiplixe.comum.triador" Version="1.0.0" />
-    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
     <PackageReference Include="multiplixe.registrador_de_eventos.client" Version="1.0.0" />
   </ItemGroup>
 

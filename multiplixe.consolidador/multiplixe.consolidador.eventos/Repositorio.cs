@@ -1,8 +1,8 @@
 ﻿using adduo.helper.extensionmethods;
 using coredapper = multiplixe.comum.dapper;
-using coredto = multiplixe.comum.dto;
+using dto = multiplixe.comum.dto;
 
-namespace multiplixe.pontuador.console
+namespace multiplixe.consolidador.eventos
 {
     public class Repositorio
     {
@@ -13,17 +13,18 @@ namespace multiplixe.pontuador.console
             this.dapperHelper = dapperHelper;
         }
 
-        public void Registrar(coredto.Ponto ponto)
+        public void Registrar(dto.Ponto ponto)
         {
             dapperHelper
                 .ResetParameter()
+                .AddParameter("_id", ponto.EventoId)
                 .AddParameter("_usuarioId", ponto.UsuarioId)
                 .AddParameter("_postId", ponto.PostId)
                 .AddParameter("_pontos", ponto.Pontos)
                 .AddParameter("_dataEvento", ponto.DataEvento.ToMySQL())
                 .AddParameter("_redeSocialId", (int)ponto.RedeSocial)
                 .AddParameter("_tipoEventoId", (int)ponto.TipoEvento)
-                .Insert("pontuacao_extrato_registrar");
+                .Insert("eventos_registrar");
         }
     }
 }

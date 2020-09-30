@@ -90,9 +90,9 @@ namespace multiplixe.enfileirador.client
             return core.Factory.Verificacao();
         }
 
-        public EnfileiradorConfig Pontuador()
+        public EnfileiradorConfig Consolidador()
         {
-            return core.Factory.Pontuador();
+            return core.Factory.Consolidador();
         }
 
         public EnfileiradorConfig PosClassificador()
@@ -180,9 +180,9 @@ namespace multiplixe.enfileirador.client
             Enfileirar(config.Nome, dto);
         }
 
-        public void EnfileirarParaPontuador(object dto)
+        public void EnfileirarParaConsolidador(object dto)
         {
-            var config = Pontuador();
+            var config = Consolidador();
             Enfileirar(config.Nome, dto);
         }
 

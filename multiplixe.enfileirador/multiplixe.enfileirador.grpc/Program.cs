@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using multiplixe.comum.enums;
 
 namespace multiplixe.enfileirador.grpc
 {
@@ -21,7 +22,8 @@ namespace multiplixe.enfileirador.grpc
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                                .UseUrls($"https://*:{(int)PortasServicosEnum.enfileirador}");
                 });
     }
 }

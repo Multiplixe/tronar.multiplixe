@@ -25,6 +25,7 @@ namespace multiplixe.registrador_de_eventos.grpc.servicos.facebook
                 reacao.Evento.PostId,
                 reacao.Evento.PerfilId,
                 new DateTime(reacao.Evento.DataEvento),
+                reacao.Evento.Json,
                 reacao.Intensidade,
                 (int)reacao.Tipo);
 
