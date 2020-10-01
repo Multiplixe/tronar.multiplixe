@@ -32,8 +32,11 @@
             <div class="falkol-px-title">
               <div class="falkol-title">
                 <h2>
-                  {{dashboardDto.score.pointing.value}} pixels
+                  {{dashboardDto.score.balance.value}} pixels para troca
                 </h2>
+                <h3>
+                  {{dashboardDto.score.pointing.value}} pontos
+                </h3>
               </div>
               <p class="falkol-px-update" style="display: none;">
                 Atualizado em 09/07/20, às 14:24
@@ -65,7 +68,7 @@
                     <h4>{{item.name}}</h4>
                   </div>
                   <div class="falkol-px-progress-list-item-count">
-                    <h4 *ngIf="item.connected">{{item.points}} {{item.points <=  1 ? 'pixel' : 'pixels'}}</h4>
+                    <h4 *ngIf="item.connected">{{item.points}} {{item.points ==  1 ? 'ponto' : 'pontos'}}</h4>
                     <a *ngIf="!item.connected" routerDirection="root" routerLink="/r/minhas-conexoes">Conectar</a>
                   </div>
                 </div>
@@ -102,7 +105,7 @@
             <div class="falkol-title m-0">
               <a routerDirection="root" routerLink="/r/ranking">
                 <h2>
-                  {{ranking}} Ranking
+                  {{ranking}}º Ranking
                 </h2>
               </a>
             </div>
