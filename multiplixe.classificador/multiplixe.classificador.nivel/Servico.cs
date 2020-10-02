@@ -1,4 +1,5 @@
-﻿using System;
+﻿using adduo.helper.envelopes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using dto = multiplixe.comum.dto;
@@ -53,10 +54,12 @@ namespace multiplixe.classificador.nivel
             }
         }
 
-        public dto.Nivel Calcular(int pontos, Guid empresaId)
+        public void Processar(Guid usuarioId, int pontos, Guid empresaId)
         {
             var niveis = Obter(empresaId);
-            return regras.Calcular(pontos, niveis);
+            var nivel = regras.Calcular(pontos, niveis);
+
+            repositorio.Registrar(usuarioId, nivel.Id);
         }
 
         public dto.Nivel ObterInicial(Guid empresaId)

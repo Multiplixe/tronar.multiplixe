@@ -26,18 +26,5 @@ namespace multiplixe.classificador.client
 
             return responseEnvelope;
         }
-
-        public envelopes.ResponseEnvelope<coredto.classificacao.Pontuacao> ObterPontuacaoTotal(Guid usuarioId)
-        {
-            var parser = new parsers.ObterPontuacaoTotal();
-
-            var request = parser.Request(usuarioId);
-
-            var pontuacaoResponse = client.ObterPontuacaoTotal(request);
-
-            var responseEnvelope = parser.Response(pontuacaoResponse);
-
-            return responseEnvelope;
-        }
     }
 }

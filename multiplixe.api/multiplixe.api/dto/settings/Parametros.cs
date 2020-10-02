@@ -3,5 +3,6 @@
     public class Parametros
     {
         public string PastaUpload { get; set; }
+        public string ExternalSecretkey { get; set; }
     }
 }

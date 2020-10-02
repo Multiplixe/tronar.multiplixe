@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "protos/entries.proto";
+
+option csharp_namespace = "multiplixe.usuarios.grpc.protos";
+
+package multiplixe.usuarios.grpc.protos;
+
+service UsuarioExterno {
+	rpc Autenticar(AutenticarRequest) returns (AutenticarResponse); 
+}
+
+message ErroResponse {
+	string Mensagem = 1;
+}
+
+message AutenticarRequest {
+	string Email = 1;
+	string Senha = 2;
+	string EmpresaId = 3;
+	string ExternoId = 4;
+}
+
+message AutenticarResponse {
+	string Token = 1;
+	string Nome = 2;
+	string Apelido = 3;
+	int32 HttpStatusCode = 4;
+	ErroResponse Erro = 5;
+}

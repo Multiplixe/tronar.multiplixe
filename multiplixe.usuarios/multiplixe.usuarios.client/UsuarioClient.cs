@@ -3,12 +3,13 @@ using dto = multiplixe.comum.dto;
 
 using multiplixe.usuarios.grpc.protos;
 using System.Collections.Generic;
+using System;
 
 namespace multiplixe.usuarios.client
 {
     public class UsuarioClient : BaseClient
     {
-        private Usuario.UsuarioClient usuarioClient { get; set; }
+        private Usuario.UsuarioClient grpcService { get; set; }
         private parsers.UsuarioRegistrar registrarParser { get; }
         private parsers.UsuarioAtualizar atualizarParser { get; }
         private parsers.UsuarioObter obterParser { get; }
@@ -16,7 +17,7 @@ namespace multiplixe.usuarios.client
 
         public UsuarioClient()
         {
-            usuarioClient = new Usuario.UsuarioClient(channel);
+            grpcService = new Usuario.UsuarioClient(channel);
             registrarParser = new parsers.UsuarioRegistrar();
             atualizarParser = new parsers.UsuarioAtualizar();
             obterParser = new parsers.UsuarioObter();
@@ -27,7 +28,7 @@ namespace multiplixe.usuarios.client
         {
             var usuarioMessage = registrarParser.Request(request);
 
-            var usuarioResponse = usuarioClient.Registrar(usuarioMessage);
+            var usuarioResponse = grpcService.Registrar(usuarioMessage);
 
             var response = registrarParser.Response(usuarioResponse);
 
@@ -38,7 +39,7 @@ namespace multiplixe.usuarios.client
         {
             var usuarioMessage = atualizarParser.Request(request);
 
-            var usuarioResponse = usuarioClient.Atualizar(usuarioMessage);
+            var usuarioResponse = grpcService.Atualizar(usuarioMessage);
 
             var response = atualizarParser.Response(usuarioResponse);
 
@@ -49,7 +50,7 @@ namespace multiplixe.usuarios.client
         {
             var usuarioFiltro = obterParser.Request(request);
 
-            var usuarioResponse = usuarioClient.Obter(usuarioFiltro);
+            var usuarioResponse = grpcService.Obter(usuarioFiltro);
 
             var response = obterParser.Response(usuarioResponse);
 
@@ -60,7 +61,7 @@ namespace multiplixe.usuarios.client
         {
             var usuarioFiltro = listarParser.Request(request);
 
-            var usuarioResponse = usuarioClient.Listar(usuarioFiltro);
+            var usuarioResponse = grpcService.Listar(usuarioFiltro);
 
             var response = listarParser.Response(usuarioResponse);
 

@@ -26,7 +26,6 @@ namespace multiplixe.classificador.console
 
             var serviceProvider = new ServiceCollection()
                                         .AddSingleton<IConfiguration>(configuration)
-                                        
                                         .AddTransient<DapperHelper>()
                                         .AddTransient<EnfileiradorClient>()
                                         .AddTransient<pontuacao.Repositorio>()
@@ -36,6 +35,10 @@ namespace multiplixe.classificador.console
                                         .AddTransient<nivel.Repositorio>()
                                         .AddTransient<classificacao.Servico>()
                                         .AddTransient<classificacao.Repositorio>()
+                                        .AddTransient<saldo.Servico>()
+                                        .AddTransient<saldo.Repositorio>()
+                                        .AddTransient<usuario.Servico>()
+                                        .AddTransient<usuario.Repositorio>()
                                         .BuildServiceProvider();
 
             var enfileiradorClient = serviceProvider.GetService<EnfileiradorClient>();
@@ -84,15 +87,23 @@ namespace multiplixe.classificador.console
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("*************************************************************");
-                        Console.WriteLine("Erro");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Red;
+
+                        Console.WriteLine("");
+                        Console.WriteLine("* Erro                                     *");
+                        Console.ResetColor();
+                        Console.WriteLine(DateTimeHelper.Now());
                         Console.WriteLine(ex.Message);
-                        Console.WriteLine("*************************************************************");
                     }
 
                 };
 
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+
                 Console.WriteLine("Classificador processador aguardando...");
+                Console.ResetColor();
                 Console.ReadLine();
             }
         }

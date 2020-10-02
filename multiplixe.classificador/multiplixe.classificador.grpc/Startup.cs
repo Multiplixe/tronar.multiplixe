@@ -42,6 +42,8 @@ namespace multiplixe.classificador.grpc
             .AddTransient<classificacao.Repositorio>()
             .AddTransient<usuario.Servico>()
             .AddTransient<usuario.Repositorio>()
+            .AddTransient<saldo.Servico>()
+            .AddTransient<saldo.Repositorio>()
             .AddTransient<EmpresaClient>()
             .AddTransient<EnfileiradorClient>()
             .AddTransient<DapperHelper>()
@@ -49,7 +51,6 @@ namespace multiplixe.classificador.grpc
             .AddTransient<parsers.UsuarioDeletar>()
             .AddTransient<parsers.UsuarioRegistrar>()
             .AddTransient<parsers.ObterClassificacao>()
-            .AddTransient<parsers.ObterPontuacaoTotal>()
             .AddTransient<RTDBAtividadeComumClient>();
 
             services.AddGrpc();

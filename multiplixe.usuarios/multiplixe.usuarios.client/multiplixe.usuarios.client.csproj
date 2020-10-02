@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.1.0</PackageVersion>
 
   </PropertyGroup>
 
@@ -29,16 +29,17 @@
     <None Remove="protos\perfil.proto" />
     <None Remove="protos\token.proto" />
     <None Remove="protos\usuario.proto" />
+    <None Remove="protos\usuarioexterno.proto" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.9.1" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.23.2" />
-    <PackageReference Include="Grpc.Tools" Version="2.23.0">
+    <PackageReference Include="Google.Protobuf" Version="3.13.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.31.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.32.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.1.4" />
     <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
   </ItemGroup>
@@ -48,6 +49,7 @@
     <Protobuf Include="protos\perfil.proto" GrpcServices="Client" />
     <Protobuf Include="protos\token.proto" GrpcServices="Client" />
     <Protobuf Include="protos\usuario.proto" GrpcServices="Client" />
+    <Protobuf Include="protos\usuarioexterno.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

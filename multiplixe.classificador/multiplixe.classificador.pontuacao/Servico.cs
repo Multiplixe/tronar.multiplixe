@@ -52,7 +52,6 @@ namespace multiplixe.classificador.pontuacao
         }
 
 
-
         private void ProcessarPorcentagem(List<dto.classificacao.RedeSocial> redesSociais)
         {
             var total = redesSociais.Sum(s => s.Percent);
@@ -76,53 +75,16 @@ namespace multiplixe.classificador.pontuacao
         }
 
 
-        private void _ProcessarPorcentagem(List<dto.classificacao.RedeSocial> redesSociais)
-        {
-            var result = new List<int>();
-
-            var percentTotal = redesSociais.Sum(s => s.Percent);
-
-            if (percentTotal != 100 && percentTotal > 0)
-            {
-                var diferenca = 100 - percentTotal;
-
-                var group = redesSociais.GroupBy(
-                                  g => g.Pontos,
-                                  c => c.Pontos,
-                                  (key, pontos) => new
-                                  {
-                                      key = key,
-                                      count = pontos.Count()
-                                  });
-
-                var valorUnico = group.OrderBy(f => f.count).First();
-
-                var indexValorUnico = redesSociais.FindIndex(f => f.Pontos == valorUnico.key);
-
-                redesSociais[indexValorUnico].Percent += diferenca;
-            }
-        }
-
         public void ProcessarIndividual(Guid usuarioId)
         {
-            var results = repositorio.ExtrairIndividuais(usuarioId);
-
-            foreach (var item in results)
-            {
-                repositorio.RegistrarIndividual(usuarioId, (coreenums.RedeSocialEnum)item.Id, item.Pontos);
-            }
+            repositorio.ProcessarIndividuais(usuarioId);
         }
 
 
-        public int CalcularTotal(Guid usuarioId)
+        public void ProcessarTotal(Guid usuarioId)
         {
-            var results = repositorio.ObterIndividuais(usuarioId);
-
-            var total = results.Sum(s => s.Pontos);
-
-            return total;
+             repositorio.ProcessarTotal(usuarioId);
         }
-
 
     }
 }

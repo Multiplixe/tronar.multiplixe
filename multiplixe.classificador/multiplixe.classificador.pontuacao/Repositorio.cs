@@ -24,28 +24,21 @@ namespace multiplixe.classificador.pontuacao
             return results;
         }
 
-        public List<results.RedeSocial> ExtrairIndividuais(Guid usuarioId)
-        {
-            var results = dapperHelper
-                .ResetParameter()
-                .AddParameter("_usuarioId", usuarioId)
-                .ExecuteWithManyResult<results.RedeSocial>("pontuacao_redesocial_extrair");
-
-            return results;
-        }
-
-        public void RegistrarIndividual(Guid usuarioId, coreenums.RedeSocialEnum redesocial, int pontos)
+        public void ProcessarIndividuais(Guid usuarioId)
         {
             dapperHelper
                 .ResetParameter()
                 .AddParameter("_usuarioId", usuarioId)
-                .AddParameter("_redeSocialId", (int)redesocial)
-                .AddParameter("_pontos", pontos)
-                .Insert("pontuacao_redesocial_registrar");
+                .Update("pontuacao_redesocial_processar");
         }
 
-
-
+        public void ProcessarTotal(Guid usuarioId)
+        {
+            dapperHelper
+                .ResetParameter()
+                .AddParameter("_usuarioId", usuarioId)
+                .Update("pontuacao_total_processar");
+        }
 
     }
 }

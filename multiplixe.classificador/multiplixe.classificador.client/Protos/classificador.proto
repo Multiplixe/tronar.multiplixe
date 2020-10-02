@@ -6,7 +6,6 @@ package multiplixe.classificador.grpc.Protos;
 
 service Classificador {
 	rpc ObterClassificacao(ClassificacaoRequest) returns (ClassificacaoResponse);
-	rpc ObterPontuacaoTotal(ClassificacaoRequest) returns (PontuacaoResponse);
 }
 
 message ClassificacaoRequest {
@@ -15,9 +14,10 @@ message ClassificacaoRequest {
 
 message ClassificacaoMessage {
 	PontuacaoMessage Pontuacao = 1;
-	NivelMessage Nivel = 2;
-	RankingPosicaoMessage Ranking = 3;
-	repeated RedeSocialMessage RedesSociais = 4;
+	SaldoMessage Saldo = 2;
+	NivelMessage Nivel = 3;
+	RankingPosicaoMessage Ranking = 4;
+	repeated RedeSocialMessage RedesSociais = 5;
 }
 
 message RedeSocialMessage {
@@ -29,6 +29,10 @@ message RedeSocialMessage {
 }
 
 message PontuacaoMessage {
+	int32 Valor = 1;
+}
+
+message SaldoMessage {
 	int32 Valor = 1;
 }
 

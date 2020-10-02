@@ -64,11 +64,11 @@ namespace multiplixe.notificador.twitch.pubsub.console
 
         private coredto.classificacao.Pontuacao ObterPontuacaoTotal(Guid usuarioId)
         {
-            var response = classificadorClient.ObterPontuacaoTotal(usuarioId);
+            var response = classificadorClient.ObterClassificacao(usuarioId);
 
             response.ThrownIfError();
 
-            return response.Item;
+            return response.Item.Pontuacao;
         }
 
         private string GerarUrl(coredto.empresas.TwitchInfo twitchInfo)

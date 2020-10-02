@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using adduohelper = adduo.helper.envelopes;
 using dto = multiplixe.comum.dto;

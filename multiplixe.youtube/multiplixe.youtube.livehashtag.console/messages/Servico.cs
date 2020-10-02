@@ -51,7 +51,7 @@ namespace multiplixe.youtube.livehashtag.console.messages
 
                             EnfileirarParaTriador(item, liveChatId, HashtagValidacao.HashtagValidada);
 
-                            //RegistrarUsuarioProcessado(item);
+                            RegistrarUsuarioProcessado(item);
                         }
                     }
                 }

@@ -18,7 +18,7 @@ namespace multiplixe.consolidador.saldo
             dapperHelper
                 .ResetParameter()
                 .AddParameter("_id", ponto.EventoId)
-                .Insert("saldo_entradas_registrar");
+                .Insert("consolidador_saldo_registrar");
         }
     }
 }

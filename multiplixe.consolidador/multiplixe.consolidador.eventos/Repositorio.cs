@@ -24,7 +24,7 @@ namespace multiplixe.consolidador.eventos
                 .AddParameter("_dataEvento", ponto.DataEvento.ToMySQL())
                 .AddParameter("_redeSocialId", (int)ponto.RedeSocial)
                 .AddParameter("_tipoEventoId", (int)ponto.TipoEvento)
-                .Insert("eventos_registrar");
+                .Insert("consolidador_eventos_registrar");
         }
     }
 }

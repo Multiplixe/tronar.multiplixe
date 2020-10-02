@@ -28,6 +28,10 @@ namespace multiplixe.classificador.client.parsers
                     {
                         Valor = classificacaoResponse.Classificacao.Pontuacao.Valor
                     },
+                    Saldo = new coredto.classificacao.Saldo
+                    {
+                        Valor = classificacaoResponse.Classificacao.Saldo.Valor
+                    },
                     Nivel = new coredto.classificacao.Nivel
                     {
                         Id = classificacaoResponse.Classificacao.Nivel.Id,

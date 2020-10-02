@@ -1,6 +1,7 @@
 ﻿using multiplixe.usuarios.grpc.protos;
 using Grpc.Core;
 using System.Threading.Tasks;
+using System;
 
 namespace multiplixe.usuarios.grpc.services
 {
@@ -14,6 +15,9 @@ namespace multiplixe.usuarios.grpc.services
         private usuario.consulta.Servico consultaService { get; }
         private parsers.UsuarioObter obterParser { get; }
         private parsers.UsuarioListar listarParser { get; }
+        private parsers.UsuarioAutenticar autenticarParser { get; }
+
+        
 
         public UsuarioService(
             usuario.registro.Servico registroService,
@@ -22,6 +26,7 @@ namespace multiplixe.usuarios.grpc.services
             parsers.UsuarioAtualizar atualizarParser,
             usuario.consulta.Servico consultaService,
             parsers.UsuarioObter obterParser,
+            parsers.UsuarioAutenticar autenticarParser,
              parsers.UsuarioListar listarParser)
         {
             this.registroService = registroService;
@@ -30,6 +35,7 @@ namespace multiplixe.usuarios.grpc.services
             this.consultaService = consultaService;
             this.obterParser = obterParser;
             this.listarParser = listarParser;
+            this.autenticarParser = autenticarParser;
             this.atulizacaoService = atulizacaoService;
         }
 
@@ -76,6 +82,5 @@ namespace multiplixe.usuarios.grpc.services
 
             return Task.FromResult(response);
         }
-
     }
 }

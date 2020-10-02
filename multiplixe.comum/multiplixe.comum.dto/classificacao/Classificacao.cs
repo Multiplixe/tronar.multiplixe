@@ -15,6 +15,9 @@ namespace multiplixe.comum.dto.classificacao
         [JsonPropertyName("pointing")]
         public Pontuacao Pontuacao { get; set; }
 
+        [JsonPropertyName("balance")]
+        public Saldo Saldo { get; set; }
+
         [JsonPropertyName("level")]
         public Nivel Nivel { get; set; }
 
@@ -23,6 +26,7 @@ namespace multiplixe.comum.dto.classificacao
             RedesSociais = new List<RedeSocial>();
             Nivel = new Nivel();
             Pontuacao = new Pontuacao();
+            Saldo = new Saldo();
         }
 
     }

@@ -67,5 +67,10 @@ namespace multiplixe.classificador.usuario
 
             return response;
         }
+
+        public results.Usuario Obter(Guid usuarioId)
+        {
+            return repositorio.Obter(usuarioId);
+        }
     }
 }

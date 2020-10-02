@@ -22,5 +22,15 @@ namespace multiplixe.classificador.nivel
 
             return lista;
         }
+
+        public void Registrar(Guid usuarioId, int nivelId)
+        {
+            dapperHelper
+               .ResetParameter()
+               .AddParameter("_usuarioId", usuarioId)
+               .AddParameter("_nivelId", nivelId)
+               .Update("nivel_registrar");
+        }
+
     }
 }

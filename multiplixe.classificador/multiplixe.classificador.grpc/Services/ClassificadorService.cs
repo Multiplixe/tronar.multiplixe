@@ -11,16 +11,13 @@ namespace multiplixe.classificador.grpc.Services
     public class ClassificadorService : Classificador.ClassificadorBase
     {
         private parsers.ObterClassificacao obterClassificacao { get; }
-        private parsers.ObterPontuacaoTotal obterPontuacaoTotal { get; }
         private classificacao.Servico classificacaoService { get; }
 
         public ClassificadorService(
             parsers.ObterClassificacao obterClassificacao,
-            parsers.ObterPontuacaoTotal obterPontuacaoTotal,
             classificacao.Servico classificacaoService)
         {
             this.obterClassificacao = obterClassificacao;
-            this.obterPontuacaoTotal = obterPontuacaoTotal;
             this.classificacaoService = classificacaoService;
         }
 
@@ -44,27 +41,5 @@ namespace multiplixe.classificador.grpc.Services
 
             return Task.FromResult(response);
         }
-
-        public override Task<PontuacaoResponse> ObterPontuacaoTotal(ClassificacaoRequest classificacaoParametro, ServerCallContext context)
-        {
-            var response = new PontuacaoResponse();
-
-            try
-            {
-                var usuarioId = Guid.Parse(classificacaoParametro.UsuarioId);
-
-                var pontuacao = classificacaoService.ObterPontuacaoTotal(usuarioId);
-
-                response = obterPontuacaoTotal.Response(pontuacao);
-            }
-            catch (Exception ex)
-            {
-                //## TODO log
-                response.HttpStatusCode = (int)HttpStatusCode.InternalServerError;
-            }
-
-            return Task.FromResult(response);
-        }
-
     }
 }

@@ -9,18 +9,20 @@
     <None Remove="protos\perfil.proto" />
     <None Remove="protos\token.proto" />
     <None Remove="protos\usuario.proto" />
+    <None Remove="protos\usuarioexterno.proto" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="adduo.helper" Version="1.0.3" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
     <PackageReference Include="multiplixe.central_rtdb.client" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.1.4" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.8" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\multiplixe.usuarios.externo.autenticacao\multiplixe.usuarios.externo.autenticacao.csproj" />
     <ProjectReference Include="..\multiplixe.usuarios.perfil\multiplixe.usuarios.perfil.csproj" />
     <ProjectReference Include="..\multiplixe.usuarios.token\multiplixe.usuarios.token.csproj" />
     <ProjectReference Include="..\multiplixe.usuarios.usuario\multiplixe.usuarios.usuario.csproj" />
@@ -31,6 +33,7 @@
     <Protobuf Include="protos\perfil.proto" GrpcServices="Server" />
     <Protobuf Include="protos\token.proto" GrpcServices="Server" />
     <Protobuf Include="protos\usuario.proto" GrpcServices="Server" />
+    <Protobuf Include="protos\usuarioexterno.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

@@ -19,6 +19,10 @@ namespace multiplixe.classificador.grpc.parsers
                 {
                     Valor = classificacao.Pontuacao.Valor
                 },
+                Saldo = new SaldoMessage
+                {
+                    Valor = classificacao.Saldo.Valor
+                },
                 Nivel = new NivelMessage
                 {
                     Id = classificacao.Nivel.Id,

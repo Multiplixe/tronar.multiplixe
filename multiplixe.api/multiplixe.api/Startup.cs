@@ -131,6 +131,18 @@ namespace multiplixe.api
                    ValidateAudience = false,
                    ValidateLifetime = true
                };
+           })
+           .AddJwtBearer("external", options =>
+           {
+               options.TokenValidationParameters = new TokenValidationParameters
+               {
+                   IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String("MWU1ZTNlNTU4MjdlNDlmYzhlYjQ4ZTI4NzFhY2U5Mzk=")),
+                   ValidateIssuer = true,
+                   ValidateAudience = true,
+                   ValidateLifetime = false,
+                   ValidIssuer = "multiplixe",
+                   ValidAudience = "multiplixe-external"
+               };
            });
 
             services.AddAuthorization(options =>
@@ -147,6 +159,13 @@ namespace multiplixe.api
                  .AddAuthenticationSchemes("app");
 
                 options.AddPolicy("app", appPolicyBuilder.Build());
+
+
+                var externalPolicyBuilder = new AuthorizationPolicyBuilder()
+                 .RequireAuthenticatedUser()
+                 .AddAuthenticationSchemes("external");
+
+                options.AddPolicy("external", externalPolicyBuilder.Build());
 
 
             });

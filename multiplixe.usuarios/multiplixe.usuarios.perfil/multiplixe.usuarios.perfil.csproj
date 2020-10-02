@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="adduo.helper" Version="1.0.2" />
+    <PackageReference Include="adduo.helper" Version="1.0.3" />
     <PackageReference Include="multiplixe.central_rtdb.client" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.1.4" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.8" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
   </ItemGroup>
 

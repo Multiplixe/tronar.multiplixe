@@ -39,6 +39,31 @@ namespace adduo.helper.envelopes
             }
         }
 
+        public bool isNotFound()
+        {
+            return HttpStatusCodeCompare(HttpStatusCode.NotFound);
+        }
+
+        public bool isBadRequest()
+        {
+            return HttpStatusCodeCompare(HttpStatusCode.BadRequest);
+        }
+
+        public bool isUnauthorized()
+        {
+            return HttpStatusCodeCompare(HttpStatusCode.Unauthorized);
+        }
+
+        public bool isConflict()
+        {
+            return HttpStatusCodeCompare(HttpStatusCode.Conflict);
+        }
+
+        private bool HttpStatusCodeCompare(HttpStatusCode httpStatusCode)
+        {
+            return HttpStatusCode == httpStatusCode;
+        }
+
     }
 
     public class ResponseEnvelope<T> : ResponseEnvelope

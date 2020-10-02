@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using multiplixe.central_rtdb.client;
 using multiplixe.classificador.client;
 using multiplixe.comum.dapper;
+using multiplixe.comum.helper;
 using multiplixe.usuarios.grpc.services;
 using System.IO;
 
@@ -52,8 +53,12 @@ namespace multiplixe.usuarios.grpc
             services.AddTransient<usuario.inicio.Firebase>();
             services.AddTransient<usuario.inicio.Servico>();
 
+            services.AddTransient<externo.autenticacao.Firebase>();
+            services.AddTransient<externo.autenticacao.Servico>();
+
             services.AddTransient<parsers.UsuarioRegistrar>();
             services.AddTransient<parsers.UsuarioAtualizar>();
+            services.AddTransient<parsers.UsuarioAutenticar>();
             services.AddTransient<parsers.UsuarioObter>();
             services.AddTransient<parsers.UsuarioListar>();
             services.AddTransient<parsers.PerfilRegistrar>();
@@ -68,12 +73,16 @@ namespace multiplixe.usuarios.grpc
             services.AddTransient<RTDBUsuarioClient>();
             services.AddTransient<RTDBAtividadeClient>();
 
-            var googleCredentials = Path.Combine(Directory.GetCurrentDirectory(), "google-credential.json");
+            var googleCredentialsPath = Path.Combine(Directory.GetCurrentDirectory(), "google-credential.json");
 
             FirebaseApp.Create(new AppOptions
             {
-                Credential = GoogleCredential.FromFile(googleCredentials)
+                Credential = GoogleCredential.FromFile(googleCredentialsPath)
             });
+
+            var parametros = Configuration.GetSection("Parametros").Get<externo.autenticacao.Parametros>();
+
+            services.AddSingleton(parametros);
 
             services.AddGrpc(options =>
             {
@@ -95,6 +104,7 @@ namespace multiplixe.usuarios.grpc
             {
                 endpoints.MapGrpcService<PerfilService>();
                 endpoints.MapGrpcService<UsuarioService>();
+                endpoints.MapGrpcService<UsuarioExternoService>();
                 endpoints.MapGrpcService<tokenervice>();
 
                 endpoints.MapGet("/", async context =>

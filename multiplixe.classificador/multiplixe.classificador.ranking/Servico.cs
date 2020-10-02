@@ -79,7 +79,7 @@ namespace multiplixe.classificador.ranking
                     try
                     {
                         Console.WriteLine("- {0}", empresa.Nome);
-                        repositorio.Calcular(empresa.Id);
+                        repositorio.Processar(empresa.Id);
 
                         rtdbAtividadeComumClient.RegistrarRanking();
 

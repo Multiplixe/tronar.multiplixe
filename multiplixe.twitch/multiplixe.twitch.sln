@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.oauth", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.ping", "multiplixe.twitch.ping\multiplixe.twitch.ping.csproj", "{0F9221B1-7310-424C-9E77-A52548B11E44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.twitch.ping.triador", "multiplixe.twitch.ping.triador\multiplixe.twitch.ping.triador.csproj", "{8B9DF237-85A7-47FC-90FA-19C03182E5D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.ping.triador", "multiplixe.twitch.ping.triador\multiplixe.twitch.ping.triador.csproj", "{8B9DF237-85A7-47FC-90FA-19C03182E5D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.twitch.triador.console", "multiplixe.twitch.triador.console\multiplixe.twitch.triador.console.csproj", "{8698763E-B177-4150-B576-CAB60D938C3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.triador.console", "multiplixe.twitch.triador.console\multiplixe.twitch.triador.console.csproj", "{8698763E-B177-4150-B576-CAB60D938C3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.twitch.ping.pontuador.console", "multiplixe.twitch.ping.pontuador.console\multiplixe.twitch.ping.pontuador.console.csproj", "{34020271-542F-4691-8A14-B81D3B473C30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.ping.pontuador.console", "multiplixe.twitch.ping.pontuador.console\multiplixe.twitch.ping.pontuador.console.csproj", "{34020271-542F-4691-8A14-B81D3B473C30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{A8241317-3F9E-4DF2-9E90-835BB517CD76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8698763E-B177-4150-B576-CAB60D938C3B} = {A8241317-3F9E-4DF2-9E90-835BB517CD76}
+		{34020271-542F-4691-8A14-B81D3B473C30} = {A8241317-3F9E-4DF2-9E90-835BB517CD76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A3D837A-B326-4C7B-A58D-BFAC45ACBE12}

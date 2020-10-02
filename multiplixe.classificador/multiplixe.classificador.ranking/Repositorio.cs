@@ -18,13 +18,13 @@ namespace multiplixe.classificador.ranking
             this.dapperHelper = dapperHelper;
         }
 
-        public void Calcular(Guid empresaId)
+        public void Processar(Guid empresaId)
         {
             dapperHelper
             .ResetParameter()
             .AddParameter("_empresaId", empresaId)
             .AddParameter("_dataProcessamento", corehelper.DateTimeHelper.Now().ToMySQL())
-            .Update("ranking_calcular");
+            .Update("ranking_processar");
         }
 
         public dto.ranking.Ranking Obter(Guid usuarioId, int menorPosicaoRanking)

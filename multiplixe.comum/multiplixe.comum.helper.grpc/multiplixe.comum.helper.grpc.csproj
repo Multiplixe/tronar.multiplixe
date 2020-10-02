@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.Net.Client" Version="2.31.0" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.8" />
   </ItemGroup>
 
 </Project>

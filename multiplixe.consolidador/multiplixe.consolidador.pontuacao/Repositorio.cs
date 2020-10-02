@@ -18,7 +18,7 @@ namespace multiplixe.consolidador.pontuacao
             dapperHelper
                 .ResetParameter()
                 .AddParameter("_id", ponto.EventoId)
-                .Insert("pontuacao_extrato_registrar");
+                .Insert("consolidador_pontuacao_registrar");
         }
     }
 }

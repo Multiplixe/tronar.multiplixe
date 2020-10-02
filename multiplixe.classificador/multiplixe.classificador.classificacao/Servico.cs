@@ -10,16 +10,22 @@ namespace multiplixe.classificador.classificacao
         private Repositorio repositorio { get; }
         private nivel.Servico nivelService { get; }
         private pontuacao.Servico pontuacaoService { get; }
+        private usuario.Servico usuarioService { get; }
+        private saldo.Servico saldoService { get; }
         public EnfileiradorClient enfileirador { get; }
 
         public Servico(Repositorio repositorio,
             nivel.Servico nivelService,
             pontuacao.Servico pontuacaoService,
+            usuario.Servico usuarioService,
+            saldo.Servico saldoService,
             EnfileiradorClient enfileirador)
         {
             this.repositorio = repositorio;
             this.nivelService = nivelService;
             this.pontuacaoService = pontuacaoService;
+            this.usuarioService = usuarioService;
+            this.saldoService = saldoService;
             this.enfileirador = enfileirador;
         }
 
@@ -29,15 +35,15 @@ namespace multiplixe.classificador.classificacao
             {
                 var usuarioId = usuarioParaProcessar.UsuarioId;
 
-                var classificacao = repositorio.Obter(usuarioId);
-
                 pontuacaoService.ProcessarIndividual(usuarioId);
 
-                var total = pontuacaoService.CalcularTotal(usuarioId);
+                pontuacaoService.ProcessarTotal(usuarioId);
 
-                var novoNivel = nivelService.Calcular(total, classificacao.EmpresaId);
+                var classificacao = repositorio.Obter(usuarioId);
 
-                repositorio.Atualizar(usuarioId, novoNivel.Id, total);
+                nivelService.Processar(usuarioId, classificacao.Pontos, classificacao.EmpresaId);
+
+                saldoService.Processar(usuarioId);
 
                 enfileirador.EnfileirarParaPosClassificador(usuarioParaProcessar);
             }
@@ -56,16 +62,6 @@ namespace multiplixe.classificador.classificacao
             }
         }
 
-        public dto.classificacao.Pontuacao ObterPontuacaoTotal(Guid usuarioId)
-        {
-            var result = repositorio.Obter(usuarioId);
-
-            return new dto.classificacao.Pontuacao
-            {
-                Valor = result.Pontos
-            };
-        }
-
         public dto.classificacao.Classificacao Obter(Guid usuarioId)
         {
             var result = repositorio.Obter(usuarioId);
@@ -79,11 +75,14 @@ namespace multiplixe.classificador.classificacao
 
             classificacao.RedesSociais = pontuacaoService.Obter(usuarioId);
 
-            var total = classificacao.RedesSociais.Sum(s => s.Pontos);
-
             classificacao.Pontuacao = new dto.classificacao.Pontuacao
             {
-                Valor = total
+                Valor = result.Pontos
+            };
+
+            classificacao.Saldo = new dto.classificacao.Saldo
+            {
+                Valor = result.Saldo
             };
 
             return classificacao;

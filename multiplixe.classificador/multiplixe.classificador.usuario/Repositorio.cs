@@ -39,5 +39,15 @@ namespace multiplixe.classificador.usuario
                 .Insert("usuario_deletar");
         }
 
+        public results.Usuario Obter(Guid usuarioId)
+        {
+            var result = dapperHelper
+                            .ResetParameter()
+                            .AddParameter("_id", usuarioId)
+                            .ExecuteWithOneResult<results.Usuario>("usuario_obter");
+
+            return result;
+        }
+
     }
 }

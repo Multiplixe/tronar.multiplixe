@@ -8,13 +8,13 @@
   <ItemGroup>
     <PackageReference Include="adduo.helper" Version="1.0.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.0.2" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
     <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
     <PackageReference Include="multiplixe.comum.triador" Version="1.0.0" />
-    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
     <PackageReference Include="multiplixe.usuarios.client" Version="1.0.0" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
   </ItemGroup>

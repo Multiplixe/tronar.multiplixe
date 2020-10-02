@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.classificador.grpc", "multiplixe.classificador.grpc\multiplixe.classificador.grpc.csproj", "{9EC06AE2-D8B3-488D-8C3C-FF525E2918D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.grpc", "multiplixe.classificador.grpc\multiplixe.classificador.grpc.csproj", "{9EC06AE2-D8B3-488D-8C3C-FF525E2918D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.nivel", "multiplixe.classificador.nivel\multiplixe.classificador.nivel.csproj", "{BB0B8DFD-9581-41F1-B832-341FD7F0B06C}"
 EndProject
@@ -17,9 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.us
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.console", "multiplixe.classificador.console\multiplixe.classificador.console.csproj", "{43F58038-BA5D-464A-A345-9CCB6BEB7BD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.classificador.client", "multiplixe.classificador.client\multiplixe.classificador.client.csproj", "{0ED4011D-F766-4750-840C-1806589F5FA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.client", "multiplixe.classificador.client\multiplixe.classificador.client.csproj", "{0ED4011D-F766-4750-840C-1806589F5FA5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.ranking.console", "multiplixe.classificador.ranking.console\multiplixe.classificador.ranking.console.csproj", "{B10F0DFE-EC23-4DB4-89F9-7ADF172C6A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.classificador.saldo", "multiplixe.classificador.saldo\multiplixe.classificador.saldo.csproj", "{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{B271639C-79AC-4C39-A2E7-AE2E17BDDFAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{EE95D174-5B3A-492E-9C40-BA772E39E57D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,9 +69,19 @@ Global
 		{B10F0DFE-EC23-4DB4-89F9-7ADF172C6A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B10F0DFE-EC23-4DB4-89F9-7ADF172C6A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B10F0DFE-EC23-4DB4-89F9-7ADF172C6A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9EC06AE2-D8B3-488D-8C3C-FF525E2918D4} = {EE95D174-5B3A-492E-9C40-BA772E39E57D}
+		{43F58038-BA5D-464A-A345-9CCB6BEB7BD9} = {B271639C-79AC-4C39-A2E7-AE2E17BDDFAB}
+		{0ED4011D-F766-4750-840C-1806589F5FA5} = {EE95D174-5B3A-492E-9C40-BA772E39E57D}
+		{B10F0DFE-EC23-4DB4-89F9-7ADF172C6A78} = {B271639C-79AC-4C39-A2E7-AE2E17BDDFAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9781FFA-9286-4F77-862F-F44D1CA0E46A}

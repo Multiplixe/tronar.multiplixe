@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitter.oauth", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitter.reacao.triador", "multiplixe.twitter.reacao.triador\multiplixe.twitter.reacao.triador.csproj", "{42CAE0F4-9979-4179-94E4-196D76C753A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.twitter.reacao.pontuador.console", "multiplixe.twitter.reacao.pontuador.console\multiplixe.twitter.reacao.pontuador.console.csproj", "{843C8D1A-E894-4643-A9C7-2AEE018910A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitter.reacao.pontuador.console", "multiplixe.twitter.reacao.pontuador.console\multiplixe.twitter.reacao.pontuador.console.csproj", "{843C8D1A-E894-4643-A9C7-2AEE018910A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{4E28ED29-79CE-4172-B3D8-92731BA094B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14530372-694F-4E5F-9700-7052BB265361} = {4E28ED29-79CE-4172-B3D8-92731BA094B5}
+		{843C8D1A-E894-4643-A9C7-2AEE018910A5} = {4E28ED29-79CE-4172-B3D8-92731BA094B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B95EEFA4-C661-4C96-977D-EAFA1B4C9E77}
