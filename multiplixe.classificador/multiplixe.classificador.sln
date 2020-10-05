@@ -21,11 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.ranking.console", "multiplixe.classificador.ranking.console\multiplixe.classificador.ranking.console.csproj", "{B10F0DFE-EC23-4DB4-89F9-7ADF172C6A78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.classificador.saldo", "multiplixe.classificador.saldo\multiplixe.classificador.saldo.csproj", "{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.classificador.transacao", "multiplixe.classificador.transacao\multiplixe.classificador.transacao.csproj", "{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{B271639C-79AC-4C39-A2E7-AE2E17BDDFAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{EE95D174-5B3A-492E-9C40-BA772E39E57D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.classificador.interfaces", "multiplixe.classificador.interfaces\multiplixe.classificador.interfaces.csproj", "{D0543305-0467-484A-8FC3-45F0AA3D4744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.classificador.parceiro", "multiplixe.classificador.parceiro\multiplixe.classificador.parceiro.csproj", "{C9D7039C-9974-4F20-9BF3-1A615F015DF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,14 @@ Global
 		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A7DCD5-B1FF-48D3-B32D-F8E331E971D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0543305-0467-484A-8FC3-45F0AA3D4744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0543305-0467-484A-8FC3-45F0AA3D4744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0543305-0467-484A-8FC3-45F0AA3D4744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0543305-0467-484A-8FC3-45F0AA3D4744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9D7039C-9974-4F20-9BF3-1A615F015DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D7039C-9974-4F20-9BF3-1A615F015DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D7039C-9974-4F20-9BF3-1A615F015DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D7039C-9974-4F20-9BF3-1A615F015DF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

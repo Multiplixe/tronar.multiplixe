@@ -30,7 +30,10 @@ namespace multiplixe.api.controllers
 
             if (identity != null && identity.IsAuthenticated)
             {
-                usuarioId = Guid.Parse(claimHelper.ObterValor("user_id"));
+                if (!Guid.TryParse(claimHelper.ObterValor("user_id"), out usuarioId))
+                {
+                    throw new ArgumentException("Usuário inválido");
+                }
             }
 
             return usuarioId;

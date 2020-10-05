@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using multiplixe.central_rtdb.client;
 using multiplixe.classificador.grpc.Services;
+using multiplixe.classificador.parceiro.results;
 using multiplixe.comum.dapper;
 using multiplixe.empresas.client;
 using multiplixe.enfileirador.client;
@@ -42,8 +43,13 @@ namespace multiplixe.classificador.grpc
             .AddTransient<classificacao.Repositorio>()
             .AddTransient<usuario.Servico>()
             .AddTransient<usuario.Repositorio>()
-            .AddTransient<saldo.Servico>()
-            .AddTransient<saldo.Repositorio>()
+            .AddTransient<transacao.Saldo>()
+            .AddTransient<transacao.Debito>()
+            .AddTransient<transacao.Repositorio>()
+            .AddTransient(typeof(interfaces.IConsultarUsuario), typeof(usuario.Servico))
+            .AddTransient(typeof(interfaces.IConsultarParceiro), typeof(parceiro.Servico))
+            .AddTransient<parceiro.Servico>()
+            .AddTransient<parceiro.Repositorio>()
             .AddTransient<EmpresaClient>()
             .AddTransient<EnfileiradorClient>()
             .AddTransient<DapperHelper>()
@@ -51,6 +57,7 @@ namespace multiplixe.classificador.grpc
             .AddTransient<parsers.UsuarioDeletar>()
             .AddTransient<parsers.UsuarioRegistrar>()
             .AddTransient<parsers.ObterClassificacao>()
+            .AddTransient<parsers.TransacaoDebitar>()
             .AddTransient<RTDBAtividadeComumClient>();
 
             services.AddGrpc();
@@ -71,6 +78,7 @@ namespace multiplixe.classificador.grpc
                 endpoints.MapGrpcService<ClassificadorService>();
                 endpoints.MapGrpcService<RankingService>();
                 endpoints.MapGrpcService<UsuariosService>();
+                endpoints.MapGrpcService<TransacaoService>();
 
                 endpoints.MapGet("/", async context =>
                 {

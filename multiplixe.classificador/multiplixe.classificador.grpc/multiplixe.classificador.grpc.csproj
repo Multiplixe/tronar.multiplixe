@@ -7,6 +7,7 @@
   <ItemGroup>
     <None Remove="Protos\classificador.proto" />
     <None Remove="Protos\ranking.proto" />
+    <None Remove="Protos\saldo.proto" />
     <None Remove="Protos\usuarios.proto" />
   </ItemGroup>
 
@@ -20,15 +21,19 @@
 
   <ItemGroup>
     <ProjectReference Include="..\multiplixe.classificador.classificacao\multiplixe.classificador.classificacao.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.interfaces\multiplixe.classificador.interfaces.csproj" />
     <ProjectReference Include="..\multiplixe.classificador.nivel\multiplixe.classificador.nivel.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.parceiro\multiplixe.classificador.parceiro.csproj" />
     <ProjectReference Include="..\multiplixe.classificador.pontuacao\multiplixe.classificador.pontuacao.csproj" />
     <ProjectReference Include="..\multiplixe.classificador.ranking\multiplixe.classificador.ranking.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.transacao\multiplixe.classificador.transacao.csproj" />
     <ProjectReference Include="..\multiplixe.classificador.usuario\multiplixe.classificador.usuario.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="Protos\classificador.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\ranking.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\transacao.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\usuarios.proto" GrpcServices="Server" />
   </ItemGroup>
 

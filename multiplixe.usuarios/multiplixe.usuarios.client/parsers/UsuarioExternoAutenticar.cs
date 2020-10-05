@@ -15,7 +15,7 @@ namespace multiplixe.usuarios.client.parsers
                 EmpresaId = autenticacaoRequest.EmpresaId.ToString(),
                 Email = autenticacaoRequest.Email ?? string.Empty,
                 Senha = autenticacaoRequest.Senha ?? string.Empty,
-                ExternoId = autenticacaoRequest.ExternoId ?? string.Empty
+                ParceiroId = autenticacaoRequest.ParceiroId ?? string.Empty
             };
         }
 

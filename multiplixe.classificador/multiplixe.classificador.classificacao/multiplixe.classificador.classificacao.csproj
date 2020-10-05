@@ -7,14 +7,14 @@
   <ItemGroup>
     <PackageReference Include="multiplixe.central_rtdb.client" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.2" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.6" />
     <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\multiplixe.classificador.nivel\multiplixe.classificador.nivel.csproj" />
     <ProjectReference Include="..\multiplixe.classificador.pontuacao\multiplixe.classificador.pontuacao.csproj" />
-    <ProjectReference Include="..\multiplixe.classificador.saldo\multiplixe.classificador.saldo.csproj" />
+    <ProjectReference Include="..\multiplixe.classificador.transacao\multiplixe.classificador.transacao.csproj" />
     <ProjectReference Include="..\multiplixe.classificador.usuario\multiplixe.classificador.usuario.csproj" />
   </ItemGroup>
 

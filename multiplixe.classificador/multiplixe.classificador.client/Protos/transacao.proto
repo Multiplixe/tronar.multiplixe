@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.classificador.grpc.Protos";
+
+package multiplixe.classificador.grpc.Protos;
+
+service Transacao {
+	rpc Debitar(DebitarRequest) returns (DebitarResponse);
+}
+
+message DebitarRequest {
+	string UsuarioId = 1;
+	string EmpresaId = 2;
+	string Descricao = 3;
+	string ParceiroId = 4;
+	string ParceiroTransacaoId = 5;
+	int32 Pontos = 6;
+}
+
+message DebitarResponse {
+	string TransacaoId = 1;
+	int32 HttpStatusCode = 2;
+	string Erro = 3;
+}

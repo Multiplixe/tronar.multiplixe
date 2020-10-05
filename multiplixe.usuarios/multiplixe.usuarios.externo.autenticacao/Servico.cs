@@ -68,7 +68,7 @@ namespace multiplixe.usuarios.externo.autenticacao
                 response.HttpStatusCode = System.Net.HttpStatusCode.BadRequest;
 
                 response.Error.Messages.Add(fex.Reason.ToString());
- 
+
                 if (retornoNotFound.Contains(fex.Reason))
                 {
                     response.HttpStatusCode = System.Net.HttpStatusCode.NotFound;
@@ -93,7 +93,7 @@ namespace multiplixe.usuarios.externo.autenticacao
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                            new Claim(ClaimTypes.NameIdentifier, Id.ToString()),
+                    new Claim("user_id", Id.ToString()),
                 }),
                 Audience = "multiplixe-external",
                 Issuer = "multiplixe",

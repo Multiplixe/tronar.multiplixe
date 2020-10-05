@@ -8,4 +8,8 @@
     <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.classificador.interfaces\multiplixe.classificador.interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

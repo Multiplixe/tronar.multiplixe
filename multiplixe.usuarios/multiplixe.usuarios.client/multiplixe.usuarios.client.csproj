@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.1.1</PackageVersion>
 
   </PropertyGroup>
 
@@ -39,7 +39,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.1.4" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.1.5" />
     <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
   </ItemGroup>

@@ -15,7 +15,7 @@ namespace multiplixe.usuarios.grpc.parsers
                 EmpresaId = request.EmpresaId.ToGuid(),
                 Email = request.Email,
                 Senha = request.Senha,
-                ExternoId = request.ExternoId
+                ParceiroId = request.ParceiroId
             };
         }
 

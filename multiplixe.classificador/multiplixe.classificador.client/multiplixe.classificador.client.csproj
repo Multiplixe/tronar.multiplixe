@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.1.4</PackageVersion>
     
   </PropertyGroup>
 
@@ -26,6 +26,7 @@
   <ItemGroup>
     <None Remove="Protos\classificador.proto" />
     <None Remove="Protos\ranking.proto" />
+    <None Remove="Protos\transacao.proto" />
     <None Remove="Protos\usuarios.proto" />
   </ItemGroup>
 
@@ -36,8 +37,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.2" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.6" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.0.10" />
     <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
   </ItemGroup>
@@ -45,6 +46,7 @@
   <ItemGroup>
     <Protobuf Include="Protos\classificador.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\ranking.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\transacao.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\usuarios.proto" GrpcServices="Client" />
   </ItemGroup>
 

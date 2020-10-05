@@ -35,8 +35,9 @@ namespace multiplixe.classificador.console
                                         .AddTransient<nivel.Repositorio>()
                                         .AddTransient<classificacao.Servico>()
                                         .AddTransient<classificacao.Repositorio>()
-                                        .AddTransient<saldo.Servico>()
-                                        .AddTransient<saldo.Repositorio>()
+                                        .AddTransient<transacao.Saldo>()
+                                        .AddTransient<transacao.Debito>()
+                                        .AddTransient<transacao.Repositorio>()
                                         .AddTransient<usuario.Servico>()
                                         .AddTransient<usuario.Repositorio>()
                                         .BuildServiceProvider();

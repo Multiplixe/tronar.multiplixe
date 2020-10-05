@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace multiplixe.classificador.saldo
+namespace multiplixe.classificador.transacao
 {
-    public class Servico
+    public class Saldo
     {
         private Repositorio repositorio { get; }
-
-        public Servico(Repositorio repositorio)
+  
+        public Saldo(
+            Repositorio repositorio)
         {
             this.repositorio = repositorio;
         }

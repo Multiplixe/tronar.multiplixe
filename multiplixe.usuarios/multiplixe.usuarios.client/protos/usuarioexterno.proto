@@ -18,8 +18,8 @@ message AutenticarRequest {
 	string Email = 1;
 	string Senha = 2;
 	string EmpresaId = 3;
-	string ExternoId = 4;
-}
+	string ParceiroId = 4;
+} 
 
 message AutenticarResponse {
 	string Token = 1;

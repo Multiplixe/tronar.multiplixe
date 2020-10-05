@@ -1,6 +1,6 @@
 ﻿using multiplixe.classificador.grpc.Protos;
 using System;
-using coredto = multiplixe.comum.dto;
+using comum_dto = multiplixe.comum.dto;
 using envelopes = adduo.helper.envelopes;
 
 namespace multiplixe.classificador.client
@@ -14,7 +14,7 @@ namespace multiplixe.classificador.client
             client = new Classificador.ClassificadorClient(channel);
         }
 
-        public envelopes.ResponseEnvelope<coredto.classificacao.Classificacao> ObterClassificacao(Guid usuarioId)
+        public envelopes.ResponseEnvelope<comum_dto.classificacao.Classificacao> ObterClassificacao(Guid usuarioId)
         {
             var parser = new parsers.ObterClassificacao();
 

@@ -3,10 +3,11 @@ using dto = multiplixe.comum.dto;
 using adduo.helper.envelopes;
 using adduo.helper.extensionmethods;
 using System.Net;
+using multiplixe.classificador.interfaces;
 
 namespace multiplixe.classificador.usuario
 {
-    public class Servico
+    public class Servico : IConsultarUsuario
     {
         private Repositorio repositorio { get; }
         private nivel.Servico nivelService { get; }
@@ -72,5 +73,13 @@ namespace multiplixe.classificador.usuario
         {
             return repositorio.Obter(usuarioId);
         }
+
+        public bool VerificarExistencia(Guid usuarioId)
+        {
+            var result = repositorio.Obter(usuarioId);
+
+            return result is results.Usuario;
+        }
+
     }
 }

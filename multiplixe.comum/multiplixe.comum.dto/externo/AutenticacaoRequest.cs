@@ -12,8 +12,8 @@ namespace multiplixe.comum.dto.externo
         [JsonPropertyName("password")]
         public string Senha { get; set; }
 
-        [JsonPropertyName("id")]
-        public string ExternoId { get; set; }
+        [JsonPropertyName("partnerid")]
+        public string ParceiroId { get; set; }
         
         [JsonIgnore]
         public Guid EmpresaId { get; set; }

@@ -1,6 +1,6 @@
 ﻿using multiplixe.classificador.grpc.Protos;
 using System;
-using coredto = multiplixe.comum.dto;
+using comum_dto = multiplixe.comum.dto;
 using coreexceptions = multiplixe.comum.exceptions;
 using envelopes = adduo.helper.envelopes;
 
@@ -15,7 +15,7 @@ namespace multiplixe.classificador.client
             client = new Usuarios.UsuariosClient(channel);
         }
 
-        public void Registrar(envelopes.RequestEnvelope<coredto.Usuario> request)
+        public void Registrar(envelopes.RequestEnvelope<comum_dto.Usuario> request)
         {
             var parser = new parsers.UsuarioRegistrar();
 
@@ -31,7 +31,7 @@ namespace multiplixe.classificador.client
             }
         }
 
-        public void Sincronizar(envelopes.RequestEnvelope<coredto.Usuario> request)
+        public void Sincronizar(envelopes.RequestEnvelope<comum_dto.Usuario> request)
         {
             var parser = new parsers.UsuarioSincronizar();
 

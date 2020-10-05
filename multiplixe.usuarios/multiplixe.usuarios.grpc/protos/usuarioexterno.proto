@@ -18,7 +18,7 @@ message AutenticarRequest {
 	string Email = 1;
 	string Senha = 2;
 	string EmpresaId = 3;
-	string ExternoId = 4;
+	string ParceiroId = 4;
 }
 
 message AutenticarResponse {
@@ -27,4 +27,4 @@ message AutenticarResponse {
 	string Apelido = 3;
 	int32 HttpStatusCode = 4;
 	ErroResponse Erro = 5;
-}
+} 

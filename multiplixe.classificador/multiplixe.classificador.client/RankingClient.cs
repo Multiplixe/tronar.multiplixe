@@ -1,7 +1,7 @@
 ﻿using multiplixe.classificador.client.parsers;
 using multiplixe.classificador.grpc.Protos;
 using System;
-using coredto = multiplixe.comum.dto;
+using comum_dto = multiplixe.comum.dto;
 using coreexceptions = multiplixe.comum.exceptions;
 using envelopes = adduo.helper.envelopes;
 
@@ -20,7 +20,7 @@ namespace multiplixe.classificador.client
             obterParser = new RankingObter();
         }
 
-        public envelopes.ResponseEnvelope<coredto.ranking.Ranking> Obter(Guid usuarioId)
+        public envelopes.ResponseEnvelope<comum_dto.ranking.Ranking> Obter(Guid usuarioId)
         {
             var request = obterParser.Request(usuarioId);
 

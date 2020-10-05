@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.2" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.3" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
     <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />

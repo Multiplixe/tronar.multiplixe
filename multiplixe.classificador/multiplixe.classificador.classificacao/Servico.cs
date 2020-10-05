@@ -11,14 +11,14 @@ namespace multiplixe.classificador.classificacao
         private nivel.Servico nivelService { get; }
         private pontuacao.Servico pontuacaoService { get; }
         private usuario.Servico usuarioService { get; }
-        private saldo.Servico saldoService { get; }
+        private transacao.Saldo saldoService { get; }
         public EnfileiradorClient enfileirador { get; }
 
         public Servico(Repositorio repositorio,
             nivel.Servico nivelService,
             pontuacao.Servico pontuacaoService,
             usuario.Servico usuarioService,
-            saldo.Servico saldoService,
+            transacao.Saldo saldoService,
             EnfileiradorClient enfileirador)
         {
             this.repositorio = repositorio;
