@@ -8,6 +8,7 @@ namespace multiplixe.classificador.transacao.results
     {
         public Guid Id { get; set; }
         public Guid UsuarioId { get; set; }
+        public Guid EmpresaId { get; set; }
         public Guid ParceiroId { get; set; }
         public string ParceiroTransacaoId { get; set; }
         public int Pontos { get; set; }

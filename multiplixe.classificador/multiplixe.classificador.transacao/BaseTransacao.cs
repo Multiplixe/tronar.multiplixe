@@ -1,4 +1,5 @@
 ﻿using multiplixe.classificador.interfaces;
+using multiplixe.enfileirador.client;
 using System;
 
 namespace multiplixe.classificador.transacao
@@ -9,17 +10,20 @@ namespace multiplixe.classificador.transacao
         protected Saldo saldoService { get; }
         protected IConsultarUsuario consultarUsuario { get; }
         protected IConsultarParceiro consultarParceiro { get; }
+        protected EnfileiradorClient enfileirador { get; }
 
         public BaseTransacao(
             Repositorio repositorio,
             Saldo saldoService,
             IConsultarUsuario consultarUsuario,
-            IConsultarParceiro consultarParceiro)
+            IConsultarParceiro consultarParceiro,
+            EnfileiradorClient enfileirador)
         {
             this.repositorio = repositorio;
             this.saldoService = saldoService;
             this.consultarUsuario = consultarUsuario;
             this.consultarParceiro = consultarParceiro;
+            this.enfileirador = enfileirador;
         }
 
         public results.Transacao Obter(Guid id, Guid parceiroId)

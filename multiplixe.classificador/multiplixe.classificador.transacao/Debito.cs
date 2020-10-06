@@ -1,6 +1,7 @@
 ﻿using adduo.helper.envelopes;
 using multiplixe.classificador.interfaces;
 using multiplixe.comum.dto.externo;
+using multiplixe.enfileirador.client;
 using System;
 
 namespace multiplixe.classificador.transacao
@@ -11,7 +12,8 @@ namespace multiplixe.classificador.transacao
             Repositorio repositorio,
             Saldo saldoService,
             IConsultarUsuario consultarUsuario,
-            IConsultarParceiro consultarParceiro) : base(repositorio, saldoService, consultarUsuario, consultarParceiro)
+            IConsultarParceiro consultarParceiro,
+            EnfileiradorClient enfileirador) : base(repositorio, saldoService, consultarUsuario, consultarParceiro, enfileirador)
         {
 
         }
@@ -38,6 +40,10 @@ namespace multiplixe.classificador.transacao
                 {
                     response.Item.Id = id;
                     saldoService.Processar(usuarioId);
+
+                    var UsuarioParaProcessar = new comum.dto.UsuarioParaProcessar(usuarioId);
+
+                    enfileirador.EnfileirarParaPosClassificador(UsuarioParaProcessar);
                 }
                 else
                 {
