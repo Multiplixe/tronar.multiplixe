@@ -5,10 +5,11 @@ option csharp_namespace = "multiplixe.classificador.grpc.Protos";
 package multiplixe.classificador.grpc.Protos;
 
 service Transacao {
-	rpc Debitar(DebitarRequest) returns (DebitarResponse);
+	rpc Debitar(DebitoRequest) returns (DebitoResponse);
+	rpc Estornar(EstornoRequest) returns (EstornoResponse);
 }
 
-message DebitarRequest {
+message DebitoRequest {
 	string UsuarioId = 1;
 	string EmpresaId = 2;
 	string Descricao = 3;
@@ -17,7 +18,18 @@ message DebitarRequest {
 	int32 Pontos = 6;
 }
 
-message DebitarResponse {
+message DebitoResponse {
+	string TransacaoId = 1;
+	int32 HttpStatusCode = 2;
+	string Erro = 3;
+}
+
+message EstornoRequest {
+	string ParceiroId = 4;
+	string TransacaoId = 2;
+}
+
+message EstornoResponse {
 	string TransacaoId = 1;
 	int32 HttpStatusCode = 2;
 	string Erro = 3;

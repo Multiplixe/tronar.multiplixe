@@ -8,7 +8,7 @@
     <PackageReference Include="adduo.helper" Version="1.0.3" />
     <PackageReference Include="multiplixe.central_rtdb.client" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.6" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
     <PackageReference Include="multiplixe.empresas.client" Version="1.0.1" />
   </ItemGroup>

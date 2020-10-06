@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace multiplixe.classificador.grpc.parsers
 {
-    public class TransacaoDebitar
+    public class TransacaoEstornar
     {
-        public DebitoResponse Response(ResponseEnvelope<comum.dto.externo.DebitoResponse> envelope)
+        public EstornoResponse Response(ResponseEnvelope<comum.dto.externo.EstornoResponse> envelope)
         {
-            var response = new DebitoResponse
+            var response = new EstornoResponse
             {
                 HttpStatusCode = (int)envelope.HttpStatusCode,
                 TransacaoId = string.Empty

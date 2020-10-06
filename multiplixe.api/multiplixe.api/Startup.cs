@@ -139,7 +139,7 @@ namespace multiplixe.api
                    IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String("MWU1ZTNlNTU4MjdlNDlmYzhlYjQ4ZTI4NzFhY2U5Mzk=")),
                    ValidateIssuer = true,
                    ValidateAudience = true,
-                   ValidateLifetime = false,
+                   ValidateLifetime = true,
                    ValidIssuer = "multiplixe",
                    ValidAudience = "multiplixe-external"
                };

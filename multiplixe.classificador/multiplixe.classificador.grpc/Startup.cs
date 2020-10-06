@@ -45,6 +45,7 @@ namespace multiplixe.classificador.grpc
             .AddTransient<usuario.Repositorio>()
             .AddTransient<transacao.Saldo>()
             .AddTransient<transacao.Debito>()
+            .AddTransient<transacao.Estorno>()
             .AddTransient<transacao.Repositorio>()
             .AddTransient(typeof(interfaces.IConsultarUsuario), typeof(usuario.Servico))
             .AddTransient(typeof(interfaces.IConsultarParceiro), typeof(parceiro.Servico))
@@ -58,6 +59,7 @@ namespace multiplixe.classificador.grpc
             .AddTransient<parsers.UsuarioRegistrar>()
             .AddTransient<parsers.ObterClassificacao>()
             .AddTransient<parsers.TransacaoDebitar>()
+            .AddTransient<parsers.TransacaoEstornar>()
             .AddTransient<RTDBAtividadeComumClient>();
 
             services.AddGrpc();

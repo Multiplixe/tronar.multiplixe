@@ -33,9 +33,42 @@ namespace multiplixe.classificador.transacao
                .AddParameter("_parceiroTransacaoId", parceiroTransacaoId)
                .AddParameter("_pontos", pontos)
                .AddParameter("_data", DateTimeHelper.Now())
-               .Insert("saldo_registrar_debito");
+               .Insert("saldo_debitar");
 
             return result.Equals(0);
         }
+
+        /// <summary>
+        /// Gera estorno de uma transação existente.
+        /// </summary>
+        /// <param name="novaTransacaoId">Id da nova transação de estorno</param>
+        /// <param name="transacaoId">Id da transação que será estornada</param>
+        /// <param name="parceiroId">Id do parceiro</param>
+        /// <returns></returns>
+        public bool Estornar(Guid novaTransacaoId, Guid transacaoId, Guid parceiroId)
+        {
+            var result = dapperHelper
+               .ResetParameter()
+               .AddParameter("_id", novaTransacaoId)
+               .AddParameter("_transacaoId", transacaoId)
+               .AddParameter("_parceiroId", parceiroId)
+               .AddParameter("_data", DateTimeHelper.Now())
+               .Insert("saldo_estornar");
+
+            return result.Equals(0);
+        }
+
+
+        public results.Transacao Obter(Guid id, Guid parceiroId)
+        {
+            var result = dapperHelper
+               .ResetParameter()
+               .AddParameter("_parceiroId", parceiroId)
+               .AddParameter("_transacaoId", id)
+               .ExecuteWithOneResult<results.Transacao>("saldo_transacao_obter");
+
+            return result;
+        }
+
     }
 }

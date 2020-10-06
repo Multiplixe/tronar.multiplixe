@@ -5,9 +5,9 @@ using System;
 
 namespace multiplixe.classificador.transacao
 {
-    public class Debito : BaseTransacao
+    public class Estorno : BaseTransacao
     {
-        public Debito(
+        public Estorno(
             Repositorio repositorio,
             Saldo saldoService,
             IConsultarUsuario consultarUsuario,
@@ -16,33 +16,30 @@ namespace multiplixe.classificador.transacao
 
         }
 
-        public ResponseEnvelope<DebitoResponse> Processar(Guid usuarioId, Guid parceiroId, string descricao, string parceiroTransacaoId, int pontos)
+        public ResponseEnvelope<EstornoResponse> Processar(Guid transacaoId, Guid parceiroId)
         {
-            var response = new ResponseEnvelope<DebitoResponse>();
+            var response = new ResponseEnvelope<EstornoResponse>();
 
             try
             {
-                VerificarUsuarioExistente(usuarioId);
-
                 VerificarParceiroExistente(parceiroId);
 
-                ValidarPontos(pontos);
+                ValidarTransacao(transacaoId);
 
-                ValidarParceiroTransacao(parceiroTransacaoId);
+                var transacao = Obter(transacaoId, parceiroId);
 
-                var id = Guid.NewGuid();
-
-                var debitou = repositorio.Debitar(id, usuarioId, descricao, parceiroId, parceiroTransacaoId, pontos);
-
-                if (debitou)
+                if (transacao != null)
                 {
+                    var id = Guid.NewGuid();
+                    repositorio.Estornar(id, transacaoId, parceiroId);
+                    saldoService.Processar(transacao.UsuarioId);
+
                     response.Item.Id = id;
-                    saldoService.Processar(usuarioId);
                 }
                 else
                 {
-                    response.HttpStatusCode = System.Net.HttpStatusCode.PaymentRequired;
-                    response.Error.Messages.Add("insufficient balance");
+                    response.HttpStatusCode = System.Net.HttpStatusCode.NotFound;
+                    response.Error.Messages.Add($"Transaction {transacaoId} doesn't exist.");
                 }
             }
             catch (ArgumentException aex)
@@ -58,6 +55,7 @@ namespace multiplixe.classificador.transacao
 
             return response;
         }
+
 
 
 

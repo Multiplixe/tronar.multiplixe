@@ -1,5 +1,4 @@
 ﻿using multiplixe.classificador.grpc.Protos;
-using System;
 using comum_dto = multiplixe.comum.dto;
 using envelope = adduo.helper.envelopes;
 
@@ -26,5 +25,19 @@ namespace multiplixe.classificador.client
 
             return response;
         }
+
+        public envelope.ResponseEnvelope<comum_dto.externo.EstornoResponse> Estornar(comum_dto.externo.EstornoRequest estornoRequest)
+        {
+            var parser = new parsers.TransacaoEstorno();
+
+            var request = parser.Request(estornoRequest);
+
+            var estornoResponse = client.Estornar(request);
+
+            var response = parser.Response(estornoResponse);
+
+            return response;
+        }
+
     }
 }

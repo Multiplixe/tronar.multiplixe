@@ -4,10 +4,19 @@ using System.Text.Json.Serialization;
 
 namespace multiplixe.comum.dto.externo
 {
-    public class DebitoRequest: IUsuarioID, IEmpresaID
+    public class DebitoRequest : BaseRequest, IUsuarioID, IEmpresaID
     {
         [JsonPropertyName("partnerId")]
-        public string ParceiroId { get; set; }
+        public string partnerId { get; set; }
+
+        [JsonIgnore]
+        public Guid ParceiroId
+        {
+            get
+            {
+                return TryParse(partnerId);
+            }
+        }
 
         [JsonIgnore]
         public Guid UsuarioId { get; set; }
@@ -23,5 +32,8 @@ namespace multiplixe.comum.dto.externo
 
         [JsonPropertyName("partnerTransactionId")]
         public string ParceiroTransacaoId { get; set; }
+
+
+
     }
 }

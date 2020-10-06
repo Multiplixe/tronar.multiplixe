@@ -1,25 +1,20 @@
 ﻿using adduo.helper.envelopes;
-using multiplixe.classificador.grpc.Protos;
-using comum_dto = multiplixe.comum.dto;
-using System.Net;
-using multiplixe.comum.dto.externo;
-using multiplixe.comum.enums;
-using System.Linq;
-using adduo.helper.extensionmethods;
 using System;
+using System.Net;
+using comum_dto = multiplixe.comum.dto;
 
 namespace multiplixe.classificador.client.parsers
 {
     public class TransacaoDebitar
     {
-        public virtual DebitarRequest Request(comum_dto.externo.DebitoRequest request)
+        public virtual grpc.Protos.DebitoRequest Request(comum_dto.externo.DebitoRequest request)
         {
-            var debitarRequest = new DebitarRequest()
+            var debitarRequest = new grpc.Protos.DebitoRequest()
             {
                 UsuarioId = request.UsuarioId.ToString(),
                 EmpresaId = request.EmpresaId.ToString(),
                 Descricao = request.Descricao ?? string.Empty,
-                ParceiroId = request.ParceiroId ?? string.Empty,
+                ParceiroId = request.ParceiroId.ToString(),
                 ParceiroTransacaoId = request.ParceiroTransacaoId ?? string.Empty,
                 Pontos = request.Pontos
             };
@@ -27,7 +22,7 @@ namespace multiplixe.classificador.client.parsers
             return debitarRequest;
         }
 
-        public ResponseEnvelope<comum_dto.externo.DebitoResponse> Response(DebitarResponse debitarResponse)
+        public ResponseEnvelope<comum_dto.externo.DebitoResponse> Response(grpc.Protos.DebitoResponse debitarResponse)
         {
             var response = new ResponseEnvelope<comum_dto.externo.DebitoResponse>()
             {
@@ -40,7 +35,7 @@ namespace multiplixe.classificador.client.parsers
 
                 Guid.TryParse(debitarResponse.TransacaoId, out id);
 
-                response.Item = new DebitoResponse
+                response.Item = new comum_dto.externo.DebitoResponse
                 {
                     Id = id
                 };

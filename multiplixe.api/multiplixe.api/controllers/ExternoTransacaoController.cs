@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using multiplixe.api.dto.settings;
 using multiplixe.comum.dto.externo;
@@ -18,7 +19,7 @@ namespace multiplixe.api.controllers
 
         [HttpPost]
         [Route("debit")]
-        public IActionResult Post([FromBody] DebitoRequest request)
+        public IActionResult DebitPost([FromBody] DebitoRequest request)
         {
             ConfiguraUsuario(request);
             ConfiguraEmpresa(request);
@@ -27,5 +28,16 @@ namespace multiplixe.api.controllers
 
             return IntegrarGRPC<comum_dto.externo.DebitoResponse>(grpc);
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("reversal")]
+        public IActionResult ReversalPost([FromBody] EstornoRequest request)
+        {
+            var grpc = new integracao_grpc.TransacaoEstorno(request);
+
+            return IntegrarGRPC<comum_dto.externo.EstornoResponse>(grpc);
+        }
+
     }
 }
