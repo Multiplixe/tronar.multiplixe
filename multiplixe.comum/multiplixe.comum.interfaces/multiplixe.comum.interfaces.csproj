@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="adduo.helper" Version="1.0.3" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.9" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
   </ItemGroup>
 
 </Project>

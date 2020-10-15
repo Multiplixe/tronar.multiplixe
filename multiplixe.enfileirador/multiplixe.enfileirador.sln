@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.enfileirador.core", "multiplixe.enfileirador.core\multiplixe.enfileirador.core.csproj", "{7C8A9B4E-847A-4C17-8734-6E274C6EDD0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.enfileirador.client", "multiplixe.enfileirador.client\multiplixe.enfileirador.client.csproj", "{F426F830-B43F-4125-B538-47AF609D6FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.enfileirador.client", "multiplixe.enfileirador.client\multiplixe.enfileirador.client.csproj", "{F426F830-B43F-4125-B538-47AF609D6FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.enfileirador.grpc", "multiplixe.enfileirador.grpc\multiplixe.enfileirador.grpc.csproj", "{9BB64929-5B38-4A23-943E-5047EC98C37F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.enfileirador.grpc", "multiplixe.enfileirador.grpc\multiplixe.enfileirador.grpc.csproj", "{9BB64929-5B38-4A23-943E-5047EC98C37F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{BFA51C14-4E02-49C6-89C4-FED28249FA91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BB64929-5B38-4A23-943E-5047EC98C37F} = {BFA51C14-4E02-49C6-89C4-FED28249FA91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {614DFBD0-7521-4731-AF86-531AB771187E}

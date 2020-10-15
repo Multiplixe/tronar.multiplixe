@@ -68,7 +68,7 @@ namespace multiplixe.api
             var empresaSettings = Configuration.GetSection("Empresa").Get<EmpresaSettings>();
             var parametros = Configuration.GetSection("Parametros").Get<Parametros>();
 
-            var facebookLogSettings = Configuration.GetSection("LogEvento").GetSection("Twitter").Get<LogEventoSettings<facebook_dtos.eventos.Evento>>();
+            var facebookLogSettings = Configuration.GetSection("LogEvento").GetSection("Facebook").Get<LogEventoSettings<facebook_dtos.eventos.Evento>>();
             var twitterLogSettings = Configuration.GetSection("LogEvento").GetSection("Twitter").Get<LogEventoSettings<twitter_dtos.eventos.Evento>>();
             var youtubeLogSettings = Configuration.GetSection("LogEvento").GetSection("Youtube").Get<LogEventoSettings<YoutubeEventoTest>>();
             var instagramLogSettings = Configuration.GetSection("LogEvento").GetSection("Instagram").Get<LogEventoSettings<InstagramEventTest>>();

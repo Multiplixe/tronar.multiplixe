@@ -105,6 +105,16 @@ namespace multiplixe.enfileirador.client
             return core.Factory.Avatar();
         }
 
+        public EnfileiradorConfig CompartilhadorFacebook()
+        {
+            return core.Factory.CompartilhadorFacebook();
+        }
+
+        public EnfileiradorConfig CompartilhadorTwitter()
+        {
+            return core.Factory.CompartilhadorTwitter();
+        }
+
 
         #endregion
 
@@ -195,6 +205,18 @@ namespace multiplixe.enfileirador.client
         public void EnfileirarAvatar(object dto)
         {
             var config = Avatar();
+            Enfileirar(config.Nome, dto);
+        }
+
+        public void EnfileirarCompartilhadorTwitter(object dto)
+        {
+            var config = CompartilhadorTwitter();
+            Enfileirar(config.Nome, dto);
+        }
+
+        public void EnfileirarCompartilhadorFacebook(object dto)
+        {
+            var config = CompartilhadorFacebook();
             Enfileirar(config.Nome, dto);
         }
 

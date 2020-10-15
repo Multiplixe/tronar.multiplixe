@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using multiplixe.comum.enums;
 using multiplixe.comum.helper;
 
-namespace multiplixe.enfileirador.grpc
+namespace multiplixe.compartilhador.grpc
 {
     public class Program
     {
@@ -16,14 +16,14 @@ namespace multiplixe.enfileirador.grpc
         {
             var foregroundColor = Console.ForegroundColor;
             var backgroundColor = Console.BackgroundColor;
-
+            
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.Blue;
             Console.WriteLine("------------------------------------------");
-            Console.WriteLine($"* Enfileirador - {DateTimeHelper.Now()}        ");
+            Console.WriteLine($"* Compartilhador - {DateTimeHelper.Now()}      ");
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("");
-
+            
             Console.ForegroundColor = foregroundColor;
             Console.BackgroundColor = backgroundColor;
 
@@ -37,7 +37,8 @@ namespace multiplixe.enfileirador.grpc
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                                .UseUrls($"https://*:{(int)PortasServicosEnum.enfileirador}");
+                                .UseUrls($"https://*:{(int)PortasServicosEnum.compartilhador}");
+
                 });
     }
 }

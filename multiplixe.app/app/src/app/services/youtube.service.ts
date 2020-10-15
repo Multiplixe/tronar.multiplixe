@@ -34,6 +34,7 @@ export class YoutubeService extends BaseService {
 
     return new Promise(async (resolve, rejects) => {
 
+
       if (!token.access_token) {
         rejects();
         return;

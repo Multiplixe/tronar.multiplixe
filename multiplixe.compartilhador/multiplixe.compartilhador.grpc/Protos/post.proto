@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.compartilhador.grpc.Protos";
+
+package multiplixe.compartilhador.grpc.Protos;
+
+service Post {
+	rpc Obter(ObterRequest) returns (ObterResponse);
+}
+
+message ObterRequest {
+	string EmpresaId = 1;
+	string UsuarioId = 2;
+}
+
+message ObterResponse {
+	int32 HttpStatusCode = 1;
+	repeated PostMessage Posts = 2;
+}
+
+message PostMessage {
+	string PostId = 1;					// ID do post GUID 
+	string Titulo = 2;					// titulo que será exibido ao usuário da lista de post
+}
+ 

@@ -30,6 +30,9 @@ namespace multiplixe.enfileirador.core
 
         private static string filaAvatar = "avatar";
 
+        private static string filaCompartilhadorFacebook = "compartilhador.facebook";
+        private static string filaCompartilhadorTwitter = "compartilhador.twitter";
+
 
         private static string filaVerificacao = "verificacao";
 
@@ -112,6 +115,17 @@ namespace multiplixe.enfileirador.core
             return Obtem(filaAvatar);
         }
 
+        public static dto.EnfileiradorConfig CompartilhadorFacebook()
+        {
+            return Obtem(filaCompartilhadorFacebook);
+        }
+
+        public static dto.EnfileiradorConfig CompartilhadorTwitter()
+        {
+            return Obtem(filaCompartilhadorTwitter);
+        }
+
+
         public static dto.EnfileiradorConfig Obtem(string nomeDaFila)
         {
             var durableConfig = new string[]
@@ -131,7 +145,9 @@ namespace multiplixe.enfileirador.core
                 filaConsolidador,
                 filaPosClassificador,
                 filaNotificadorTwitchPubSub,
-                filaAvatar
+                filaAvatar,
+                filaCompartilhadorFacebook,
+                filaCompartilhadorTwitter
             };
 
             if (durableConfig.Contains(nomeDaFila))

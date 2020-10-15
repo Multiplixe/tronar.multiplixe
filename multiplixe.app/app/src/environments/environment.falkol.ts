@@ -12,7 +12,7 @@ export const apiEnvironment = {
 
 export const facebookEnvironment = {
   app_id: "234854220945907",
-  version: "v2.8",
+  version: "v8.0",
   xfbml: true
 };
 

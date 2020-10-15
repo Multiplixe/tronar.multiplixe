@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.compartilhador.grpc.Protos";
+
+package multiplixe.compartilhador.grpc.Protos;
+
+service Compartilhamento {
+	rpc Compartilhar(CompartilharRequest) returns (BaseResponse);
+	rpc Registrar(RegistrarRequest) returns (BaseResponse);
+}
+
+message CompartilharRequest {
+	string PostId = 1;					// ID do post escolhido GUID
+	string UsuarioId = 2;				// ID do usuário GUID
+	repeated int32 RedeSocialId = 3;	// Lista das redes sociais que o usuário escolheu pra compartilhar
+}
+
+message BaseResponse {
+	int32 HttpStatusCode = 1;			// status code da operação (200, 400, ...)
+}
+
+message RegistrarRequest {
+	string PostId = 1;					// ID do post escolhido GUID
+	string RedeSocialPostId = 2;		// ID do post da rede social 
+	string UsuarioId = 3;				// ID do usuário GUID
+	int32 RedeSocialId = 4;				// ID da rede social que foi compartilhado
+}
+

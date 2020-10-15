@@ -37,20 +37,33 @@ namespace multiplixe.api.controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] facebook_dto.eventos.Evento evento)
+        public IActionResult Post([FromBody] object evento)
         {
             try
             {
-                Console.WriteLine("Proxy Facebook {0}", DateTime.Now.ToString());
 
-                logEventoService.LogarEvento(evento);
+                using (var sw = System.IO.File.AppendText("c:/log/face.txt"))
+                {
+                    sw.WriteLine("-----------------------------------------------------------------");
+                    sw.WriteLine("");
+                    sw.WriteLine(DateTime.Now.ToString());
+                    sw.WriteLine("");
+                    sw.WriteLine(evento);
+                    sw.WriteLine("");
 
-                var envelope = new comum_dto.EnvelopeEvento<facebook_dto.eventos.Evento>(evento);
-                envelope.DataEvento = corehelper.DateTimeHelper.Now();
+                    var json = corehelper.SerializadorHelper.Serializar(evento);
 
-                ConfiguraEmpresa(envelope);
+                    sw.WriteLine(json);
+                }
 
-                enfileiradorClient.EnfileirarParaTriadorFacebook(envelope);
+               // logEventoService.LogarEvento(evento);
+
+                //var envelope = new comum_dto.EnvelopeEvento<facebook_dto.eventos.Evento>(evento);
+                //envelope.DataEvento = corehelper.DateTimeHelper.Now();
+
+                //ConfiguraEmpresa(envelope);
+
+                //enfileiradorClient.EnfileirarParaTriadorFacebook(envelope);
 
                 return Ok();
             }

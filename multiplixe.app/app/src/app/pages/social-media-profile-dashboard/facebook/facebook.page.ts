@@ -44,16 +44,25 @@ export class FacebookPage extends SocialMediaProfileDashboardBase implements OnI
 
     try {
 
-      var response: LoginResponse = await this.facebookService.login()
+      var response: LoginResponse = await this.facebookService.login({
+        return_scopes: true,
+        enable_profile_selector: true,
+        scope: 'pages_show_list,pages_messaging,pages_read_engagement,pages_manage_metadata'
+      });
 
       if (response && response.status == "connected") {
 
-        var userInfo = await this.facebookService.api("/me?fields=id,name,picture.width(500).height(500)", "get", { access_token: response.authResponse.accessToken })
+        console.log("response", response)
+
+        //var userInfo = await this.facebookService.api("/me?fields=id,name,picture.width(500).height(500)", "get", { access_token: response.authResponse.accessToken })
+        var userInfo = await this.facebookService.api("/me?fields=id,name,picture,accounts{app_id,id,access_token,name,category,username,website,page_token,cover,picture}", "get", { access_token: response.authResponse.accessToken })
+
+        console.log("userInfo", userInfo)
 
         this.profile = new SocialMediaProfile();
         this.profile.profileId = userInfo.id;
         this.profile.name = userInfo.name;
-        this.profile.token = JSON.stringify(response.authResponse);
+        this.profile.token = JSON.stringify(response);
 
         if (userInfo.picture &&
           userInfo.picture.data &&
