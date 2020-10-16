@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.1" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.12" />
   </ItemGroup>
 
 </Project>

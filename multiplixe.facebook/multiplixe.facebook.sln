@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.triador
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.reacao.pontuador.console", "multiplixe.facebook.reacao.pontuador.console\multiplixe.facebook.reacao.pontuador.console.csproj", "{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.facebook.triador.console", "multiplixe.facebook.triador.console\multiplixe.facebook.triador.console.csproj", "{D67F1BF5-D8B9-4395-AF32-16236B1C0279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.triador.console", "multiplixe.facebook.triador.console\multiplixe.facebook.triador.console.csproj", "{D67F1BF5-D8B9-4395-AF32-16236B1C0279}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{12A70657-153E-46D4-9E64-76F7870F7884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.facebook.compartilhador.console", "multiplixe.facebook.compartilhador.console\multiplixe.facebook.compartilhador.console.csproj", "{913B0D90-BE76-448A-B3BF-3F3A219F0371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,18 @@ Global
 		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D67F1BF5-D8B9-4395-AF32-16236B1C0279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486} = {12A70657-153E-46D4-9E64-76F7870F7884}
+		{D67F1BF5-D8B9-4395-AF32-16236B1C0279} = {12A70657-153E-46D4-9E64-76F7870F7884}
+		{913B0D90-BE76-448A-B3BF-3F3A219F0371} = {12A70657-153E-46D4-9E64-76F7870F7884}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87891D58-26CD-49EC-BF76-AFA86D4F11E4}

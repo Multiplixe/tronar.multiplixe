@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.2.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
     <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
   </ItemGroup>

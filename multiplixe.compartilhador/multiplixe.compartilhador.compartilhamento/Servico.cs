@@ -1,5 +1,6 @@
 ﻿using multiplixe.enfileirador.client;
 using System;
+using comum_dto = multiplixe.comum.dto;
 
 namespace multiplixe.compartilhador.compartilhamento
 {
@@ -14,12 +15,12 @@ namespace multiplixe.compartilhador.compartilhamento
             this.enfileirador = enfileirador;
         }
 
-        public void Compartilhar(object request)
+        public void Compartilhar(comum_dto.Compartilhamento compartilhamento)
         {
             // logica para definir quais redes sociais o usuário  escolheu.
             //- tentar usar Task
-            enfileirador.EnfileirarCompartilhadorFacebook(request);
-            enfileirador.EnfileirarCompartilhadorTwitter(request);
+            enfileirador.EnfileirarCompartilhadorFacebook(compartilhamento);
+            enfileirador.EnfileirarCompartilhadorTwitter(compartilhamento);
         }
 
         public void Registrar(object request)

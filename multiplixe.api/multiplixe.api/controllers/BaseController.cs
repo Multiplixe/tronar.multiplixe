@@ -45,6 +45,16 @@ namespace multiplixe.api.controllers
             return result;
         }
 
+
+        public IActionResult IntegrarGRPC(integracao_grpc.IIntegracaoGRPC integracao)
+        {
+            var response = integracao.Enviar();
+
+            var result = ResultFactory(response);
+
+            return result;
+        }
+
         public IActionResult IntegrarGRPC<T>(integracao_grpc.IIntegracaoGRPC<T> integracao)
         {
             var response = integracao.Enviar();

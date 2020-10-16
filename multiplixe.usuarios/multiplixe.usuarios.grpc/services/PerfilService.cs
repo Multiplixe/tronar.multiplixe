@@ -107,5 +107,14 @@ namespace multiplixe.usuarios.grpc.services
 
             return Task.FromResult(response);
         }
+
+        public override Task<AccessTokenResponse> ObterAccessToken(AccessTokenRequest request, ServerCallContext context)
+        {
+            return Task.FromResult(new AccessTokenResponse {
+                HttpStatusCode = 200,
+                Token = "token do usuario na rede social XPTO"
+            });
+
+        }
     }
 }

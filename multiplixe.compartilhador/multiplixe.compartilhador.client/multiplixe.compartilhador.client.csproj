@@ -3,19 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
-    <PackageId>multiplixe.usuarios.client</PackageId>
+    <PackageId>multiplixe.compartilhador.client</PackageId>
     <Authors>René Bizelli</Authors>
     <Company>Tronar</Company>
-    <Title>Usuários</Title>
+    <Title>Compartilhador de posts</Title>
 
-    <PackageTags>Usuarios</PackageTags>
+    <PackageTags>Compartilhador;post;compartilhamento</PackageTags>
     <PackageDescription>
-      Serviços relacionados aos usuários.
+      Serviços relacionados a compartilhamentos de posts nas redes sociais
     </PackageDescription>
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.2.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
 
   </PropertyGroup>
 
@@ -25,32 +25,26 @@
 
 
   <ItemGroup>
-    <None Remove="protos\entries.proto" />
-    <None Remove="protos\perfil.proto" />
-    <None Remove="protos\token.proto" />
-    <None Remove="protos\usuario.proto" />
-    <None Remove="protos\usuarioexterno.proto" />
+    <None Remove="Protos\compartilhamento.proto" />
+    <None Remove="Protos\post.proto" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.0.3" />
     <PackageReference Include="Google.Protobuf" Version="3.13.0" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.31.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.32.0" />
     <PackageReference Include="Grpc.Tools" Version="2.32.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.12" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
-    <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="protos\entries.proto" GrpcServices="Client" />
-    <Protobuf Include="protos\perfil.proto" GrpcServices="Client" />
-    <Protobuf Include="protos\token.proto" GrpcServices="Client" />
-    <Protobuf Include="protos\usuario.proto" GrpcServices="Client" />
-    <Protobuf Include="protos\usuarioexterno.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\compartilhamento.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\post.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

@@ -35,8 +35,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.1.1" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.12" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
     <PackageReference Include="multiplixe.enfileirador.core" Version="1.0.4" />

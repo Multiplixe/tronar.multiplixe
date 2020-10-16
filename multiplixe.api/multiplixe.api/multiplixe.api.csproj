@@ -16,16 +16,17 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-preview.3.20215.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="multiplixe.classificador.client" Version="1.2.0" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.1.1" />
+    <PackageReference Include="multiplixe.compartilhador.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.12" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
     <PackageReference Include="multiplixe.facebook.dto" Version="1.0.0" />
     <PackageReference Include="multiplixe.twitch.oauth" Version="1.0.0" />
     <PackageReference Include="multiplixe.twitch.ping" Version="1.0.1" />
     <PackageReference Include="multiplixe.twitter.dto" Version="1.0.1" />
     <PackageReference Include="multiplixe.twitter.oauth" Version="1.0.2" />
-    <PackageReference Include="multiplixe.usuarios.client" Version="1.1.1" />
+    <PackageReference Include="multiplixe.usuarios.client" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

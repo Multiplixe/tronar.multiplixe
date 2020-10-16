@@ -1,44 +1,33 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using multiplixe.comum.helper;
-using multiplixe.comum.triador;
 using multiplixe.enfileirador.client;
-using multiplixe.facebook.dto.eventos;
-using multiplixe.usuarios.client;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
-using comum_dto = multiplixe.comum.dto;
-using coreexceptions = multiplixe.comum.exceptions;
-using corehelper = multiplixe.comum.helper;
-using coreinterfaces = multiplixe.comum.interfaces;
-using reacaotriador = multiplixe.facebook.reacao.triador;
-using registrador = multiplixe.registrador_de_eventos.client.facebook;
 
-namespace multiplixe.facebook.triador.console
+using corehelper = multiplixe.comum.helper;
+using comum_dto = multiplixe.comum.dto;
+using multiplixe.usuarios.client;
+using multiplixe.compartilhador.client;
+
+namespace multiplixe.facebook.compartilhador.console
 {
     class Program
     {
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
-                            .AddTransient<TriadorService<Evento>>()
+                            .AddTransient<Servico>()
                             .AddTransient<EnfileiradorClient>()
-                            .AddTransient<registrador.Client>()
                             .AddTransient<PerfilClient>()
-                            .AddScoped(typeof(coreinterfaces.triador.IRegistradorEventoTriagem<Evento>), typeof(reacaotriador.RegistradorReacao))
-                            .AddScoped(typeof(coreinterfaces.IRegistradorEventosConsultas<Evento>), typeof(reacaotriador.RegistradorReacao))
-                            .AddScoped(typeof(reacaotriador.IAvaliadorCurtida), typeof(reacaotriador.AvaliadorCurtida))
-                            .AddScoped(typeof(reacaotriador.IAvaliadorDescurtida), typeof(reacaotriador.AvaliadorDescurtida))
-                            .AddScoped(typeof(coreinterfaces.triador.ITriador<Evento>), typeof(Triador))
-                            .AddScoped(typeof(coreinterfaces.triador.IIdentificadorUsuario<Evento>), typeof(IdentificadorUsuario))
-                            .AddScoped(typeof(coreinterfaces.triador.IValidadorDeEvento<Evento>), typeof(Validador))
+                            .AddTransient<CompartilhamentoClient>()
+                            .AddTransient<PostClient>()
                             .BuildServiceProvider();
 
-            var triadorService = serviceProvider.GetService<TriadorService<Evento>>();
             var enfileiradorClient = serviceProvider.GetService<EnfileiradorClient>();
+            var servicoCompartilhador = serviceProvider.GetService<Servico>();
 
-            var filaConfig = enfileiradorClient.TriadorFacebook();
+            var filaConfig = enfileiradorClient.CompartilhadorFacebook();
 
             var factory = new ConnectionFactory() { HostName = filaConfig.HostName };
             using (var connection = factory.CreateConnection())
@@ -62,14 +51,13 @@ namespace multiplixe.facebook.triador.console
                     {
                         var json = Encoding.UTF8.GetString(ea.Body.ToArray());
 
-                        var envelope = corehelper.DeserializadorHelper.Deserializar<comum_dto.EnvelopeEvento<Evento>>(json);
+                        var o = corehelper.DeserializadorHelper.Deserializar<object>(json);
 
                         Console.WriteLine("--------------------------------------------");
-                        Console.WriteLine("Empresa: {0}", envelope.EmpresaId);
-                        Console.WriteLine("DataEvento: {0}", envelope.DataEvento);
+                        Console.WriteLine("JSON: {0}", json);
                         Console.WriteLine("Data: {0}", corehelper.DateTimeHelper.Now());
 
-                        triadorService.ProcessarEnvelope(envelope);
+                        servicoCompartilhador.Compartilhar(o);
 
                         Console.WriteLine("Processou");
 
@@ -77,15 +65,6 @@ namespace multiplixe.facebook.triador.console
                         {
                             channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                         }
-                    }
-                    catch (coreexceptions.EventoInvalidoException eventoInvalidoException)
-                    {
-                        //##TODO logar
-                        Console.WriteLine("*************************************************************");
-                        Console.WriteLine("Evento inválido");
-                        Console.WriteLine(corehelper.DateTimeHelper.Now());
-                        Console.WriteLine(Encoding.UTF8.GetString(ea.Body.ToArray()));
-                        Console.WriteLine("*************************************************************");
                     }
                     catch (Exception ex)
                     {
@@ -100,9 +79,9 @@ namespace multiplixe.facebook.triador.console
                 var backgroundColor = Console.BackgroundColor;
 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("-----------------------------------------------------");
-                Console.WriteLine($"* Triador Facebook aguardando - {DateTimeHelper.Now()}  ");
+                Console.WriteLine($"* Facebook compartilhador aguardando - {corehelper.DateTimeHelper.Now()}  ");
                 Console.WriteLine("-----------------------------------------------------");
                 Console.WriteLine("");
 

@@ -10,6 +10,7 @@ service Perfil {
 	rpc Obter(PerfilFiltro) returns (PerfilResponse);
 	rpc Registrar(PerfilMessage) returns (PerfilResponse);
 	rpc ObterPerfisConectados(PerfilFiltro) returns (PerfilConectadoResponse);
+	rpc ObterAccessToken(AccessTokenRequest) returns (AccessTokenResponse);
 }
 
 message PerfilFiltro {
@@ -42,4 +43,14 @@ message PerfilConectadoResponse {
 	int32 HttpStatusCode = 1;
 	repeated PerfilMessage Perfis = 2;
 	bool TemConexao = 3;
+}
+
+message AccessTokenRequest {
+	string UsuarioId = 1;
+	int32 RedeSocial = 2;
+}
+
+message AccessTokenResponse {
+	int32 HttpStatusCode = 1;
+	string Token = 2;
 }

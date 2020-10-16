@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.usuarios.token",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.usuarios.avatar.console", "multiplixe.usuarios.avatar.console\multiplixe.usuarios.avatar.console.csproj", "{7B90CBA0-C237-424F-8448-3B48234385EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.usuarios.externo.autenticacao", "multiplixe.usuarios.externo.autenticacao\multiplixe.usuarios.externo.autenticacao.csproj", "{D102D9AD-0A49-47C5-B432-25BB47D6E9D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.usuarios.externo.autenticacao", "multiplixe.usuarios.externo.autenticacao\multiplixe.usuarios.externo.autenticacao.csproj", "{D102D9AD-0A49-47C5-B432-25BB47D6E9D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{908C80EB-41FA-44D5-A522-FEA556AE61B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{D5E0268A-E505-4C57-AD38-A3A75C86A2E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +58,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DDACB99D-DC70-43F9-890A-29F7953CFFB6} = {908C80EB-41FA-44D5-A522-FEA556AE61B4}
+		{66EE8B56-F2BC-481F-84CB-3E63AC258A31} = {908C80EB-41FA-44D5-A522-FEA556AE61B4}
+		{7B90CBA0-C237-424F-8448-3B48234385EB} = {D5E0268A-E505-4C57-AD38-A3A75C86A2E7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B385BA5-5B7A-4EF2-A1D3-B4FD9615EB2A}

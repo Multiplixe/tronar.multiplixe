@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using multiplixe.comum.helper;
+using System;
 using enums = multiplixe.comum.enums;
 
 namespace multiplixe.usuarios.grpc
@@ -8,6 +10,20 @@ namespace multiplixe.usuarios.grpc
     {
         public static void Main(string[] args)
         {
+            var foregroundColor = Console.ForegroundColor;
+            var backgroundColor = Console.BackgroundColor;
+
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"* Usuários - {DateTimeHelper.Now()}      ");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("");
+
+            Console.ForegroundColor = foregroundColor;
+            Console.BackgroundColor = backgroundColor;
+
+
             CreateHostBuilder(args).Build().Run();
         }
 

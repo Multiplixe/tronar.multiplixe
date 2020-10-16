@@ -1,12 +1,16 @@
 ﻿using multiplixe.compartilhador.grpc.Protos;
+using comum_dto = multiplixe.comum.dto;
 
 namespace multiplixe.compartilhador.grpc.parsers
 {
     public class CompartilhamentoCompartilhar
     {
-        public object Request(CompartilharRequest request)
+        public comum_dto.Compartilhamento Request(CompartilharRequest request)
         {
-            return new object();
+            return new comum_dto.Compartilhamento()
+            {
+                PostId = request.PostId
+            };
         }
 
         public object Response(BaseResponse request)

@@ -1,20 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="multiplixe.compartilhador.client" Version="1.0.1" />
     <PackageReference Include="multiplixe.comum.dto" Version="1.2.12" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
-    <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
-    <PackageReference Include="multiplixe.comum.triador" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
     <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
-    <PackageReference Include="multiplixe.registrador_de_eventos.client" Version="1.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\multiplixe.facebook.dto\multiplixe.facebook.dto.csproj" />
+    <PackageReference Include="multiplixe.usuarios.client" Version="1.2.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,7 @@ namespace multiplixe.compartilhador.grpc.Services
             this.postServico = servico;
         }
 
-        public override Task<ObterResponse> Obter(ObterRequest request, ServerCallContext context)
+        public override Task<ObterResponse> Obter(ConsultaRequest request, ServerCallContext context)
         {
             var response = new ObterResponse();
 
