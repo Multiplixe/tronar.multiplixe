@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -34,6 +34,17 @@
     <Protobuf Include="protos\token.proto" GrpcServices="Server" />
     <Protobuf Include="protos\usuario.proto" GrpcServices="Server" />
     <Protobuf Include="protos\usuarioexterno.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSigleFile>True</ExcludeFromSigleFile>
+    </Content>
+    <Content Update="google-credential.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSigleFile>True</ExcludeFromSigleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

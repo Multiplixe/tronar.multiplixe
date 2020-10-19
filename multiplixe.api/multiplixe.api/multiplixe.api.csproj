@@ -24,8 +24,8 @@
     <PackageReference Include="multiplixe.facebook.dto" Version="1.0.0" />
     <PackageReference Include="multiplixe.twitch.oauth" Version="1.0.0" />
     <PackageReference Include="multiplixe.twitch.ping" Version="1.0.1" />
-    <PackageReference Include="multiplixe.twitter.dto" Version="1.0.1" />
-    <PackageReference Include="multiplixe.twitter.oauth" Version="1.0.2" />
+    <PackageReference Include="multiplixe.twitter.dto" Version="1.0.2" />
+    <PackageReference Include="multiplixe.twitter.oauth" Version="1.0.3" />
     <PackageReference Include="multiplixe.usuarios.client" Version="1.2.0" />
   </ItemGroup>
 

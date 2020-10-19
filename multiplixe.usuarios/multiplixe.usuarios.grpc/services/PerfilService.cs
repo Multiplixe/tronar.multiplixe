@@ -8,13 +8,13 @@ namespace multiplixe.usuarios.grpc.services
 {
     public class PerfilService : Perfil.PerfilBase
     {
-        private perfil.Servico perfilService { get; }
+        private perfil.PerfilServico perfilService { get; }
         private parsers.PerfilRegistrar perfilRegistrarParser { get; }
         private parsers.PerfilObterPerfisConectados perfilObterPerfisConectadosParser { get; }
         private parsers.PerfilObter perfilObterParser { get; }
 
         public PerfilService(
-            perfil.Servico perfilService,
+            perfil.PerfilServico perfilService,
             parsers.PerfilRegistrar perfilRegistrarParser,
             parsers.PerfilObterPerfisConectados perfilObterPerfisConectadosParser,
             parsers.PerfilObter perfilObterParser)

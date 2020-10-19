@@ -10,12 +10,12 @@ using multiplixe.central_rtdb.client;
 
 namespace multiplixe.usuarios.perfil
 {
-    public class Servico
+    public class PerfilServico
     {
         private Repositorio repositorio { get; }
         private RTDBAtividadeClient rtdbAtividadeClient { get; }
 
-        public Servico(Repositorio repositorio, RTDBAtividadeClient rtdbAtividadeClient)
+        public PerfilServico(Repositorio repositorio, RTDBAtividadeClient rtdbAtividadeClient)
         {
             this.repositorio = repositorio;
             this.rtdbAtividadeClient = rtdbAtividadeClient;

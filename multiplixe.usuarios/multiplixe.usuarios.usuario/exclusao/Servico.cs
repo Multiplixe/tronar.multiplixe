@@ -1,5 +1,6 @@
 ﻿using multiplixe.classificador.client;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace multiplixe.usuarios.usuario.exclusao
 {
@@ -7,10 +8,10 @@ namespace multiplixe.usuarios.usuario.exclusao
     {
         private Repositorio repositorio { get; }
         private Firebase firebase { get; }
-        private exclusao.Firebase iniciador { get; }
+        private inicio.Firebase iniciador { get; }
         private ClassificadorUsuarioClient classificador { get; }
 
-        public Servico(Repositorio repositorio, Firebase firebase, exclusao.Firebase iniciador, ClassificadorUsuarioClient classificador)
+        public Servico(Repositorio repositorio, Firebase firebase, inicio.Firebase iniciador, ClassificadorUsuarioClient classificador)
         {
             this.repositorio = repositorio;
             this.firebase = firebase;

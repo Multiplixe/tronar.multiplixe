@@ -23,7 +23,6 @@ namespace multiplixe.api.controllers
                 EmpresaSettings empresaSettings ) : base(configuration, empresaSettings)
         {
             this.oauthService = oauthService;
-            this.enfileiradorClient = enfileiradorClient;
         }
 
         [HttpGet]

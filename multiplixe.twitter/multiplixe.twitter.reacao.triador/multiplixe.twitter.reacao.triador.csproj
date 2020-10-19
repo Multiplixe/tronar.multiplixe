@@ -6,9 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="multiplixe.comum.triador" Version="1.0.0" />
-    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
     <PackageReference Include="multiplixe.registrador_de_eventos.client" Version="1.0.0" />
-    <PackageReference Include="multiplixe.usuarios.client" Version="1.0.0" />
+    <PackageReference Include="multiplixe.usuarios.client" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,7 +28,7 @@ namespace multiplixe.usuarios.grpc
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<perfil.Servico>();
+            services.AddTransient<perfil.PerfilServico>();
             services.AddTransient<perfil.Repositorio>();
 
             services.AddTransient<usuario.registro.Firebase>();
