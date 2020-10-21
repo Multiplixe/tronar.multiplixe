@@ -41,7 +41,7 @@ export class YoutubeService extends BaseService {
       }
 
       let response = await this.getUserInfo(token.access_token);
-      let profile = this.parseProfile(response, token.access_token)
+      let profile = this.parseProfile(response, token)
 
       if (profile) {
         this.save(profile)
@@ -63,7 +63,7 @@ export class YoutubeService extends BaseService {
 
   }
 
-  private parseProfile(user: any, token: string) {
+  private parseProfile(user: any, token: any) {
 
     let profile: SocialMediaProfile = null;
 
@@ -78,7 +78,7 @@ export class YoutubeService extends BaseService {
       profile.profileId = item.id;
       profile.name = item.snippet.title;
       profile.imageUrl = item.snippet.thumbnails.default.url;
-      profile.token = JSON.stringify({ access_token: token });
+      profile.token = JSON.stringify(token);
     }
 
     return profile;

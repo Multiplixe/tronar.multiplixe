@@ -28,6 +28,9 @@ namespace multiplixe.comum.dto
         [JsonPropertyName("login")]
         public string Login { get; set; }
 
+        [JsonPropertyName("expiredIn")]
+        public DateTime? ExpiracaoToken { get; set; }
+
     }
 }
 

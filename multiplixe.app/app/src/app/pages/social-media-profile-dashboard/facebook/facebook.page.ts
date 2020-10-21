@@ -53,8 +53,7 @@ export class FacebookPage extends SocialMediaProfileDashboardBase implements OnI
       if (response && response.status == "connected") {
 
         console.log("response", response)
-
-        //var userInfo = await this.facebookService.api("/me?fields=id,name,picture.width(500).height(500)", "get", { access_token: response.authResponse.accessToken })
+        
         var userInfo = await this.facebookService.api("/me?fields=id,name,picture,accounts{app_id,id,access_token,name,category,username,website,page_token,cover,picture}", "get", { access_token: response.authResponse.accessToken })
 
         console.log("userInfo", userInfo)

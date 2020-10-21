@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.1.1</PackageVersion>
 
 
   </PropertyGroup>
@@ -25,8 +25,8 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="adduo.helper" Version="1.0.2" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
+    <PackageReference Include="adduo.helper" Version="1.0.3" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.14" />
   </ItemGroup>
 
 </Project>

@@ -7,45 +7,75 @@ using System.Linq;
 using System.Net;
 using System.Collections.Generic;
 using multiplixe.central_rtdb.client;
+using multiplixe.empresas.client;
+using multiplixe.comum.helper;
 
 namespace multiplixe.usuarios.perfil
 {
     public class PerfilServico
     {
+        private readonly EmpresaClient empresaClient;
+
         private Repositorio repositorio { get; }
         private RTDBAtividadeClient rtdbAtividadeClient { get; }
 
-        public PerfilServico(Repositorio repositorio, RTDBAtividadeClient rtdbAtividadeClient)
+        public PerfilServico(
+            Repositorio repositorio,
+            RTDBAtividadeClient rtdbAtividadeClient,
+            EmpresaClient empresaClient)
         {
             this.repositorio = repositorio;
             this.rtdbAtividadeClient = rtdbAtividadeClient;
+            this.empresaClient = empresaClient;
         }
         public adduohelper.envelopes.ResponseEnvelope<dto.Perfil> Registrar(adduohelper.envelopes.RequestEnvelope<dto.Perfil> request)
         {
             var response = request.CreateResponse();
 
-            var redesSociais = enums.EnumHelper.GetValues<enums.RedeSocialEnum>();
+            var perfil = request.Item;
 
-            if (request.Item.EmpresaId.Equals(Guid.Empty) ||
-                request.Item.UsuarioId.Equals(Guid.Empty) ||
-                string.IsNullOrEmpty(request.Item.PerfilId) ||
-                string.IsNullOrEmpty(request.Item.Nome) ||
-                !redesSociais.Contains(request.Item.RedeSocial))
-            {
-                response.HttpStatusCode = HttpStatusCode.BadRequest;
-                return response;
-            }
+            ValidarRegistrar(perfil);
 
-            request.Item.Ativo = true;
-            request.Item.DataCadastro = corehelper.DateTimeHelper.Now();
+            perfil.Ativo = true;
+            perfil.DataCadastro = corehelper.DateTimeHelper.Now();
 
-            repositorio.Registrar(request.Item);
+            ProcessarToken(perfil);
 
-            rtdbAtividadeClient.RegistrarPerfil(request.Item.UsuarioId);
+            repositorio.Registrar(perfil);
+
+            rtdbAtividadeClient.RegistrarPerfil(perfil.UsuarioId);
 
             response.HttpStatusCode = HttpStatusCode.Created;
 
             return response;
+        }
+
+        private void ValidarRegistrar(dto.Perfil perfil)
+        {
+            var redesSociais = enums.EnumHelper.GetValues<enums.RedeSocialEnum>();
+
+            if (perfil.EmpresaId.Equals(Guid.Empty) ||
+                perfil.UsuarioId.Equals(Guid.Empty) ||
+                string.IsNullOrEmpty(perfil.PerfilId) ||
+                string.IsNullOrEmpty(perfil.Nome) ||
+                !redesSociais.Contains(perfil.RedeSocial))
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        private void ProcessarToken(dto.Perfil perfil)
+        {
+            if (!string.IsNullOrEmpty(perfil.Token))
+            {
+                var factoryProcessarToken = new access_token.Factory(perfil.RedeSocial, perfil.EmpresaId, empresaClient);
+                var servicoProcessarToken = factoryProcessarToken.Obter();
+                var perfilAccessToken = servicoProcessarToken.TrocarToken(perfil.Token);
+
+                perfil.ExpiracaoToken = perfilAccessToken.Expiracao;
+
+                perfil.Token = perfilAccessToken.Json;
+            }
         }
 
         public adduohelper.envelopes.ResponseEnvelope<results.Perfil> Obter(Filtro filtro)
@@ -81,6 +111,11 @@ namespace multiplixe.usuarios.perfil
             }
 
             return response;
+        }
+
+        public void Desconectar(results.Perfil perfil)
+        {
+            repositorio.Desconectar(perfil.UsuarioId, perfil.RedeSocialId, perfil.PerfilId);
         }
 
         private List<dto.Perfil> Parser(List<results.Perfil> results)

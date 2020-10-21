@@ -15,5 +15,8 @@ namespace multiplixe.comum.dto
         
         [JsonIgnore()]
         public TipoTokenEnum Tipo { get; set; }
+
+        [JsonIgnore()]
+        public DateTime? Expiracao { get; set; }
     }
 }

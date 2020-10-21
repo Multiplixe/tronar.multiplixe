@@ -50,6 +50,20 @@ namespace multiplixe.empresas.client
             return response;
         }
 
+        public adduohelper.envelopes.ResponseEnvelope<dto.empresas.FacebookInfo> ObterInfoFacebook(Guid empresaId)
+        {
+            var response = new adduohelper.envelopes.ResponseEnvelope<dto.empresas.FacebookInfo>();
+
+            response.Item = new dto.empresas.FacebookInfo
+            {
+                AppId = "234854220945907",
+                AppSecret = "1d8654798190790951fae1dfb6588b9d",
+                GraphApiVersao = "v8.0"
+            };
+
+            return response;
+        }
+
         public adduohelper.envelopes.ResponseEnvelope<dto.empresas.FirebaseInfo> ObterInfoFirebase(Guid empresaId)
         {
             var response = new adduohelper.envelopes.ResponseEnvelope<dto.empresas.FirebaseInfo>();

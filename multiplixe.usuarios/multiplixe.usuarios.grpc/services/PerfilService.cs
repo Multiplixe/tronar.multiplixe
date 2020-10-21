@@ -3,23 +3,28 @@ using Grpc.Core;
 using System;
 using System.Threading.Tasks;
 using System.Net;
+using multiplixe.comum.enums;
+using adduo.helper.envelopes.exeptions;
 
 namespace multiplixe.usuarios.grpc.services
 {
     public class PerfilService : Perfil.PerfilBase
     {
         private perfil.PerfilServico perfilService { get; }
+        private perfil.AccessTokenServico accessTokenServico { get; }
         private parsers.PerfilRegistrar perfilRegistrarParser { get; }
         private parsers.PerfilObterPerfisConectados perfilObterPerfisConectadosParser { get; }
         private parsers.PerfilObter perfilObterParser { get; }
 
         public PerfilService(
             perfil.PerfilServico perfilService,
+            perfil.AccessTokenServico accessTokenServico,
             parsers.PerfilRegistrar perfilRegistrarParser,
             parsers.PerfilObterPerfisConectados perfilObterPerfisConectadosParser,
             parsers.PerfilObter perfilObterParser)
         {
             this.perfilService = perfilService;
+            this.accessTokenServico = accessTokenServico;
             this.perfilRegistrarParser = perfilRegistrarParser;
             this.perfilObterPerfisConectadosParser = perfilObterPerfisConectadosParser;
             this.perfilObterParser = perfilObterParser;
@@ -80,7 +85,15 @@ namespace multiplixe.usuarios.grpc.services
                     HttpStatusCode = (int)envelope.HttpStatusCode,
                 };
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
+            {
+                response.HttpStatusCode = (int)HttpStatusCode.BadRequest;
+            }
+            catch (EnvelopeException env)
+            {
+                response.HttpStatusCode = (int)env.HttpStatusCode;
+            }
+            catch (Exception)
             {
                 response.HttpStatusCode = (int)HttpStatusCode.InternalServerError;
             }
@@ -110,11 +123,32 @@ namespace multiplixe.usuarios.grpc.services
 
         public override Task<AccessTokenResponse> ObterAccessToken(AccessTokenRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new AccessTokenResponse {
-                HttpStatusCode = 200,
-                Token = "token do usuario na rede social XPTO"
-            });
+            var response = new AccessTokenResponse();
 
+            try
+            {
+                var usuarioId = Guid.Parse(request.UsuarioId);
+                var redesocial = (RedeSocialEnum)request.RedeSocial;
+
+                var envelopeResponse = accessTokenServico.Obter(usuarioId, redesocial);
+
+                response.HttpStatusCode = (int)envelopeResponse.HttpStatusCode;
+
+                if (envelopeResponse.Success)
+                {
+                    response.Token = envelopeResponse.Item.Token;
+                }
+            }
+            catch (EnvelopeException env)
+            {
+                response.HttpStatusCode = (int)env.HttpStatusCode;
+            }
+            catch (Exception)
+            {
+                response.HttpStatusCode = (int)HttpStatusCode.InternalServerError;
+            }
+
+            return Task.FromResult(response);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using adduo.helper.extensionmethods;
+using multiplixe.comum.enums;
+using System;
 using System.Collections.Generic;
 using dapper = multiplixe.comum.dapper;
 using dto = multiplixe.comum.dto;
@@ -38,7 +40,7 @@ namespace multiplixe.usuarios.perfil
 
         public void Registrar(dto.Perfil perfil)
         {
-            dapperHelper
+            var dapper = dapperHelper
                 .ResetParameter()
                 .AddParameter("_empresaId", perfil.EmpresaId)
                 .AddParameter("_usuarioId", perfil.UsuarioId)
@@ -49,8 +51,31 @@ namespace multiplixe.usuarios.perfil
                 .AddParameter("_dataCadastro", perfil.DataCadastro)
                 .AddParameter("_token", perfil.Token)
                 .AddParameter("_imagemUrl", perfil.ImagemUrl)
-                .AddParameter("_login", perfil.Login)
-                .Insert("perfil_registrar");
+                .AddParameter("_login", perfil.Login);
+
+
+            if (perfil.ExpiracaoToken.HasValue)
+            {
+                dapper.AddParameter("_expiracaoToken", perfil.ExpiracaoToken.Value.ToMySQL());
+            }
+            else
+            {
+                dapper.AddParameterNullValue("_expiracaoToken");
+
+            }
+
+            dapper.Insert("perfil_registrar");
         }
+
+        public void Desconectar(Guid usuarioId, int redeSocialId, string perfilId)
+        {
+            dapperHelper
+                .ResetParameter()
+                .AddParameter("_usuarioId", usuarioId)
+                .AddParameter("_redeSocialId", redeSocialId)
+                .AddParameter("_perfilId", perfilId)
+                .Insert("perfil_desconectar");
+        }
+
     }
 }

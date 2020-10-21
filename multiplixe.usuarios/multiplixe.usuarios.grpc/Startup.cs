@@ -10,6 +10,7 @@ using multiplixe.central_rtdb.client;
 using multiplixe.classificador.client;
 using multiplixe.comum.dapper;
 using multiplixe.comum.helper;
+using multiplixe.empresas.client;
 using multiplixe.usuarios.grpc.services;
 using System.IO;
 
@@ -29,6 +30,7 @@ namespace multiplixe.usuarios.grpc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<perfil.PerfilServico>();
+            services.AddTransient<perfil.AccessTokenServico>();
             services.AddTransient<perfil.Repositorio>();
 
             services.AddTransient<usuario.registro.Firebase>();
@@ -72,6 +74,7 @@ namespace multiplixe.usuarios.grpc
             services.AddTransient<token.Repositorio>();
             services.AddTransient<RTDBUsuarioClient>();
             services.AddTransient<RTDBAtividadeClient>();
+            services.AddTransient<EmpresaClient>();
 
             var googleCredentialsPath = Path.Combine(Directory.GetCurrentDirectory(), "google-credential.json");
 
