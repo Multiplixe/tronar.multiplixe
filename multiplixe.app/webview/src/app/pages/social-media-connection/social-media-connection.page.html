@@ -1,50 +1,43 @@
 <div *ngIf="showContent()">
 
-  <div>
+  <main>
 
-    <main>
+    <div class="box">
 
-      <div>
+      <p>{{service.explainText}}</p>
 
-        <p>{{service.explainText}}</p>
+      <app-list-items [items]="['sdfdsf', 'sdfsdf']" bgColorClass="social-media-{{service.id}}-bg"></app-list-items>
 
-        <app-list-items [items]="service.explainItemsText"></app-list-items>
+    </div>
 
-      </div>
+    <div>
 
-      <div>
+      <p *ngIf="profiles.length > 0">Sua conexão</p>
 
-        <p *ngIf="profiles.length > 0">Sua conexão</p>
-
-        <div *ngFor="let profile of profiles">
-            <div class="form-btn">
-            {{profile.name}}
-            <div class="form-btn-photo">
-              <div class="form-btn-photo-box">
-                <img class="form-btn-photo-img" src="{{profile.imageUrl}}" alt="">
-              </div>
+      <div *ngFor="let profile of profiles">
+        <div class="form-btn">
+          {{profile.name}}
+          <div class="form-btn-photo">
+            <div class="form-btn-photo-box">
+              <img class="form-btn-photo-img" src="{{profile.imageUrl}}" alt="">
             </div>
-
           </div>
-        </div>
-
-        <div *ngIf="profiles.length == 0">
-
-          <button type="button" (click)="connect()">
-            <div>
-              <img class="form-btn-icon-img" src="/assets/img/{{service.ico}}" alt="">
-            </div>
-            Adicionar conta {{service.name}}
-            <div class="form-btn-photo">
-            </div>
-          </button>
 
         </div>
-
       </div>
 
-    </main>
+      <div id="connection" *ngIf="profiles.length == 0">
+        <button class="social-media-{{service.id}}-bg" type="button" (click)="connect()">
+          <div>
+            <img src="/assets/img/{{service.ico}}" alt="">
+          </div>
+          <span>Conectar sua conta {{service.name}}</span>
+          <div></div>
+        </button>
+      </div>
 
-  </div>
+    </div>
+
+  </main>
 
 </div>

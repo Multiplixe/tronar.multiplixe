@@ -33,22 +33,19 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
 
     try {
 
-      this.route.params.subscribe(async params => {
-
+      this.route.params.subscribe(params => {
         this.socialMedia = (SocialMediaEnum[params["socialmedia"]] as unknown) as SocialMediaEnum;
-
-        this.service = SocialMediaFactory(this.socialMedia);
-
-        let response = await this.service.get();
-
-        this.profiles.push(response.item.profile);
-
-        console.log(this.profiles)
-
-        this.canShowContent();
-        
       });
 
+      this.service = SocialMediaFactory(this.socialMedia);
+
+      let response = await this.service.get();
+
+      this.profiles.push(response.item.profile);
+
+      console.log(this.profiles)
+
+      this.canShowContent();
     }
     catch (e) {
       if (e.status == HttpStatusCode.notFound) {

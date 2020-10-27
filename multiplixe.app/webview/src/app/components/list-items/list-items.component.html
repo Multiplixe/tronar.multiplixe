@@ -1,3 +1,12 @@
-<ul>
-    <li *ngFor="let item of items">{{item}}</li>
-</ul>
+<div class="list-color-container">
+    <div class="list-color">
+        <div class="list-color-list">
+            <div class="list-color-list-item" *ngFor="let item of items">
+                <div class="{{bgColorClass}} list-color-list-item-color"></div>
+                <div class="list-color-list-item-title">
+                    <h4>{{item}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
