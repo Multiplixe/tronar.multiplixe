@@ -6,7 +6,7 @@
 
       <p>{{service.explainText}}</p>
 
-      <app-list-items [items]="['sdfdsf', 'sdfsdf']" bgColorClass="social-media-{{service.id}}-bg"></app-list-items>
+      <app-list-items [items]="service.explainItemsText" bgColorClass="social-media-{{service.id}}-bg"></app-list-items>
 
     </div>
 
@@ -14,16 +14,13 @@
 
       <p *ngIf="profiles.length > 0">Sua conexão</p>
 
-      <div *ngFor="let profile of profiles">
-        <div class="form-btn">
-          {{profile.name}}
-          <div class="form-btn-photo">
-            <div class="form-btn-photo-box">
-              <img class="form-btn-photo-img" src="{{profile.imageUrl}}" alt="">
+      <div class="profile-container social-media-{{service.id}}-bg" *ngFor="let profile of profiles">
+          <span>{{profile.name}}</span>
+          <div class="profile-photo-container">
+            <div>
+              <img src="{{profile.imageUrl}}" alt="">
             </div>
           </div>
-
-        </div>
       </div>
 
       <div id="connection" *ngIf="profiles.length == 0">

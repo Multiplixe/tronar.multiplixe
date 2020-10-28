@@ -83,6 +83,37 @@ body {
     }
 }
 
+.profile-container {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    padding: 0 1.5rem;
+    height: 60px;
+    background-color: transparent;
+    outline: none;
+    align-items: center;
+    border: 0px;
+    span {
+        flex: 1;
+    }
+    .profile-photo-container {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        div {
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            object-fit: cover;
+            object-position: center;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
 
 .box {
     border-radius: 20px;
@@ -92,24 +123,19 @@ body {
 }
 
 .list-items {
-    list-style: none
+    list-style: none;
 }
 
 .list-items li::before {
     content: "\2022";
     font-weight: bold;
     font-size: 35px;
-    margin-left:-1em;
+    margin-left: -1em;
     padding: 10px;
 }
 
-.list-items li  {
+.list-items li {
     padding-bottom: 10px;
-}
-
-
-.social-media-1-color-x li::before {
-    color: #1da1f2 !important;
 }
 
 .social-media-1-color {
@@ -152,15 +178,9 @@ body {
     background-color: #ff0000 !important;
 }
 
-
 .list-color-container {
     display: flex;
     align-items: center;
-
-    .falkol-px-skin {
-        width: 45px;
-        margin-right: 20px;
-    }
     .list-color {
         flex: 1;
         &-count,
