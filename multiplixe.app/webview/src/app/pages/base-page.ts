@@ -51,6 +51,8 @@ export class BasePage implements OnInit {
 
   async processError(error: any, message: string, callback: Function = null) {
 
+    console.log("ERROR", error)
+
     if (error && error.status === HttpStatusCode.unauthorized) {
 
     }

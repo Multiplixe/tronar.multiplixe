@@ -72,6 +72,8 @@ export class FacebookService
                 let profile = SocialMediaProfileDto.create(SocialMediaEnum.facebook, userInfo.id, userInfo.name, imageUrl, token);
 
                 await this.save(profile);
+
+                window.location.reload();
             }
             else {
                 console.log("NOTIFICAR APP", "Não foi possível fazer a conexão com o Facebook");

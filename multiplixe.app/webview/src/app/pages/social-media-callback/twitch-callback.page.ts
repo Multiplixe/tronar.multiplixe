@@ -31,7 +31,7 @@ export class TwitchCallbackPage extends BasePage implements OnInit {
 
       this.runLoading();
 
-      await this.twitchService.process(token, verifier);
+      await this.twitchService.process(code);
 
     }
     catch (e) {

@@ -30,6 +30,6 @@ export const firebaseEnvironment = {
 };
 
 export const youtubeEnvironment = {
-  oauth2Url : 'https://accounts.google.com/o/oauth2/auth?client_id=966425825843-ust8rrku5ua16mqhl2dvrosaa64fu2sk.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fapp.falkol.gg%2Fr%2Fyoutube-auth-callback&scope=https://www.googleapis.com/auth/youtube.readonly&response_type=token',
+  oauth2Url : 'https://accounts.google.com/o/oauth2/auth?client_id=966425825843-ust8rrku5ua16mqhl2dvrosaa64fu2sk.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fapp.falkol.gg%2Fyoutube-callback&scope=https://www.googleapis.com/auth/youtube.readonly&response_type=token',
   userInfoUrl : 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet&mine=true&access_token='
 }

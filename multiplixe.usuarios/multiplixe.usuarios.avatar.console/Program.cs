@@ -71,6 +71,8 @@ namespace multiplixe.usuarios.avatar.console
                     }
                     catch (Exception ex)
                     {
+                        channel.BasicNack(ea.DeliveryTag, false, true);
+
                         Console.WriteLine("*************************************************************");
                         Console.WriteLine("Erro");
                         Console.WriteLine(ex.Message);

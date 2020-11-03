@@ -52,7 +52,11 @@ export class YoutubeService
             }
 
             let response = await this.getUserInfo(token.access_token);
+
             let profile = this.parseProfile(response, token)
+
+            console.log("profile", profile)
+
 
             if (profile) {
                 this.save(profile)
@@ -79,9 +83,8 @@ export class YoutubeService
         let profile: SocialMediaProfileDto = null;
 
         if (user &&
-            user.pageInfo &&
-            user.pageInfo.resultsPerPage &&
-            user.pageInfo.resultsPerPage == 1) {
+            user.items &&
+            user.items.length) {
 
             let item = user.items[0];
 

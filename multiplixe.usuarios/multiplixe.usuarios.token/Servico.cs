@@ -23,6 +23,9 @@ namespace multiplixe.usuarios.token
                 ValidarParaRegistrar(token);
 
                 repositorio.Registrar(token);
+
+
+                response.HttpStatusCode = HttpStatusCode.Created;
             }
             catch (ArgumentException a)
             {
