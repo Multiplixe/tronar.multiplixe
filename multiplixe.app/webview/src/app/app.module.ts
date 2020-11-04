@@ -12,6 +12,9 @@ import { FacebookModule } from 'ngx-facebook';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptors';
 import { TwitterCallbackPage } from './pages/social-media-callback/twitter-callback.page';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,18 @@ import { TwitterCallbackPage } from './pages/social-media-callback/twitter-callb
     SetupPage,
     SocialMediaConnectionPage,
     ListItemsComponent,
-    TwitterCallbackPage
+    TwitterCallbackPage,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    FacebookModule.forRoot()
+    FacebookModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass : 'toast-bottom-center'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

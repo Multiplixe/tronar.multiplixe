@@ -35,11 +35,10 @@ export class YoutubeCallbackPage extends BasePage implements OnInit {
 
     }
     catch (e) {
-      this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Youtube. Por favor, tente novamente mais tarde.");
+      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Youtube. Por favor, tente novamente mais tarde.", async () => { this.process() });
     }
     finally {
       this.stopLoading();
-
       super.redirect('social-media-connection/youtube')
     }
   }

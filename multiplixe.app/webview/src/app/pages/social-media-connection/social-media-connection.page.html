@@ -1,6 +1,12 @@
+<!-- <a href="/setup/facebook?refresh_token=AG8BCnc40jI6FAbrrCF0lOVXJF_YCHiogo1XlvfLsvemRgVM-TAXrYZ6Tt-PikfxS_j-RCTJbzlQh5Tvg_uhSVTB9PtGgODQVuZvAaqLzuLeWSxoZztmHSzVJvjC1dSWk-tRU2EAjb5OA5itwsPhg5HqKN6CB3gm719nH32rUbvHPMGWJm2sVxpuYI4BW5qkmBAZlbS113kw4gm-izde1EDgk8sqBZS1Yzc9uTPp9cJxIjEf7en81kAK9ERbh6rJotHEzFZHLAPcQFVlKCQVv92WR_bPJNi2sQ">#######</a> -->
+
 <div *ngIf="showContent()">
 
   <main>
+
+    <div class="social-media-name">
+      <h2>{{service.name}}</h2>
+    </div>
 
     <div class="box">
 
@@ -15,12 +21,12 @@
       <p *ngIf="profiles.length > 0">Sua conexão</p>
 
       <div class="profile-container social-media-{{service.id}}-bg" *ngFor="let profile of profiles">
-          <span>{{profile.name}}</span>
-          <div class="profile-photo-container">
-            <div>
-              <img src="{{profile.imageUrl}}" alt="">
-            </div>
+        <span>{{profile.name}}</span>
+        <div class="profile-photo-container">
+          <div>
+            <img src="{{profile.imageUrl}}" alt="">
           </div>
+        </div>
       </div>
 
       <div id="connection" *ngIf="profiles.length == 0">

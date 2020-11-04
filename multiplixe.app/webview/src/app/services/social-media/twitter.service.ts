@@ -38,7 +38,9 @@ export class TwitterService
             window.location.href = response.item;
         }
         catch (e) {
-            super.processError(e, 'Ocorreu algum erro ao tentar se conectar.');
+            super.processError(e, 'Ocorreu algum erro ao tentar se conectar.', async () => { 
+                this.connect();
+            });
         }
 
     }

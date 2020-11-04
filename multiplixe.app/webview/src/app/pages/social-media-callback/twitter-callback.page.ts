@@ -35,13 +35,11 @@ export class TwitterCallbackPage extends BasePage implements OnInit {
 
     }
     catch (e) {
-      this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Twitter. Por favor, tente novamente mais tarde.");
+      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Twitter. Por favor, tente novamente mais tarde.", async () => { this.process(token, verifier) });
     }
     finally {
       this.stopLoading();
-
       super.redirect('social-media-connection/twitter')
-
     }
   }
 }

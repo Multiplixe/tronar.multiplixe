@@ -9,7 +9,7 @@ export interface ISocialMedia {
     ico: string;
     url: string;
     explainText: string;
-    explainItemsText: string[];
+    explainItemsText: string[]; 
 
     connect(): void;
     save(profile: SocialMediaProfileDto);

@@ -30,8 +30,15 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
   }
 
   async ngOnInit() {
+    super.ngOnInit();
+    await this.load();
+  }
+
+  async load() {
 
     try {
+
+      this.runLoading();
 
       this.route.params.subscribe(params => {
         this.socialMedia = (SocialMediaEnum[params["socialmedia"]] as unknown) as SocialMediaEnum;
@@ -43,16 +50,15 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
 
       this.profiles.push(response.item.profile);
 
-      console.log(this.profiles)
-
       this.canShowContent();
     }
     catch (e) {
+
       if (e.status == HttpStatusCode.notFound) {
         this.canShowContent();
       }
       else {
-        this.processError(e, "Ocorreu algum problema ao conectar no servidor. Por favor, tente novamente.");
+        this.processError(e, "Ocorreu algum problema ao conectar no servidor. Por favor, tente novamente.", async () => { this.load() });
       }
     }
     finally {

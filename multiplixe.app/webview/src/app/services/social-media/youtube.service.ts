@@ -34,6 +34,7 @@ export class YoutubeService
     async connect() {
 
         try {
+            await super.isAuthenticated();
             window.location.href = youtubeEnvironment.oauth2Url;
         }
         catch (e) {
@@ -54,9 +55,6 @@ export class YoutubeService
             let response = await this.getUserInfo(token.access_token);
 
             let profile = this.parseProfile(response, token)
-
-            console.log("profile", profile)
-
 
             if (profile) {
                 this.save(profile)

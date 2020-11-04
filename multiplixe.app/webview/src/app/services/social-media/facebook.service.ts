@@ -35,8 +35,17 @@ export class FacebookService
         });
     }
 
-    async save(profile: SocialMediaProfileDto) {
-        return super.save(profile);
+    async saveProfile(profile: SocialMediaProfileDto) {
+
+        try {
+            await this.save(profile);
+            window.location.reload();
+        }
+        catch (e) {
+            super.processError(e, 'Ocorreu algum erro ao tentar se conectar.', async () => {
+                await this.saveProfile(profile);
+            });
+        }
     }
 
     async get() {
@@ -71,9 +80,7 @@ export class FacebookService
 
                 let profile = SocialMediaProfileDto.create(SocialMediaEnum.facebook, userInfo.id, userInfo.name, imageUrl, token);
 
-                await this.save(profile);
-
-                window.location.reload();
+                await this.saveProfile(profile);
             }
             else {
                 console.log("NOTIFICAR APP", "Não foi possível fazer a conexão com o Facebook");
@@ -81,8 +88,7 @@ export class FacebookService
             }
         }
         catch (e) {
-            console.log("ERROR", e)
-            //super.processError(e, 'Ocorreu algum erro ao tentar se conectar.');
+            super.processError(e, 'Ocorreu algum erro ao tentar se conectar.');
         }
     }
 }
