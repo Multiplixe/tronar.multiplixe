@@ -20,26 +20,31 @@ export class SetupPage extends BasePage implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.queryParams.subscribe(async queryParams => {
+    this.route.params.subscribe(params => {
 
-      if (queryParams["refresh_token"]) {
+      let url = 'social-media-connection/' + params["socialmedia"];
 
-        this.authService.processRefreshToken(queryParams["refresh_token"])
-          .then(() => {
+      this.route.queryParams.subscribe(async queryParams => {
 
-            this.route.params.subscribe(params => {
-              this.redirect('social-media-connection/' + params["socialmedia"]);
+        if (queryParams["access_token"]) {
+
+          this.authService.processAccessToken(queryParams["access_token"])
+            .then(() => {
+              this.redirect(url);
+            })
+            .catch(() => {
             });
 
-          })
-          .catch(() => {
-console.log("sdfsddsf")
-          });
-
-      }
-
+        }
+        else if (queryParams["refresh_token"]) {
+          this.authService.processRefreshToken(queryParams["refresh_token"])
+            .then(() => {
+              this.redirect(url);
+            })
+            .catch(() => {
+            });
+        }
+      });
     });
-
   }
-
 }

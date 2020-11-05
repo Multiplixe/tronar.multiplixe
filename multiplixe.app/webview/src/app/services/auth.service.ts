@@ -56,6 +56,18 @@ export class AuthService {
     });
   }
 
+  processAccessToken(access_token: string) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.localStorageService.setItem("ACCESS-TOKEN", access_token);
+        resolve();
+      }
+      catch (e) {
+        reject(e);
+      }
+    });
+  }
+
   processRefreshToken(refresh_token: string) {
 
     return new Promise(async (resolve, reject) => {
