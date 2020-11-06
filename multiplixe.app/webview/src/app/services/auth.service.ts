@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
 
 import { firebaseEnvironment } from '../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
@@ -7,6 +6,10 @@ import { HttpService } from './http.service';
 import { AppInjector } from '../app-injector';
 import { LocalStorageService } from './local-storage.service';
 import { HttpStatusCode } from '../enums/http-status.enum';
+import { PasswordResetEntries } from '../dtos/password-reset.entries';
+
+import { AngularFireAuth } from '@angular/fire/auth';
+import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +18,12 @@ export class AuthService {
 
   private httpService: HttpService;
   private localStorageService: LocalStorageService;
+  private angularFireAuth: AngularFireAuth;
 
   constructor() {
     this.httpService = AppInjector.get(HttpService);
     this.localStorageService = AppInjector.get(LocalStorageService);
+    this.angularFireAuth = AppInjector.get(AngularFireAuth);
   }
 
   getId(): string {
@@ -116,11 +121,20 @@ export class AuthService {
 
       }
       catch (e) {
+        console.log("e", e)
         reject(e);
       }
 
     });
 
+  }
+
+  async passwordReset(request: PasswordResetEntries) {
+    return this.angularFireAuth.confirmPasswordReset(request.oobCode, request.password.value);
+  }
+
+  async passwordResetValidate(reset: PasswordResetEntries) {
+    return this.angularFireAuth.verifyPasswordResetCode(reset.oobCode);
   }
 
 }

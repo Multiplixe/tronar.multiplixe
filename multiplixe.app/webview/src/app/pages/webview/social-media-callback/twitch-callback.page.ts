@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppInjector } from 'src/app/app-injector';
-import { BasePage } from '../base-page';
+import { BasePage } from '../../base-page';
 import { TwitchService } from 'src/app/services/social-media/twitch.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class TwitchCallbackPage extends BasePage implements OnInit {
     }
     finally {
       this.stopLoading();
-      super.redirect('social-media-connection/twitch')
+      super.redirect('webview/social-media-connection/twitch')
     }
   }
 }

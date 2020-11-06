@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { BasePage } from '../base-page';
+import { BasePage } from '../../base-page';
 
 @Component({
   selector: 'app-setup-page',
@@ -20,11 +20,17 @@ export class SetupPage extends BasePage implements OnInit {
 
   ngOnInit(): void {
 
+
     this.route.params.subscribe(params => {
 
-      let url = 'social-media-connection/' + params["socialmedia"];
+      if (!params["socialmedia"]) {
+        super.showMessage('rede social não informada na URL, ex: /facebook');
+      }
+
+      let url = 'webview/social-media-connection/' + params["socialmedia"];
 
       this.route.queryParams.subscribe(async queryParams => {
+
 
         if (queryParams["access_token"]) {
 
@@ -37,12 +43,21 @@ export class SetupPage extends BasePage implements OnInit {
 
         }
         else if (queryParams["refresh_token"]) {
+
+          console.log(">>>", url, queryParams["refresh_token"])
+
           this.authService.processRefreshToken(queryParams["refresh_token"])
             .then(() => {
+
+              console.log("OK")
+
               this.redirect(url);
             })
             .catch(() => {
             });
+        }
+        else {
+          this.showMessage('parametro access_token não informado')
         }
       });
     });

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ToastrService } from 'ngx-toastr';
 import { AppInjector } from '../app-injector';
+import Entry from '../entries/entry';
+import { EntryHelper } from '../entries/entry.helper';
 import { HttpStatusCode } from '../enums/http-status.enum';
 import { DisplayHelper } from '../helpers/display.helper';
 import { AuthService } from '../services/auth.service';
@@ -29,8 +31,26 @@ export class BasePage implements OnInit {
   ngOnInit() {
     this.display.reset();
     this.stopLoading();
-    this.toastr.success('oi');
+  }
 
+  isInvalidStatus(dto: Entry): boolean {
+    return EntryHelper.isInvalidStatus(dto);
+  }
+
+  isValidStatus(dto: Entry): boolean {
+    return EntryHelper.isValidStatus(dto);
+  }
+
+  isInvalidError(dto: Entry): boolean {
+    return EntryHelper.isInvalidError(dto);
+  }
+
+  isAlreadyError(dto: Entry): boolean {
+    return EntryHelper.isAlreadyError(dto);
+  }
+
+  isDifferentCode(dto: Entry): boolean {
+    return EntryHelper.isDifferentCode(dto);
   }
 
   canShowContent() {
@@ -54,7 +74,7 @@ export class BasePage implements OnInit {
   }
 
   showMessage(text: string) {
-    this.toastr.success(text);
+    this.toastr.error(text);
   }
 
   async processError(error: any, message: string, callback: Function = null) {

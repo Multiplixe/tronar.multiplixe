@@ -13,7 +13,6 @@ body {
     letter-spacing: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
     color: #ffffff;
-    overflow-x: hidden;
 }
 
 body {
@@ -315,5 +314,124 @@ body {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+    .form-input,
+    .form-label {
+        width: 100%;
+        height: 3rem;
+        font-size: 1rem;
+        color: #ffffff;
+    }
+    .form-input {
+        border: 0;
+        border-bottom: 1px solid #4583f0;
+        outline: none;
+        transition: all 0.2s ease-in-out;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .form-label {
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        font-size: 1rem;
+        cursor: text;
+        transition: all 0.2s ease-in-out;
+    }
+    .form-input:focus {
+        border-bottom: 1px solid #4583f0;
+    }
+    .form-input:valid {
+        border-bottom: 1px solid #02b7d1;
+    }
+    .form-input:invalid {
+        box-shadow: none;
+    }
+    .form-input:focus:invalid,
+    .form-input:not(:placeholder-shown):invalid {
+        border-bottom-color: #ff0808;
+    }
+    .form-input:not(:placeholder-shown) + .form-label {
+        color: #ffffff;
+        font-size: 0.875rem;
+        top: -30px;
+        pointer-events: none;
+    }
+    .form-input:valid + .form-label,
+    .form-input:focus + .form-label {
+        color: #ffffff;
+        font-size: 0.875rem;
+        top: -30px;
+        pointer-events: none;
+    }
+
+    .form-validation {
+        position: absolute;
+        width: 18px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+    .form-notification {
+        font-size: 0.75rem;
+        color: #ff0808;
+        // visibility: hidden;
+    }
+    &.form-file-group {
+        text-align: center;
+        .form-input-file {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+    .form-link-avatar {
+        cursor: pointer;
+        position: relative;
+        color: #2664d3;
+        display: block;
+        text-align: center;
+    }
+}
+
+
+.form-buttons {
+    .form-btn-group {
+        margin-bottom: 20px;
+        .form-btn {
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffffff;
+            border-radius: 8px;
+            height: 60px;
+            background-color: transparent;
+            background-color: #2664d3;
+            border: 0px;
+            outline: none;
+            cursor: pointer;
+            &.form-btn-submit {
+                background-color: #2664d3;
+                border: 0px;
+            }
+        }
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    .form-inputs {
+        flex-grow: 1;
     }
 }

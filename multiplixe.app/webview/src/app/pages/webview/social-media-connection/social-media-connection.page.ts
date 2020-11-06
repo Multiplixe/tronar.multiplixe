@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BasePage } from '../base-page';
+import { BasePage } from '../../base-page';
 import { ActivatedRoute } from '@angular/router';
 import { Injector } from "@angular/core";
-import { SocialMediaFactory } from '../../services/social-media/factory'
+import { SocialMediaFactory } from '../../../services/social-media/factory'
 import { ISocialMedia } from 'src/app/services/social-media/social-media.interface';
 import { SocialMediaProfileDto } from 'src/app/dtos/social-media-profile.dto';
 import { AuthService } from 'src/app/services/auth.service';
@@ -47,7 +47,7 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
       this.service = SocialMediaFactory(this.socialMedia);
 
       let response = await this.service.get();
-
+      
       this.profiles.push(response.item.profile);
 
       this.canShowContent();

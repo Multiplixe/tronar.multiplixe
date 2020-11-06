@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppInjector } from 'src/app/app-injector';
-import { BasePage } from '../base-page';
+import { BasePage } from '../../base-page';
 import { TwitterService } from 'src/app/services/social-media/twitter.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class TwitterCallbackPage extends BasePage implements OnInit {
     }
     finally {
       this.stopLoading();
-      super.redirect('social-media-connection/twitter')
+      super.redirect('webview/social-media-connection/twitter')
     }
   }
 }
