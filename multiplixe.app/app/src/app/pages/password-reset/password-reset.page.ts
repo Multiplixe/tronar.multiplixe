@@ -27,7 +27,7 @@ export class PasswordResetPage extends BasePage implements OnInit {
       this.entries.oobCode = params['oobCode'];
       this.entries.apiKey = params['apiKey'];
       this.passwordResetValidate()
-  });
+    });
   }
 
   ngOnInit() {

@@ -34,11 +34,11 @@
             "scripts": []
           },
           "configurations": {
-            "falkol": {
+            "multiplyx": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.falkol.ts"
+                  "with": "src/environments/environment.multiplyx.ts"
                 }
               ],
               "optimization": true,
