@@ -5,7 +5,7 @@ namespace multiplixe.comum.dto
 {
     public class Usuario
     {
-        [JsonIgnore()]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         [JsonIgnore()]
