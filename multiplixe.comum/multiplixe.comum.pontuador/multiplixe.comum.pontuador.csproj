@@ -19,10 +19,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.22" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
-    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

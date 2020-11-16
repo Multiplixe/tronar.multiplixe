@@ -7,7 +7,7 @@ export const appEnvironment = {
 };
 
 export const apiEnvironment = {
-  host: "/api/"
+  host: "https://api.multiplyx.me/"
 };
 
 export const facebookEnvironment = {
