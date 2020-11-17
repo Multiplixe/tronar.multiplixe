@@ -71,7 +71,7 @@ namespace multiplixe.usuarios.avatar.console
                     }
                     catch (Exception ex)
                     {
-                        channel.BasicNack(ea.DeliveryTag, false, true);
+                        //channel.BasicNack(ea.DeliveryTag, false, true);
 
                         Console.WriteLine("*************************************************************");
                         Console.WriteLine("Erro");
@@ -81,7 +81,19 @@ namespace multiplixe.usuarios.avatar.console
 
                 };
 
-                Console.WriteLine("Novo avatar aguardando...");
+                var foregroundColor = Console.ForegroundColor;
+                var backgroundColor = Console.BackgroundColor;
+
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("------------------------------------------");
+                Console.WriteLine($"* Avatar aguardando - {DateTimeHelper.Now()}");
+                Console.WriteLine("------------------------------------------");
+                Console.WriteLine("");
+
+                Console.ForegroundColor = foregroundColor;
+                Console.BackgroundColor = backgroundColor;
+
                 Console.ReadLine();
             }
         }

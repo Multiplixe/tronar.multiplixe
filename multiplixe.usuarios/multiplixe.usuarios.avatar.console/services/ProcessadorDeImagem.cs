@@ -1,5 +1,6 @@
 ﻿using multiplixe.comum.helper;
 using System;
+using System.IO;
 using dto = multiplixe.comum.dto;
 
 namespace multiplixe.usuarios.avatar.console.services
@@ -17,16 +18,18 @@ namespace multiplixe.usuarios.avatar.console.services
 
         public void Processar(dto.AvatarParaProcessar avatarParaProcessar)
         {
-            avatarParaProcessar.Avatar.Timestamp = DateTimeHelper.Timestamp().ToString();
-
             Console.WriteLine("Processou", avatarParaProcessar.Avatar.Imagem);
         }
 
         public void Delete(dto.AvatarParaProcessar avatarParaProcessar)
         {
             var path = pathHelper.CriarImagemCaminhoCompleto(avatarParaProcessar);
-            System.IO.File.Delete(path);
-            Console.WriteLine("Deletou {0}", path);
+
+            if (File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+                Console.WriteLine("Deletou {0}", path);
+            }
         }
     }
 }

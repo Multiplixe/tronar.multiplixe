@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using comum_dto =  multiplixe.comum.dto;
+using multiplixe.comum.helper;
 
 namespace multiplixe.api.controllers
 {
@@ -39,7 +40,10 @@ namespace multiplixe.api.controllers
                 ConfiguraEmpresa(avatarParaProcessar);
                 ConfiguraUsuario(avatarParaProcessar);
 
-                avatarParaProcessar.Avatar.Imagem = string.Concat(avatarParaProcessar.UsuarioId, ".jpg");
+                var timestamp = DateTimeHelper.Timestamp().ToString();
+
+                avatarParaProcessar.Avatar.Timestamp = timestamp;
+                avatarParaProcessar.Avatar.Imagem = $"{avatarParaProcessar.UsuarioId}-{timestamp}.jpg";
                 avatarParaProcessar.Caminho = $"{parametros.PastaUpload}/avatar/{avatarParaProcessar.EmpresaId}";
 
                 if (!Directory.Exists(avatarParaProcessar.Caminho))

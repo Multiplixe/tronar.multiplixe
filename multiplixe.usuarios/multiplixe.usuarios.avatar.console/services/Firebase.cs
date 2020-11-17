@@ -27,36 +27,57 @@ namespace multiplixe.usuarios.avatar.console.services
 
         public async Task Processar(dto.AvatarParaProcessar avatarParaProcessar)
         {
-            var path = pathHelper.CriarImagemCaminhoCompleto(avatarParaProcessar);
 
-
-            var firebaseInfo = empresaClient.ObterInfoFirebase(avatarParaProcessar.EmpresaId);
-
-            if (firebaseInfo.Success)
+            try
             {
-                using (var stream = File.Open(path, FileMode.Open))
+                var path = pathHelper.CriarImagemCaminhoCompleto(avatarParaProcessar);
+
+                if (File.Exists(path))
                 {
-                    var auth = new FirebaseAuthProvider(new FirebaseConfig(firebaseInfo.Item.ApiKey));
+                    var firebaseInfo = empresaClient.ObterInfoFirebase(avatarParaProcessar.EmpresaId);
 
-                    var a = await auth.SignInWithEmailAndPasswordAsync(firebaseInfo.Item.Usuario, firebaseInfo.Item.Senha);
-
-                    var c = new CancellationTokenSource();
-
-                    var task = new FirebaseStorage($"{firebaseInfo.Item.Bucket}.appspot.com", new FirebaseStorageOptions
+                    if (firebaseInfo.Success)
                     {
-                        AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
-                        ThrowOnCancel = true
-                    })
-                    .Child(settings.PastaFirebase)
-                    .Child(avatarParaProcessar.Avatar.Imagem)
-                    .PutAsync(stream, c.Token);
+                        using (var stream = File.Open(path, FileMode.Open))
+                        {
+                            var auth = new FirebaseAuthProvider(new FirebaseConfig(firebaseInfo.Item.ApiKey));
 
-                    Console.WriteLine("Firebase processou");
+                            var a = await auth.SignInWithEmailAndPasswordAsync(firebaseInfo.Item.Usuario, firebaseInfo.Item.Senha);
 
-                    await task;
+                            var c = new CancellationTokenSource();
+
+                            var task = new FirebaseStorage($"{firebaseInfo.Item.Bucket}.appspot.com", new FirebaseStorageOptions
+                            {
+                                AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
+                                ThrowOnCancel = true
+                            })
+                            .Child(settings.PastaFirebase)
+                            .Child($"{avatarParaProcessar.UsuarioId.ToString()}.jpg")
+                            .PutAsync(stream, c.Token);
+
+                            Console.WriteLine("Firebase processou");
+
+                            await task;
+                        }
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                var foregroundColor = Console.ForegroundColor;
+                var backgroundColor = Console.BackgroundColor;
 
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("------------------------------------------");
+                Console.WriteLine("Erro");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("------------------------------------------");
+                Console.WriteLine("");
+
+                Console.ForegroundColor = foregroundColor;
+                Console.BackgroundColor = backgroundColor;
+            }
         }
 
     }
