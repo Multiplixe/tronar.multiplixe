@@ -33,13 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.13.0" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.31.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.32.0">
+    <PackageReference Include="Google.Protobuf" Version="3.14.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.33.1" />
+    <PackageReference Include="Grpc.Tools" Version="2.33.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.21" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.2.22" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
     <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />

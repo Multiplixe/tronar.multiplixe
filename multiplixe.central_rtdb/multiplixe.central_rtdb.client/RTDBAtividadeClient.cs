@@ -25,7 +25,7 @@ namespace multiplixe.central_rtdb.client
 
         public void RegistrarAvatar(dto.AvatarParaProcessar avatarParaProcessar)
         {
-            var request = atividadeParser.Request(avatarParaProcessar.UsuarioId, "avatar", avatarParaProcessar.Avatar);
+            var request = atividadeParser.Request(avatarParaProcessar.UsuarioId, "avatar", new { timestamp = avatarParaProcessar.Avatar.Timestamp });
 
             Registrar(request);
         }

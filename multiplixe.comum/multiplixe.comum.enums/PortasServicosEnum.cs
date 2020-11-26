@@ -8,6 +8,7 @@
         classificador = 6030,
         auth = 6040,
         centralRTDB = 6050,
-        compartilhador = 6060
+        compartilhador = 6060,
+        publicidadeBanner = 6070
     }
 }

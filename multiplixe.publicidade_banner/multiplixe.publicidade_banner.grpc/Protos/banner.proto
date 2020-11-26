@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.publicidade_banner.grpc.Protos";
+
+service Banner {
+  rpc ObterParaApp (ObterRequest) returns (ObterResponse);
+}
+
+message ObterRequest {
+  string UsuarioId = 1;
+}
+
+message ObterResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+	repeated BannerMessage Banners  = 3;
+}
+
+message BannerMessage {
+	string Id = 1;
+	string Imagem = 2;
+	string Thumb = 3;
+	string URL = 4;
+	int32 StatusId = 5;
+}

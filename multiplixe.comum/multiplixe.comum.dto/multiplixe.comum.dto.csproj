@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.2.22</PackageVersion>
+    <PackageVersion>1.3.1</PackageVersion>
 
   </PropertyGroup>
 
@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="adduo.helper" Version="1.0.3" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.2.1" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.3" />
   </ItemGroup>
 
 </Project>

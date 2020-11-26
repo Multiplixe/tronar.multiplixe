@@ -5,6 +5,7 @@ import { BaseComponent } from '../base.component';
 import { ActivitiesEnum } from 'src/app/enums/activities.enum';
 import { FirebaseQuery } from 'src/app/services/firebase-query.service';
 import { DisplayControl } from 'src/app/dtos/display-control';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-profile-avatar',
@@ -25,11 +26,13 @@ export class UserProfileAvatarComponent extends BaseComponent implements OnInit 
 
   private angularFireStorage: AngularFireStorage;
   private firebaseQuery: FirebaseQuery;
+  public authService: AuthService;
 
   constructor() {
     super();
     this.angularFireStorage = AppInjector.get(AngularFireStorage);
     this.firebaseQuery = AppInjector.get(FirebaseQuery);
+    this.authService = AppInjector.get(AuthService)
     this.defaultAvatar();
 
     this.addSubscription(
@@ -59,10 +62,12 @@ export class UserProfileAvatarComponent extends BaseComponent implements OnInit 
 
       setTimeout(() => {
 
+        let image = this.authService.getId() + '.jpg';
+
         this.angularFireStorage
           .ref("user-profile")
           .child("avatar")
-          .child(avatar.image)
+          .child(image)
           .getDownloadURL()
           .toPromise()
           .then((i) => {
