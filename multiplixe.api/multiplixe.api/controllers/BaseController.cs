@@ -4,6 +4,7 @@ using multiplixe.api.dto.settings;
 using multiplixe.comum.dto.interfaces;
 using multiplixe.comum.helper;
 using multiplixe.enfileirador.client;
+using System;
 using System.Linq;
 using adduohelper = adduo.helper.envelopes;
 

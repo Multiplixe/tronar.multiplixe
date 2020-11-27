@@ -18,6 +18,7 @@ namespace multiplixe.publicidade_banner.client
         public PublicidadeBannerClient()
         {
             channel = GrcpChannelHelper.CreateChannel(PortasServicosEnum.publicidadeBanner);
+            client = new Banner.BannerClient(channel);
         }
 
         public ResponseEnvelope<List<dto.Banner>> ObterParaApp(Guid usuarioId)

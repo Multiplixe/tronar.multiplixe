@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using multiplixe.comum.enums;
+using multiplixe.comum.helper;
 
 namespace multiplixe.publicidade_banner.grpc
 {
@@ -13,6 +14,19 @@ namespace multiplixe.publicidade_banner.grpc
     {
         public static void Main(string[] args)
         {
+            var foregroundColor = Console.ForegroundColor;
+            var backgroundColor = Console.BackgroundColor;
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"* Publicidade Banner - {DateTimeHelper.Now()}      ");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("");
+
+            Console.ForegroundColor = foregroundColor;
+            Console.BackgroundColor = backgroundColor;
+
             CreateHostBuilder(args).Build().Run();
         }
 

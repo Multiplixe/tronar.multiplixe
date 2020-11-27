@@ -28,6 +28,13 @@ namespace multiplixe.publicidade_banner.client.parsers
                     envelope.Item.Add(new dto.Banner(item.Id, item.Imagem, item.Thumb, item.URL));
                 }
             }
+            else
+            {
+                envelope.Error = new ErrorEnvelope
+                {
+                    Messages = new List<string> { response.Erro }
+                };
+            }
 
             return envelope;
         }

@@ -27,6 +27,7 @@ namespace multiplixe.publicidade_banner.grpc.Services
 
                 var banners = servico.Obter(usuarioId);
 
+                response.HttpStatusCode = (int)HttpStatusCode.OK;
                 response.Banners.AddRange(banners);
             }
             catch (Exception ex)
