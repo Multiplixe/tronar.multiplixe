@@ -14,6 +14,7 @@ namespace multiplixe.usuarios.client
         private parsers.UsuarioAtualizar atualizarParser { get; }
         private parsers.UsuarioObter obterParser { get; }
         private parsers.UsuarioListar listarParser { get; }
+        private parsers.UltimoAcesso ultimoAcesso { get; }
 
         public UsuarioClient()
         {
@@ -22,6 +23,7 @@ namespace multiplixe.usuarios.client
             atualizarParser = new parsers.UsuarioAtualizar();
             obterParser = new parsers.UsuarioObter();
             listarParser = new parsers.UsuarioListar();
+            ultimoAcesso = new parsers.UltimoAcesso();
         }
 
         public adduohelper.ResponseEnvelope<dto.entries.UsuarioRegistro> Registrar(adduohelper.RequestEnvelope<dto.entries.UsuarioRegistro> request)
@@ -67,5 +69,17 @@ namespace multiplixe.usuarios.client
 
             return response;
         }
+
+        public adduohelper.ResponseEnvelope UltimoAcesso(dto.UsuarioUltimoAcesso request)
+        {
+            var ultimoAcessoRequest = ultimoAcesso.Request(request);
+
+            var response = grpcService.UltimoAcesso(ultimoAcessoRequest);
+
+            var envelope = ultimoAcesso.Response(response);
+
+            return envelope;
+        }
+
     }
 }

@@ -22,6 +22,7 @@ namespace multiplixe.usuarios.usuario.atualizacao
             this.repositorio = repositorio;
             this.registroFirebase = firebase;
         }
+
         public adduohelper.envelopes.ResponseEnvelope<dto.entries.UsuarioAtualizacao> Atualizar(adduohelper.envelopes.RequestEnvelope<dto.entries.UsuarioAtualizacao> request)
         {
             var response = request.CreateResponse();
@@ -57,6 +58,11 @@ namespace multiplixe.usuarios.usuario.atualizacao
             }
 
             return response;
+        }
+
+        public void UltimoAcesso(dto.UsuarioUltimoAcesso usuarioUltimoAcesso)
+        {
+            repositorio.UltimoAcesso(usuarioUltimoAcesso);
         }
 
     }

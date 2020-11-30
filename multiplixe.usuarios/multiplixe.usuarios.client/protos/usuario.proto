@@ -11,6 +11,7 @@ service Usuario {
 	rpc Atualizar(UsuarioAtualizacaoRequest) returns (UsuarioAtualizacaoResponse);
 	rpc Obter(UsuarioFiltroRequest) returns (UsuarioResponse);
 	rpc Listar(UsuarioFiltroRequest) returns (UsuarioResponse);
+	rpc UltimoAcesso(UltimoAcessoRequest) returns (UltimoAcessoResponse);
 }
 
 message UsuarioRegistroRequest {
@@ -61,5 +62,15 @@ message UsuarioAtualizacaoRequest {
 message UsuarioAtualizacaoResponse {
 	int32 HttpStatusCode = 1;  
 	UsuarioAtualizacaoRequest Usuario = 2;
+}
+
+message UltimoAcessoRequest {
+	string UsuarioId = 1;
+	int64  Acesso = 2;
+}
+
+message UltimoAcessoResponse {
+	int32 HttpStatusCode = 1;  
+	string Erro = 2;
 }
 

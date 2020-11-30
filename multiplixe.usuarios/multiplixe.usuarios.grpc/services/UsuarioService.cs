@@ -2,6 +2,8 @@
 using Grpc.Core;
 using System.Threading.Tasks;
 using System;
+using System.Linq.Expressions;
+using System.Net;
 
 namespace multiplixe.usuarios.grpc.services
 {
@@ -16,8 +18,7 @@ namespace multiplixe.usuarios.grpc.services
         private parsers.UsuarioObter obterParser { get; }
         private parsers.UsuarioListar listarParser { get; }
         private parsers.UsuarioAutenticar autenticarParser { get; }
-
-        
+        private parsers.UltimoAcesso ultimoAcesso { get; }
 
         public UsuarioService(
             usuario.registro.Servico registroService,
@@ -27,7 +28,8 @@ namespace multiplixe.usuarios.grpc.services
             usuario.consulta.Servico consultaService,
             parsers.UsuarioObter obterParser,
             parsers.UsuarioAutenticar autenticarParser,
-             parsers.UsuarioListar listarParser)
+             parsers.UsuarioListar listarParser,
+             parsers.UltimoAcesso ultimoAcesso)
         {
             this.registroService = registroService;
             this.registrarParser = registrarParser;
@@ -37,6 +39,7 @@ namespace multiplixe.usuarios.grpc.services
             this.listarParser = listarParser;
             this.autenticarParser = autenticarParser;
             this.atulizacaoService = atulizacaoService;
+            this.ultimoAcesso = ultimoAcesso;
         }
 
         public override Task<UsuarioRegistroResponse> Registrar(UsuarioRegistroRequest usuarioMessage, ServerCallContext context)
@@ -79,6 +82,28 @@ namespace multiplixe.usuarios.grpc.services
             var responseEnvelope = consultaService.Listar(filtro);
 
             var response = listarParser.Response(responseEnvelope);
+
+            return Task.FromResult(response);
+        }
+
+        public override Task<UltimoAcessoResponse> UltimoAcesso(UltimoAcessoRequest ultimoAcessoRequest, ServerCallContext context)
+        {
+            var response = new UltimoAcessoResponse();
+
+            try
+            {
+                var request = ultimoAcesso.Request(ultimoAcessoRequest);
+
+                atulizacaoService.UltimoAcesso(request);
+
+                response.HttpStatusCode = (int)HttpStatusCode.OK;
+
+            }
+            catch(Exception ex)
+            {
+                response.HttpStatusCode = (int)HttpStatusCode.InternalServerError;
+                response.Erro = ex.Message;
+            }
 
             return Task.FromResult(response);
         }

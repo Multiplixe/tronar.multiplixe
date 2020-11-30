@@ -68,6 +68,7 @@ namespace multiplixe.usuarios.grpc
             services.AddTransient<parsers.TokenRegistrar>();
             services.AddTransient<parsers.TokenObter>();
             services.AddTransient<parsers.PerfilObter>();
+            services.AddTransient<parsers.UltimoAcesso>();
             services.AddTransient<ClassificadorUsuarioClient>();
             services.AddTransient<DapperHelper>();
             services.AddTransient<token.Servico>();

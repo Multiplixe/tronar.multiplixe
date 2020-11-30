@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using multiplixe.enfileirador.client;
 using System.IO;
+using multiplixe.comum.dto;
+using multiplixe.comum.helper;
 
 namespace multiplixe.api.controllers
 {
@@ -68,6 +70,21 @@ namespace multiplixe.api.controllers
             enfileiradorClient.EnfileirarAvatar(avatar);
 
             return Ok();
+        }
+
+        [HttpPut]
+        [Route("acesso")]
+        public IActionResult UltimoAcessoPut()
+        {
+            var request = new UsuarioUltimoAcesso();
+
+            ConfiguraUsuario(request);
+
+            request.Acesso = DateTimeHelper.Now();
+
+            var atualizarUsuario = new integracao_grpc.UltimoAcesso(request);
+
+            return IntegrarGRPC(atualizarUsuario);
         }
 
 
