@@ -20,6 +20,7 @@ namespace multiplixe.usuarios.client.parsers
                 Token = request.Item.Token,
                 ImagemUrl = request.Item.ImagemUrl,
                 Login = request.Item.Login,
+                ExpiracaoToken = request.Item.ExpiracaoToken.HasValue ? request.Item.ExpiracaoToken.Value.Ticks : 0
             };
 
             return perfilMessage;

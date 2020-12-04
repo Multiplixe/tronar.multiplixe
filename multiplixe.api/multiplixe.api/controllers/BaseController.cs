@@ -28,6 +28,11 @@ namespace multiplixe.api.controllers
             dto.EmpresaId = empresaSettings.Id;
         }
 
+        public Guid ObterEmpresaId()
+        {
+            return empresaSettings.Id;
+        }
+
         public IActionResult SendPost(string url, object dado)
         {
             var response = WebRequestHelper.Post(url, dado);

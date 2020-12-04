@@ -66,7 +66,7 @@ namespace multiplixe.usuarios.perfil
 
         private void ProcessarToken(dto.Perfil perfil)
         {
-            if (!string.IsNullOrEmpty(perfil.Token))
+            if (!string.IsNullOrEmpty(perfil.Token) && perfil.ProcessarToken)
             {
                 var factoryProcessarToken = new access_token.Factory(perfil.RedeSocial, perfil.EmpresaId, empresaClient);
                 var servicoProcessarToken = factoryProcessarToken.Obter();

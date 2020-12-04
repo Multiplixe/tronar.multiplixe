@@ -9,6 +9,7 @@
         auth = 6040,
         centralRTDB = 6050,
         compartilhador = 6060,
-        publicidadeBanner = 6070
+        publicidadeBanner = 6070,
+        facebookGRPC = 6080
     }
 }

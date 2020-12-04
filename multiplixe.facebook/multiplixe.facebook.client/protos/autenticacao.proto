@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.facebook.grpc.Protos";
+
+service Autenticacao {
+	rpc ProcessarCode(ProcessarCodeRequest) returns (ProcessarCodeResponse);
+	rpc ObterURLAutorizacao(ObterURLAutorizacaoRequest) returns (ObterURLAutorizacaoResponse);
+}
+
+message ProcessarCodeRequest {
+	string Code = 1;
+	string UsuarioId = 2;
+	string EmpresaId = 3;
+}
+
+message ProcessarCodeResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+}
+
+
+message ObterURLAutorizacaoRequest {
+	string EmpresaId = 1;
+}
+
+message ObterURLAutorizacaoResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+	string URL = 3;
+}

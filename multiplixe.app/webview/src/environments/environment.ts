@@ -7,15 +7,9 @@ export const appEnvironment = {
 };
 
 export const apiEnvironment = {
-  host: "https://app.falkol.gg/api/",
-  _host: "http://localhost:63623/"
+  _host: "https://api.multiplyx.me",
+  host: "http://localhost:63623/"
 }
-
-export const facebookEnvironment = {
-  app_id: "589412201183029",
-  version: "v2.8",
-  xfbml: true
-};
 
 export const firebaseEnvironment = {
   apiKey: "AIzaSyBGbKBn5tZ1bsR4SvFmPMGs-JQ017U3aeM",

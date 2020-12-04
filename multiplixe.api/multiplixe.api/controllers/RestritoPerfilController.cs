@@ -45,7 +45,7 @@ namespace multiplixe.api.controllers
 
         [HttpPost]
         [Route("youtube")]
-        public IActionResult PostYOutube([FromBody] adduohelper.RequestEnvelope<comum_dto.Perfil> request)
+        public IActionResult PostYoutube([FromBody] adduohelper.RequestEnvelope<comum_dto.Perfil> request)
         {
             request.Item.RedeSocial = coreenums.RedeSocialEnum.youtube;
 

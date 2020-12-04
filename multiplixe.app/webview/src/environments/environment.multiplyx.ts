@@ -10,12 +10,6 @@ export const apiEnvironment = {
   host: "https://api.multiplyx.me/"
 };
 
-export const facebookEnvironment = {
-  app_id: "234854220945907",
-  version: "v8.0",
-  xfbml: true
-};
-
 export const firebaseEnvironment = {
   apiKey: "AIzaSyBGbKBn5tZ1bsR4SvFmPMGs-JQ017U3aeM",
   authDomain: "multipixel-falkol.firebaseapp.com",

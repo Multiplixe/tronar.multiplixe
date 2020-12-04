@@ -54,12 +54,26 @@ namespace multiplixe.empresas.client
         {
             var response = new adduohelper.envelopes.ResponseEnvelope<dto.empresas.FacebookInfo>();
 
-            response.Item = new dto.empresas.FacebookInfo
+            if (Guid.Parse("5F22E669-8CF2-4702-A828-B32E832A6BA6") == empresaId)
             {
-                AppId = "234854220945907",
-                AppSecret = "1d8654798190790951fae1dfb6588b9d",
-                GraphApiVersao = "v8.0"
-            };
+                response.Item = new dto.empresas.FacebookInfo
+                {
+                    AppId = "234854220945907",
+                    AppSecret = "1d8654798190790951fae1dfb6588b9d",
+                    GraphApiVersao = "v8.0",
+                    URLRedirectOauth = "https://app.multiplyx.me/webview/facebook-callback"
+                };
+            }
+            else if (Guid.Parse("E0E6DCE8-4FFD-4500-AD26-20ADECF10A05") == empresaId)
+            {
+                response.Item = new dto.empresas.FacebookInfo
+                {
+                    AppId = "178629563033023",
+                    AppSecret = "498ab00bad908e95dcae570c47fd530e",
+                    GraphApiVersao = "v8.0",
+                    URLRedirectOauth = "http://localhost:4200/webview/facebook-callback"
+                };
+            }
 
             return response;
         }

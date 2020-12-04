@@ -8,6 +8,8 @@ import { SocialMediaProfileDto } from 'src/app/dtos/social-media-profile.dto';
 import { AuthService } from 'src/app/services/auth.service';
 import { SocialMediaEnum } from 'src/app/enums/social-media.enum';
 import { HttpStatusCode } from 'src/app/enums/http-status.enum';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
+import { AppInjector } from 'src/app/app-injector';
 
 @Component({
   selector: 'app-social-media-connection',
@@ -22,11 +24,21 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
 
   public service: ISocialMedia;
   public authService: AuthService;
+  public eventEmitterService: EventEmitterService;
+  public texto: String[] = [];
 
   constructor(injector: Injector) {
     super();
     this.route = injector.get(ActivatedRoute);
     this.authService = injector.get(AuthService);
+    this.eventEmitterService = AppInjector.get(EventEmitterService)
+
+    this.eventEmitterService
+      .get('texto')
+      .subscribe(o => {
+        this.texto.push(o);
+      });
+
   }
 
   async ngOnInit() {
@@ -47,7 +59,7 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
       this.service = SocialMediaFactory(this.socialMedia);
 
       let response = await this.service.get();
-      
+
       this.profiles.push(response.item.profile);
 
       this.canShowContent();
@@ -68,7 +80,8 @@ export class SocialMediaConnectionPage extends BasePage implements OnInit {
   }
 
   async connect() {
-    await this.service.connect();
+      this.runLoading();
+      await this.service.connect();
+      this.stopLoading();
   }
-
 }

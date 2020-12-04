@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using multiplixe.comum.enums;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using multiplixe.comum.helper;
 
 namespace multiplixe.classificador.grpc
 {
@@ -13,6 +14,15 @@ namespace multiplixe.classificador.grpc
     {
         public static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+            Console.WriteLine("*************************************************");
+            Console.WriteLine($"Classificador GRPC - {DateTimeHelper.Now()}");
+            Console.WriteLine("*************************************************");
+            Console.WriteLine("");
+            Console.ResetColor();
+
             CreateHostBuilder(args).Build().Run();
         }
 

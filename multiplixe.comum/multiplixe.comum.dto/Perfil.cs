@@ -31,6 +31,8 @@ namespace multiplixe.comum.dto
         [JsonPropertyName("expiredIn")]
         public DateTime? ExpiracaoToken { get; set; }
 
+        [JsonIgnore]
+        public bool ProcessarToken { get; set; }
     }
 }
 

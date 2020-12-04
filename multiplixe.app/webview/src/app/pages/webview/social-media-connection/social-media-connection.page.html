@@ -11,6 +11,7 @@
     <div class="box">
 
       <p>{{service.explainText}}</p>
+      <p *ngFor="let t of texto">{{t}}</p>
 
       <app-list-items [items]="service.explainItemsText" bgColorClass="social-media-{{service.id}}-bg"></app-list-items>
 

@@ -4,7 +4,10 @@ namespace multiplixe.usuarios.perfil.access_token.facebook
 {
     public class AccessToken
     {
-        public AuthResponse authResponse { get; set; }
+        public string access_token { get; set; }
+        public string token_type { get; set; }
+        public int expires_in { get; set; }
+        public DateTime? expires_in_datetime { get; set; }
     }
 
     public class AuthResponse

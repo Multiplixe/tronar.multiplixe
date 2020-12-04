@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 namespace adduo.helper.extensionmethods
@@ -25,6 +26,11 @@ namespace adduo.helper.extensionmethods
             Guid.TryParse(_string, out guid);
 
             return guid;
+        }
+
+        public static string EmptyIfNull(this string text)
+        {
+            return string.IsNullOrEmpty(text) ? string.Empty : text;
         }
 
 

@@ -15,7 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.triador
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{12A70657-153E-46D4-9E64-76F7870F7884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.facebook.compartilhador.console", "multiplixe.facebook.compartilhador.console\multiplixe.facebook.compartilhador.console.csproj", "{913B0D90-BE76-448A-B3BF-3F3A219F0371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.compartilhador.console", "multiplixe.facebook.compartilhador.console\multiplixe.facebook.compartilhador.console.csproj", "{913B0D90-BE76-448A-B3BF-3F3A219F0371}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{0C31502B-6827-48BE-966B-76776C0C3E28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.grpc", "multiplixe.facebook.grpc\multiplixe.facebook.grpc.csproj", "{0B7F7531-EAA1-4C9C-9A99-10C81A756718}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.autenticacao", "multiplixe.facebook.autenticacao\multiplixe.facebook.autenticacao.csproj", "{CA42E051-57A6-4990-A691-F4291D830F56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.facebook.client", "multiplixe.facebook.client\multiplixe.facebook.client.csproj", "{8DA36148-EB32-4360-B4D0-77F87F0B9D5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +55,18 @@ Global
 		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{913B0D90-BE76-448A-B3BF-3F3A219F0371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B7F7531-EAA1-4C9C-9A99-10C81A756718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7F7531-EAA1-4C9C-9A99-10C81A756718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7F7531-EAA1-4C9C-9A99-10C81A756718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7F7531-EAA1-4C9C-9A99-10C81A756718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA42E051-57A6-4990-A691-F4291D830F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA42E051-57A6-4990-A691-F4291D830F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA42E051-57A6-4990-A691-F4291D830F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA42E051-57A6-4990-A691-F4291D830F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA36148-EB32-4360-B4D0-77F87F0B9D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA36148-EB32-4360-B4D0-77F87F0B9D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA36148-EB32-4360-B4D0-77F87F0B9D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA36148-EB32-4360-B4D0-77F87F0B9D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +75,8 @@ Global
 		{4E2C3AFC-26E5-4E61-8B4E-A8CE5AC3A486} = {12A70657-153E-46D4-9E64-76F7870F7884}
 		{D67F1BF5-D8B9-4395-AF32-16236B1C0279} = {12A70657-153E-46D4-9E64-76F7870F7884}
 		{913B0D90-BE76-448A-B3BF-3F3A219F0371} = {12A70657-153E-46D4-9E64-76F7870F7884}
+		{0B7F7531-EAA1-4C9C-9A99-10C81A756718} = {0C31502B-6827-48BE-966B-76776C0C3E28}
+		{8DA36148-EB32-4360-B4D0-77F87F0B9D5F} = {0C31502B-6827-48BE-966B-76776C0C3E28}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87891D58-26CD-49EC-BF76-AFA86D4F11E4}

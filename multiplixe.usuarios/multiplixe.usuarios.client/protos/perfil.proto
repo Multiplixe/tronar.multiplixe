@@ -31,6 +31,7 @@ message PerfilMessage {
 	google.protobuf.StringValue Token = 8;
 	google.protobuf.StringValue ImagemUrl = 9;
 	google.protobuf.StringValue Login = 10;
+	int64 ExpiracaoToken = 11;
 }
  
 message PerfilResponse {

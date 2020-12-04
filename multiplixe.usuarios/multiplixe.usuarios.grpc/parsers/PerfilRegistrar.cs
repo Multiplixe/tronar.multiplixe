@@ -3,6 +3,7 @@ using dto = multiplixe.comum.dto;
 using multiplixe.comum.enums;
 using multiplixe.usuarios.perfil.grpc.Protos;
 using System;
+using Microsoft.VisualBasic;
 
 namespace multiplixe.usuarios.grpc.parsers
 {
@@ -23,6 +24,11 @@ namespace multiplixe.usuarios.grpc.parsers
                 ImagemUrl = perfilMessage.ImagemUrl,
                 Login = perfilMessage.Login
             };
+
+            if (!perfilMessage.ExpiracaoToken.Equals(0))
+            {
+                dto.ExpiracaoToken = new DateTime(perfilMessage.ExpiracaoToken);
+            }
 
             return new RequestEnvelope<dto.Perfil>(dto);
         }
