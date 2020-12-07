@@ -15,19 +15,24 @@ namespace multiplixe.usuarios.grpc.services
         private parsers.PerfilRegistrar perfilRegistrarParser { get; }
         private parsers.PerfilObterPerfisConectados perfilObterPerfisConectadosParser { get; }
         private parsers.PerfilObter perfilObterParser { get; }
+        private parsers.Desconectar desconectar { get; }
+
+        
 
         public PerfilService(
             perfil.PerfilServico perfilService,
             perfil.AccessTokenServico accessTokenServico,
             parsers.PerfilRegistrar perfilRegistrarParser,
             parsers.PerfilObterPerfisConectados perfilObterPerfisConectadosParser,
-            parsers.PerfilObter perfilObterParser)
+            parsers.PerfilObter perfilObterParser,
+            parsers.Desconectar desconectar)
         {
             this.perfilService = perfilService;
             this.accessTokenServico = accessTokenServico;
             this.perfilRegistrarParser = perfilRegistrarParser;
             this.perfilObterPerfisConectadosParser = perfilObterPerfisConectadosParser;
             this.perfilObterParser = perfilObterParser;
+            this.desconectar = desconectar;
         }
 
         public override Task<PerfilResponse> Obter(PerfilFiltro perfilFiltro, ServerCallContext context)
@@ -150,5 +155,29 @@ namespace multiplixe.usuarios.grpc.services
 
             return Task.FromResult(response);
         }
+
+
+        public override Task<DesconectarResponse> Desconectar(DesconectarRequest request, ServerCallContext context)
+        {
+            var response = new DesconectarResponse();
+
+            try
+            {
+                var perfil = desconectar.Request(request);
+
+                perfilService.Desconectar(perfil);
+
+                response.HttpStatusCode = (int)HttpStatusCode.OK;
+
+            }
+            catch (Exception ex)
+            {
+                response.Erro = ex.Message; 
+                response.HttpStatusCode = (int)HttpStatusCode.InternalServerError;
+            }
+
+            return Task.FromResult(response);
+        }
+
     }
 }

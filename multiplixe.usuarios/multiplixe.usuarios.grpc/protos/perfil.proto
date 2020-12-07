@@ -11,6 +11,7 @@ service Perfil {
 	rpc Registrar(PerfilMessage) returns (PerfilResponse);
 	rpc ObterPerfisConectados(PerfilFiltro) returns (PerfilConectadoResponse);
 	rpc ObterAccessToken(AccessTokenRequest) returns (AccessTokenResponse);
+	rpc Desconectar(DesconectarRequest) returns (DesconectarResponse);
 }
 
 message PerfilFiltro {
@@ -54,4 +55,16 @@ message AccessTokenRequest {
 message AccessTokenResponse {
 	int32 HttpStatusCode = 1;
 	string Token = 2;
+}
+
+message DesconectarRequest {
+	string UsuarioId = 1;
+	string PerfilId = 3;
+	int32 RedeSocial = 5;
+	bool Ativo = 6;
+}
+
+message DesconectarResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
 }

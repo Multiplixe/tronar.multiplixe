@@ -102,6 +102,19 @@ namespace multiplixe.api.controllers
             return ObterPerfilRedeSocial(RedeSocialEnum.youtube);
         }
 
+
+        [HttpPost]
+        [Route("desconectar")]
+        public IActionResult Desconectar([FromBody] adduohelper.RequestEnvelope<comum_dto.Perfil> request)
+        {
+            request.Item.UsuarioId = ObterUsuarioId();
+
+            var desconectarPerfil = new integracao_grpc.DesconectarPerfil(request.Item);
+
+            return IntegrarGRPC(desconectarPerfil);
+
+        }
+
         private IActionResult ObterPerfilRedeSocial(RedeSocialEnum redesocial)
         {
             var usuarioId = ObterUsuarioId();

@@ -113,9 +113,11 @@ namespace multiplixe.usuarios.perfil
             return response;
         }
 
-        public void Desconectar(results.Perfil perfil)
+        public void Desconectar(dto.Perfil perfil)
         {
-            repositorio.Desconectar(perfil.UsuarioId, perfil.RedeSocialId, perfil.PerfilId);
+            repositorio.Desconectar(perfil.UsuarioId, (int)perfil.RedeSocial, perfil.PerfilId, perfil.Ativo);
+
+            rtdbAtividadeClient.RegistrarPerfil(perfil.UsuarioId);
         }
 
         private List<dto.Perfil> Parser(List<results.Perfil> results)

@@ -67,13 +67,14 @@ namespace multiplixe.usuarios.perfil
             dapper.Insert("perfil_registrar");
         }
 
-        public void Desconectar(Guid usuarioId, int redeSocialId, string perfilId)
+        public void Desconectar(Guid usuarioId, int redeSocialId, string perfilId, bool ativo)
         {
             dapperHelper
                 .ResetParameter()
                 .AddParameter("_usuarioId", usuarioId)
                 .AddParameter("_redeSocialId", redeSocialId)
                 .AddParameter("_perfilId", perfilId)
+                .AddParameter("_ativo", ativo)
                 .Insert("perfil_desconectar");
         }
 

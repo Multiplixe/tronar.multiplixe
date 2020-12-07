@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using multiplixe.comum.enums;
+using multiplixe.comum.helper;
+using System;
 
 namespace multiplixe.central_rtdb.grpc
 {
@@ -8,6 +10,19 @@ namespace multiplixe.central_rtdb.grpc
     {
         public static void Main(string[] args)
         {
+            var foregroundColor = Console.ForegroundColor;
+            var backgroundColor = Console.BackgroundColor;
+
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"* Central RTDB - {DateTimeHelper.Now()}      ");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("");
+
+            Console.ForegroundColor = foregroundColor;
+            Console.BackgroundColor = backgroundColor;
+
             CreateHostBuilder(args).Build().Run();
         }
 

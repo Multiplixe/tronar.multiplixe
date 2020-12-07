@@ -11,11 +11,12 @@
   <ItemGroup>
     <PackageReference Include="Firebase.Database" Version="1.0.0" />
     <PackageReference Include="FirebaseAdmin" Version="2.0.0" />
-    <PackageReference Include="Grpc.AspNetCore" Version="2.33.1" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.0.7" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.31.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.5.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.4" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.empresas.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.empresas.client" Version="1.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>

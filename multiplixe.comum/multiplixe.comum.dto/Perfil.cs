@@ -7,19 +7,19 @@ namespace multiplixe.comum.dto
 {
     public class Perfil : PerfilBasico, IEmpresaID, IUsuarioID
     {
-        [JsonPropertyName("empresaId")]
+        [JsonPropertyName("companyId")]
         public Guid EmpresaId { get; set; }
 
-        [JsonPropertyName("usuarioId")]
+        [JsonPropertyName("userId")]
         public Guid UsuarioId { get; set; }
 
-        [JsonPropertyName("redeSocial")]
+        [JsonPropertyName("socialMedia")]
         public RedeSocialEnum RedeSocial { get; set; }
 
-        [JsonPropertyName("ativo")]
+        [JsonPropertyName("active")]
         public bool Ativo { get; set; }
 
-        [JsonPropertyName("dataCadastro")]
+        [JsonPropertyName("registerAt")]
         public DateTime DataCadastro { get; set; }
 
         [JsonPropertyName("token")]

@@ -110,5 +110,25 @@ namespace multiplixe.usuarios.client
 
             return envelope;
         }
+
+        public ResponseEnvelope Desconectar(Guid usuarioId, string perfilId, RedeSocialEnum redesocial, bool ativo)
+        {
+            var parser = new parsers.Desconectar();
+
+            var request = parser.Request(usuarioId, perfilId, redesocial, ativo);
+
+            var desconectarResponse = client.Desconectar(request);
+
+            var envelope = parser.Response(desconectarResponse);
+
+            if (envelope.HttpStatusCode == HttpStatusCode.InternalServerError)
+            {
+                throw new GRPCException(envelope.HttpStatusCode);
+            }
+
+            return envelope;
+        }
+
+
     }
 }
