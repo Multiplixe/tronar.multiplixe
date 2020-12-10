@@ -33,7 +33,8 @@ namespace multiplixe.api.controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] twitter_dto.eventos.Evento evento)
+        [Route("{empresaId}/{username}")]
+        public ActionResult Post([FromBody] twitter_dto.eventos.Evento evento, string empresaId, string username)
         {
             twitterLogEventoService.LogarEvento(evento);
 
@@ -48,7 +49,8 @@ namespace multiplixe.api.controllers
         }
 
         [HttpGet]
-        public twitter_dto.CRCResponse Get([FromQuery(Name = "crc_token")] string crc_token)
+        [Route("{empresaId}/{username}")]
+        public twitter_dto.CRCResponse Get([FromQuery(Name = "crc_token")] string crc_token, string empresaId, string username)
         {
             twitterLogEventoService.LogarRequestInicial(Request);
 
