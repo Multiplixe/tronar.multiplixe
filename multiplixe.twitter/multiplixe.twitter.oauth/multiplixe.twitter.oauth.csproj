@@ -24,9 +24,9 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.12" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.5.3" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.twitter.dto" Version="1.0.1" />
+    <PackageReference Include="multiplixe.twitter.dto" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

@@ -96,5 +96,42 @@ namespace multiplixe.empresas.client
         }
 
 
+
+        public adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitterInfo> ObterInfoTwitter(Guid empresaId, string contaRedeSocial)
+        {
+            var response = new adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitterInfo>();
+
+            if (Guid.Parse("5F22E669-8CF2-4702-A828-B32E832A6BA6") == empresaId)
+            {
+                if (contaRedeSocial.ToLower().Equals("voraxgg"))
+                {
+                    response.Item = new dto.empresas.TwitterInfo
+                    {
+                        ApiKey = "f7a38ZW7um7G0dKKpyWk2qjfg",
+                        ConsumerSecret = "qwwZbUmvCQnNk7D3VtWycYAXWnAvsJ85hCstm6fiK7DvSxJk9S",
+                        Token = "768588171902877696-QfkRh41AUJbox4uOOYp7GahUYiCqo71",
+                        TokenSecret = "dNBylYWHesom6HRwIGZuxiOf3TjO3HBocpD6o9eWieuyi"
+
+                    };
+                }
+            }
+            else if (Guid.Parse("E0E6DCE8-4FFD-4500-AD26-20ADECF10A05") == empresaId)
+            {
+                response.Item = new dto.empresas.TwitterInfo
+                {
+                    ApiKey = "f7a38ZW7um7G0dKKpyWk2qjfg",
+                    ConsumerSecret = "qwwZbUmvCQnNk7D3VtWycYAXWnAvsJ85hCstm6fiK7DvSxJk9S",
+                    Token = "768588171902877696-QfkRh41AUJbox4uOOYp7GahUYiCqo71",
+                    TokenSecret = "dNBylYWHesom6HRwIGZuxiOf3TjO3HBocpD6o9eWieuyi"
+
+                };
+            }
+
+            return response;
+        }
+
+
+
+
     }
 }

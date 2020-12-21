@@ -10,6 +10,7 @@
         centralRTDB = 6050,
         compartilhador = 6060,
         publicidadeBanner = 6070,
-        facebookGRPC = 6080
+        facebookGRPC = 6080,
+        twitterGRPC = 6090
     }
 }

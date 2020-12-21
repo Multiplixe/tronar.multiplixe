@@ -11,7 +11,7 @@
 
     <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
 
-    <PackageReference Include="multiplixe.usuarios.client" Version="1.2.0" />
+    <PackageReference Include="multiplixe.usuarios.client" Version="1.4.1" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
   </ItemGroup>
 

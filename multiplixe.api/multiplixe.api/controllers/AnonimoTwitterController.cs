@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using multiplixe.api.dto.settings;
 using multiplixe.api.log_eventos;
+using multiplixe.comum.exceptions;
 using multiplixe.enfileirador.client;
+using multiplixe.twitter.client;
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -50,30 +52,20 @@ namespace multiplixe.api.controllers
 
         [HttpGet]
         [Route("{empresaId}/{username}")]
-        public twitter_dto.CRCResponse Get([FromQuery(Name = "crc_token")] string crc_token, string empresaId, string username)
+        public ActionResult Get([FromQuery(Name = "crc_token")] string crc_token, Guid empresaId, string username)
         {
             twitterLogEventoService.LogarRequestInicial(Request);
 
-            if (string.IsNullOrEmpty(crc_token))
+            try
             {
-                return null;
+                var client = new TwitterWebhookClient();
+                var response = client.ProcessarCRC(crc_token, empresaId, username);
+
+                return Ok(response.Item);
             }
-            else
+            catch (GRPCException ex)
             {
-                var encoding = new ASCIIEncoding();
-                var key = encoding.GetBytes(authContext.ConsumerSecret);
-                var crc_tokenBytes = encoding.GetBytes(crc_token);
-
-                using (HMACSHA256 hMACSHA256 = new HMACSHA256(key))
-                {
-                    var hash = hMACSHA256.ComputeHash(crc_tokenBytes);
-
-                    var response = string.Format("sha256={0}", Convert.ToBase64String(hash));
-
-                    var crc = new twitter_dto.CRCResponse(response);
-
-                    return crc;
-                }
+                return StatusCode((int)ex.HttpStatusCode);
             }
         }
     }

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.twitter.grpc.Protos";
+
+service Webhook {
+	rpc ProcessarCRC(CRCRequest) returns (CRCResponse);
+}
+
+message CRCRequest {
+	string CRC = 1;
+	string EmpresaId = 2;
+	string ContaRedeSocial = 3;
+}
+
+message CRCResponse {
+	string response_token = 1;
+	int32 HttpStatusCode = 2;
+	string Erro = 3;
+}

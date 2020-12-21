@@ -97,7 +97,15 @@ namespace multiplixe.twitter.triador.console
 
                 };
 
-                Console.WriteLine("Triador Twitter aguardando...");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+
+                Console.WriteLine("*************************************************");
+                Console.WriteLine($"Triador Twitter aguardando - {DateTimeHelper.Now()}");
+                Console.WriteLine("*************************************************");
+                Console.WriteLine("");
+                Console.ResetColor();
+
                 Console.ReadLine();
             }
         }

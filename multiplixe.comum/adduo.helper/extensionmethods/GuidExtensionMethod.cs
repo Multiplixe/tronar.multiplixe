@@ -14,7 +14,13 @@ namespace adduo.helper.extensionmethods
             return !_guid.IsEmpty();
         }
 
+        [Obsolete("Usar ToStringEmptyIfEmpty()")]
         public static string ToStringNullIfEmpty(this Guid _guid)
+        {
+            return _guid.IsEmpty() ? string.Empty : _guid.ToString();
+        }
+
+        public static string ToStringEmptyIfEmpty(this Guid _guid)
         {
             return _guid.IsEmpty() ? string.Empty : _guid.ToString();
         }

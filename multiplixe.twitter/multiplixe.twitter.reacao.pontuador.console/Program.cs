@@ -9,6 +9,7 @@ using System.Text;
 using comum_dto = multiplixe.comum.dto;
 using multiplixe.enfileirador.client;
 using multiplixe.comum.pontuador;
+using multiplixe.comum.helper;
 
 namespace multiplixe.twitter.reacao.pontuador.console
 {
@@ -75,10 +76,17 @@ namespace multiplixe.twitter.reacao.pontuador.console
                     }
                 };
 
-                Console.WriteLine("Pontuador Reação Twitter aguardando...");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+
+                Console.WriteLine("*************************************************");
+                Console.WriteLine($"Pontuador Reação Twitter aguardando - {DateTimeHelper.Now()}");
+                Console.WriteLine("*************************************************");
+                Console.WriteLine("");
+                Console.ResetColor();
+
                 Console.ReadLine();
             }
-
         }
     }
 }
