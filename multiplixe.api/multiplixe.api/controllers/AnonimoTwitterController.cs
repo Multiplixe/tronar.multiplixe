@@ -20,18 +20,15 @@ namespace multiplixe.api.controllers
     public class AnonimoTwitterController : BaseController
     {
         private TwitterLogEventoService twitterLogEventoService { get; }
-        private twitteroauth.dtos.AuthContext authContext { get; }
 
         public AnonimoTwitterController(
                 IConfiguration configuration,
                 EmpresaSettings empresaSettings,
                 TwitterLogEventoService twitterLogEventoService,
-                EnfileiradorClient enfileiradorClient,
-                twitteroauth.dtos.AuthContext authContext) : base(configuration, empresaSettings)
+                EnfileiradorClient enfileiradorClient) : base(configuration, empresaSettings)
         {
             this.enfileiradorClient = enfileiradorClient;
             this.twitterLogEventoService = twitterLogEventoService;
-            this.authContext = authContext;
         }
 
         [HttpPost]

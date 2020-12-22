@@ -14,7 +14,7 @@ const routes: Routes = [
     component: SocialMediaConnectionPage
   },
   {
-    path: 'webview/twitter-callback',
+    path: 'webview/twitter-callback/:username',
     component: TwitterCallbackPage
   },
   {

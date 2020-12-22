@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\oauth.proto" />
     <None Remove="Protos\webhook.proto" />
   </ItemGroup>
 
@@ -12,15 +13,15 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.2.5" />
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.empresas.client" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\multiplixe.twitter.dto\multiplixe.twitter.dto.csproj" />
+    <ProjectReference Include="..\multiplixe.twitter.oauth\multiplixe.twitter.oauth.csproj" />
     <ProjectReference Include="..\multiplixe.twitter.webhook\multiplixe.twitter.webhook.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\oauth.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\webhook.proto" GrpcServices="Server" />
   </ItemGroup>
 

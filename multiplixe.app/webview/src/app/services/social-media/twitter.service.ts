@@ -46,11 +46,18 @@ export class TwitterService
     }
 
     private async getAuthUrl() {
-        return this.httpService.getAPI<string>('/restrito/twitter/oauth/authenticate');
+        return this.httpService.getAPI<string>('/restrito/twitter/oauth/authenticate/voraxgg');
     }
 
-    async process(token: string, verifier: string) {
-        return this.httpService.getAPI<any>('/restrito/twitter/oauth/process/' + token + '/' + verifier);
+    async process(token: string, verifier: string, username: string) {
+
+        var data = {
+            token : token,
+            verifier : verifier,
+            username : username
+        };
+
+        return this.httpService.postAPI<any>('/restrito/twitter/oauth/process', data);
     }
 
 

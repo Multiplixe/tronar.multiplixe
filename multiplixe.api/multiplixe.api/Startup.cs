@@ -58,11 +58,9 @@ namespace multiplixe.api
             services.AddScoped<TwitchValidacaoPingActionFilter>();
             services.AddScoped<TwitchTravaPingDuploActionFilter>();
 
-            var twitterAuthContext = Configuration.GetSection("Twitter").GetSection("OAuth").Get<twitteroauth.dtos.AuthContext>();
             var twitchAuthContext = Configuration.GetSection("Twitch").GetSection("OAuth").Get<twitchoauth.dtos.AuthContext>();
             var twitchPingConfig = Configuration.GetSection("Twitch").GetSection("PingConfig").Get<twitchping.dtos.PingConfig>();
 
-            services.AddHttpClient<twitteroauth.TwitterHttpClient>();
             services.AddHttpClient<twitchoauth.TwitchHttpClient>();
 
             var empresaSettings = Configuration.GetSection("Empresa").Get<EmpresaSettings>();
@@ -76,7 +74,6 @@ namespace multiplixe.api
 
             services.AddSingleton(empresaSettings);
             services.AddSingleton(parametros);
-            services.AddSingleton(twitterAuthContext);
             services.AddSingleton(twitchAuthContext);
             services.AddSingleton(twitchPingConfig);
             services.AddSingleton<ILogEventoSettings<facebook_dtos.eventos.Evento>>(facebookLogSettings);
@@ -97,7 +94,6 @@ namespace multiplixe.api
             
             services.AddTransient<twitchping.PingService>();
             services.AddTransient<twitchoauth.Servico>();
-            services.AddTransient<twitteroauth.Servico>();
 
             services.AddTransient<consultas.Setup>();
             services.AddTransient<consultas.Dashboard>();

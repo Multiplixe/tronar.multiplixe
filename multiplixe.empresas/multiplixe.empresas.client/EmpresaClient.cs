@@ -107,6 +107,7 @@ namespace multiplixe.empresas.client
                 {
                     response.Item = new dto.empresas.TwitterInfo
                     {
+                        UrlApi = "https://api.twitter.com",
                         ApiKey = "f7a38ZW7um7G0dKKpyWk2qjfg",
                         ConsumerSecret = "qwwZbUmvCQnNk7D3VtWycYAXWnAvsJ85hCstm6fiK7DvSxJk9S",
                         Token = "768588171902877696-QfkRh41AUJbox4uOOYp7GahUYiCqo71",
@@ -119,6 +120,7 @@ namespace multiplixe.empresas.client
             {
                 response.Item = new dto.empresas.TwitterInfo
                 {
+                    UrlApi = "https://api.twitter.com",
                     ApiKey = "f7a38ZW7um7G0dKKpyWk2qjfg",
                     ConsumerSecret = "qwwZbUmvCQnNk7D3VtWycYAXWnAvsJ85hCstm6fiK7DvSxJk9S",
                     Token = "768588171902877696-QfkRh41AUJbox4uOOYp7GahUYiCqo71",

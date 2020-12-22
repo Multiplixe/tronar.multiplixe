@@ -5,7 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using multiplixe.empresas.client;
 using multiplixe.twitter.grpc.Services;
+using multiplixe.twitter.oauth;
 using multiplixe.twitter.webhook;
+using multiplixe.usuarios.client;
 
 namespace multiplixe.twitter.grpc
 {
@@ -19,6 +21,12 @@ namespace multiplixe.twitter.grpc
 
             services.AddTransient<EmpresaClient>();
             services.AddTransient<CRCService>();
+            services.AddTransient<OAuthServico>();
+            services.AddTransient<IntegracaoUsuario>();
+            services.AddTransient<PerfilClient>();
+            services.AddTransient<EmpresaClient>();
+
+            services.AddHttpClient<TwitterHttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +42,7 @@ namespace multiplixe.twitter.grpc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<WebhookService>();
+                endpoints.MapGrpcService<OAuthService>();
 
                 endpoints.MapGet("/", async context =>
                 {

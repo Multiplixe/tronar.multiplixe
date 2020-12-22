@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.twitter.grpc.Protos";
+
+service OAuth {
+	rpc RegistrarPerfil(RegistroRequest) returns (RegistroResponse);
+	rpc ObterURL(ObterURLRequest) returns (ObterURLResponse);
+}
+
+message RegistroRequest {
+	string Token = 1;
+	string Verifier = 2;
+	string UsuarioId = 3;
+	string EmpresaId = 4;
+	string ContaRedeSocial = 5;
+}
+
+message RegistroResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+}
+
+message ObterURLRequest {
+	string EmpresaId = 1;
+	string ContaRedeSocial = 2;
+}
+
+message ObterURLResponse {
+	string URL = 1;
+	int32 HttpStatusCode = 2;
+	string Erro = 3;
+}

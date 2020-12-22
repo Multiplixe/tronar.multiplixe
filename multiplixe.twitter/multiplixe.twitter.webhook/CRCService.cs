@@ -1,5 +1,4 @@
 ﻿using multiplixe.empresas.client;
-using multiplixe.twitter.dto;
 using System;
 using System.Security.Cryptography;
 using System.Text;

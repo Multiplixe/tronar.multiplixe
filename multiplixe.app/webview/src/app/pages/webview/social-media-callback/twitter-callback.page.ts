@@ -17,8 +17,10 @@ export class TwitterCallbackPage extends BasePage implements OnInit {
 
     this.twitterService = AppInjector.get(TwitterService)
 
-    this.route.queryParams.subscribe(params => {
-      this.process(params['oauth_token'], params['oauth_verifier'])
+    this.route.queryParams.subscribe(queryParams => {
+      this.route.params.subscribe(params => {
+        this.process(queryParams['oauth_token'], queryParams['oauth_verifier'], params["username"])
+      });
     });
   }
 
@@ -26,16 +28,16 @@ export class TwitterCallbackPage extends BasePage implements OnInit {
     super.ngOnInit();
   }
 
-  async process(token: string, verifier: string) {
+  async process(token: string, verifier: string, username: string) {
     try {
 
       this.runLoading();
 
-      await this.twitterService.process(token, verifier);
+      await this.twitterService.process(token, verifier, username);
 
     }
     catch (e) {
-      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Twitter. Por favor, tente novamente mais tarde.", async () => { this.process(token, verifier) });
+      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Twitter. Por favor, tente novamente mais tarde.", async () => { this.process(token, verifier, username) });
     }
     finally {
       this.stopLoading();
