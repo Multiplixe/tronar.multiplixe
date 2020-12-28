@@ -31,7 +31,7 @@ namespace multiplixe.facebook.autenticacao
 
             var facekookInfos = responseFacebookInfos.Item;
 
-            return $"https://www.facebook.com/v9.0/dialog/oauth?client_id={facekookInfos.AppId}&redirect_uri={facekookInfos.URLRedirectOauth}&state=1&scope=manage_pages,offline_access,publish_stream";
+            return $"https://www.facebook.com/v9.0/dialog/oauth?client_id={facekookInfos.AppId}&redirect_uri={facekookInfos.URLRedirectOauth}&state=1";
         }
 
         public void ProcessarCode(string code, Guid usuarioId, Guid empresaId)

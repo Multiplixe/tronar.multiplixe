@@ -22,21 +22,23 @@ export class FacebookCallbackPage extends BasePage implements OnInit {
   async ngOnInit() {
     super.ngOnInit();
 
-    this.route.queryParams.subscribe(params => {
-      this.process(params['code'])
+    this.route.queryParams.subscribe(queryParams => {
+      this.route.params.subscribe(params => {
+        this.process(queryParams['code'], params["empresaId"], params["username"])
+      });
     });    
   }
 
-  async process(code: string) {
+  async process(code: string, empresaId: string, username: string) {
 
     try {
 
       this.runLoading();
 
-      await this.facebookService.process(code);
+      await this.facebookService.process(code, empresaId, username);
     }
     catch (e) {
-      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Facebook. Por favor, tente novamente mais tarde.", async () => { this.process(code) });
+      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Facebook. Por favor, tente novamente mais tarde.", async () => { this.process(code, empresaId, username) });
     }
     finally {
       this.stopLoading();

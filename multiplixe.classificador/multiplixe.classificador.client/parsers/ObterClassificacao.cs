@@ -13,35 +13,55 @@ namespace multiplixe.classificador.client.parsers
             return new ClassificacaoRequest { UsuarioId = usuarioId.ToString() };
         }
 
-        public ResponseEnvelope<comum_dto.classificacao.Classificacao> Response(ClassificacaoResponse classificacaoResponse)
+        public ResponseEnvelope<comum_dto.classificacao.Classificacao> Response(ClassificacaoResponse response)
         {
-            var responseEnvelope = new ResponseEnvelope<comum_dto.classificacao.Classificacao>
+            var envelope = new ResponseEnvelope<comum_dto.classificacao.Classificacao>
             {
-                HttpStatusCode = (HttpStatusCode)classificacaoResponse.HttpStatusCode
+                HttpStatusCode = (HttpStatusCode)response.HttpStatusCode
             };
 
-            if (responseEnvelope.Success)
+            if (envelope.Success)
             {
-                responseEnvelope.Item = new comum_dto.classificacao.Classificacao
+                var nivel = response.Classificacao.Nivel;
+
+                envelope.Item = new comum_dto.classificacao.Classificacao
                 {
                     Pontuacao = new comum_dto.classificacao.Pontuacao
                     {
-                        Valor = classificacaoResponse.Classificacao.Pontuacao.Valor
+                        Valor = response.Classificacao.Pontuacao.Valor
                     },
                     Saldo = new comum_dto.classificacao.Saldo
                     {
-                        Valor = classificacaoResponse.Classificacao.Saldo.Valor
+                        Valor = response.Classificacao.Saldo.Valor
                     },
                     Nivel = new comum_dto.classificacao.Nivel
                     {
-                        Id = classificacaoResponse.Classificacao.Nivel.Id,
-                        Nome = classificacaoResponse.Classificacao.Nivel.Nome,
+                        Anterior = new comum_dto.classificacao.NivelItem
+                        {
+                            Id = nivel.Anterior.Id,
+                            Nome = nivel.Anterior.Nome,
+                            Mostrar = nivel.Anterior.Mostrar
+                        },
+                        Atual = new comum_dto.classificacao.NivelItemAtual
+                        {
+                            Id = nivel.Atual.Nivel.Id,
+                            Nome = nivel.Atual.Nivel.Nome,
+                            Mostrar = nivel.Atual.Nivel.Mostrar,
+                            PontosParaProximoNivel = nivel.Atual.PontosParaProximoNivel
+                        },
+                        Proximo = new comum_dto.classificacao.NivelItemProximo
+                        {
+                            Id = nivel.Proximo.Nivel.Id,
+                            Nome = nivel.Proximo.Nivel.Nome,
+                            Mostrar = nivel.Proximo.Nivel.Mostrar,
+                            Pontos = nivel.Proximo.Pontos
+                        }
                     }
                 };
 
-                foreach (var item in classificacaoResponse.Classificacao.RedesSociais)
+                foreach (var item in response.Classificacao.RedesSociais)
                 {
-                    responseEnvelope.Item.RedesSociais.Add(new comum_dto.classificacao.RedeSocial
+                    envelope.Item.RedesSociais.Add(new comum_dto.classificacao.RedeSocial
                     {
                         Pontos = item.Pontos,
                         Percent = item.Percent,
@@ -51,7 +71,7 @@ namespace multiplixe.classificador.client.parsers
                 }
             }
 
-            return responseEnvelope;
+            return envelope;
         }
     }
 }

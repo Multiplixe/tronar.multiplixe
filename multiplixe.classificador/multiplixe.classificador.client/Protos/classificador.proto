@@ -41,9 +41,26 @@ message RankingPosicaoMessage {
 }
 
 message NivelMessage {
+	NivelItemMessage Anterior = 1;
+	NivelItemAtualMessage Atual = 2;
+	NivelItemProximoMessage Proximo = 3;
+	bool Mudou = 4;
+}
+
+message NivelItemMessage {
 	int32 Id = 1;
 	string Nome = 2;
-	bool Mudou = 3;
+	bool Mostrar = 3;
+}
+
+message NivelItemAtualMessage {
+	NivelItemMessage Nivel = 1;
+	int32 PontosParaProximoNivel = 2;
+}
+
+message NivelItemProximoMessage {
+	NivelItemMessage Nivel = 1;
+	int32 Pontos = 2;
 }
 
 message ClassificacaoResponse {

@@ -29,7 +29,8 @@ namespace multiplixe.api.controllers
 
 
         [HttpGet]
-        public string Get()
+        [Route("{empresaId}/{username}")]
+        public string Get(string empresaId, string username)
         {
             logEventoService.LogarRequestInicial(Request);
 
@@ -37,7 +38,8 @@ namespace multiplixe.api.controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] object evento)
+        [Route("{empresaId}/{username}")]
+        public IActionResult Post([FromBody] object evento, string empresaId, string username)
         {
             try
             {

@@ -31,8 +31,14 @@ export class FacebookService
         return this.httpService.getAPI<string>('restrito/facebook/oauth/authorize');
     }
 
-    async process(code: string) {
-        let o = { "code": code };
+    async process(code: string, empresaId: string, username: string) {
+        
+        let o = { 
+            "code": code,
+            "empresaId" : empresaId,
+            "username" : username
+        };
+
         return this.httpService.postAPI<any>('restrito/facebook/oauth/process/', o);
     }
 

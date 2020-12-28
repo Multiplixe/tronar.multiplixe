@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="adduo.helper" Version="1.0.3" />
+    <PackageReference Include="adduo.helper" Version="1.1.1" />
     <PackageReference Include="multiplixe.comum.dapper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.comum.dto" Version="1.2.10" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.6.2" />
   </ItemGroup>
 
   <ItemGroup>

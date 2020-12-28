@@ -4,11 +4,14 @@ namespace multiplixe.comum.dto.classificacao
 {
     public class Nivel
     {
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
-
-        [JsonPropertyName("name")]
-        public string Nome { get; set; }
+        [JsonPropertyName("last")]
+        public NivelItem Anterior { get; set; }
+        
+        [JsonPropertyName("current")]
+        public NivelItemAtual Atual { get; set; }
+        
+        [JsonPropertyName("next")]
+        public NivelItemProximo Proximo { get; set; }
 
         [JsonPropertyName("levelChanged")]
         public bool Mudou { get; set; }

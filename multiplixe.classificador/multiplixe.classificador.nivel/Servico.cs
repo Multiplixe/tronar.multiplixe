@@ -1,5 +1,4 @@
-﻿using adduo.helper.envelopes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using dto = multiplixe.comum.dto;
@@ -8,64 +7,70 @@ namespace multiplixe.classificador.nivel
 {
     public class Servico
     {
-        private static Dictionary<Guid, List<dto.Nivel>> cache { get; set; }
+        private readonly FronteiroServico fronteiroServico;
+        private static List<dto.Nivel> cache { get; set; }
 
         private Repositorio repositorio { get; }
         private Regras regras { get; }
 
-        public Servico(Repositorio repositorio, Regras regras)
+        public Servico(Repositorio repositorio, Regras regras, FronteiroServico fronteiroServico)
         {
             this.repositorio = repositorio;
             this.regras = regras;
-
-            cache = new Dictionary<Guid, List<dto.Nivel>>();
+            this.fronteiroServico = fronteiroServico;
+            cache = new List<dto.Nivel>();
         }
 
-        public List<dto.Nivel> Obter(Guid empresaId)
+        public List<dto.Nivel> Listar()
         {
-            PreparaCache(empresaId);
+            PreparaCache();
 
-            return cache[empresaId];
+            return cache;
         }
 
-        private void PreparaCache(Guid empresaId)
+        private void PreparaCache()
         {
-            if (!cache.ContainsKey(empresaId))
+            var niveis = repositorio.Obter();
+
+            if (!niveis.Any())
             {
-                var niveis = repositorio.Obter(empresaId);
-
-                if (!niveis.Any())
-                {
-                    throw new Exception($"Nenhum nível cadastrado para a empresa {empresaId}.");
-                }
-                else if (!niveis.Any(a => a.PontuacaoMinima.Equals(0)))
-                {
-                    throw new Exception($"Nenhum nível cadastrado com pontuação mínima de 0 para a empresa {empresaId}");
-                }
-
-                cache[empresaId] = niveis
-                    .OrderByDescending(o => o.PontuacaoMinima)
-                    .Select(s => new dto.Nivel
-                    {
-                        Id = s.Id,
-                        Nome = s.Nome,
-                        PontuacaoMinima = s.PontuacaoMinima
-                    }).ToList();
+                throw new Exception($"Nenhum nível cadastrado .");
             }
+            else if (!niveis.Any(a => a.PontuacaoMinima.Equals(0)))
+            {
+                throw new Exception($"Nenhum nível cadastrado com pontuação mínima de 0");
+            }
+
+            cache = niveis
+                .OrderByDescending(o => o.PontuacaoMinima)
+                .Select(s => new dto.Nivel
+                {
+                    Id = s.Id,
+                    Nome = s.Nome,
+                    PontuacaoMinima = s.PontuacaoMinima
+                }).ToList();
         }
 
         public void Processar(Guid usuarioId, int pontos, Guid empresaId)
         {
-            var niveis = Obter(empresaId);
+            var niveis = Listar();
             var nivel = regras.Calcular(pontos, niveis);
 
             repositorio.Registrar(usuarioId, nivel.Id);
         }
 
-        public dto.Nivel ObterInicial(Guid empresaId)
+        public dto.Nivel ObterInicial()
         {
-            var niveis = Obter(empresaId);
+            var niveis = Listar();
             return regras.ObterInicial(niveis);
+        }
+
+        public dto.classificacao.Nivel ObterFronteiros(int nivelId, int pontos)
+        {
+            var niveis = Listar();
+            var response = fronteiroServico.Obter(nivelId, pontos, niveis);
+
+            return response;
         }
 
     }

@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.4.2" />
-    <PackageReference Include="multiplixe.comum.enums" Version="1.2.4" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.5.7" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.5" />
     <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
     <PackageReference Include="multiplixe.comum.triador" Version="1.0.0" />
     <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />

@@ -26,7 +26,7 @@ const routes: Routes = [
     component: YoutubeCallbackPage
   },
   {
-    path: 'webview/facebook-callback',
+    path: 'webview/facebook-callback/:empresaId/:username',
     component: FacebookCallbackPage
   },  
   {

@@ -13,11 +13,10 @@ namespace multiplixe.classificador.nivel
             this.dapperHelper = dapperHelper;
         }
 
-        public List<results.Nivel> Obter(Guid empresaId)
+        public List<results.Nivel> Obter()
         {
             var lista = dapperHelper
                 .ResetParameter()
-                .AddParameter("_empresaId", empresaId)
                 .ExecuteWithManyResult<results.Nivel>("niveis_obter");
 
             return lista;

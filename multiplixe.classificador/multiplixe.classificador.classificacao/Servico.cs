@@ -67,11 +67,8 @@ namespace multiplixe.classificador.classificacao
             var result = repositorio.Obter(usuarioId);
 
             var classificacao = new dto.classificacao.Classificacao();
-            classificacao.Nivel = new dto.classificacao.Nivel
-            {
-                Nome = result.Nivel,
-                Id = result.NivelId
-            };
+
+            classificacao.Nivel = nivelService.ObterFronteiros(result.NivelId, result.Pontos);
 
             classificacao.RedesSociais = pontuacaoService.Obter(usuarioId);
 

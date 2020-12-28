@@ -34,6 +34,7 @@ namespace multiplixe.classificador.grpc
             .AddTransient<nivel.Servico>()
             .AddTransient<nivel.Repositorio>()
             .AddTransient<nivel.Regras>()
+            .AddTransient<nivel.FronteiroServico>()
             .AddSingleton<ranking.Parametros>(parametrosRanking)
             .AddTransient<ranking.Repositorio>()
             .AddTransient<ranking.Servico>()

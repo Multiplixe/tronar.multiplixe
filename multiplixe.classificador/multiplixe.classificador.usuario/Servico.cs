@@ -30,7 +30,7 @@ namespace multiplixe.classificador.usuario
                 return response;
             }
 
-            var nivelInicial = nivelService.ObterInicial(usuario.EmpresaId);
+            var nivelInicial = nivelService.ObterInicial();
 
             repositorio.Registrar(usuario, nivelInicial.Id);
 

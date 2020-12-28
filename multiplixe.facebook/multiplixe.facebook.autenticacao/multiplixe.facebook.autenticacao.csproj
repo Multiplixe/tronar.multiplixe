@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
-    <PackageReference Include="multiplixe.empresas.client" Version="1.1.2" />
-    <PackageReference Include="multiplixe.usuarios.client" Version="1.3.3" />
+    <PackageReference Include="multiplixe.empresas.client" Version="1.2.3" />
+    <PackageReference Include="multiplixe.usuarios.client" Version="1.4.1" />
   </ItemGroup>
 
 </Project>
