@@ -74,7 +74,7 @@ namespace multiplixe.youtube.livehashtag.pontuador.console
 
                         if (!filaConfig.AutoAck)
                         {
-                          //  channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                            channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                         }
                     }
                     catch (Exception ex)

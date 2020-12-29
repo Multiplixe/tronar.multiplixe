@@ -95,10 +95,10 @@ namespace multiplixe.youtube.livehashtag.console.messages
 
             return messagesResponse.Item;
         }
-        
+
         private void EnfileirarParaTriador(Item item, string liveChatId, string hashtag)
         {
-                var evento = new Evento(item.Snippet.AuthorChannelId, liveChatId, hashtag);
+            var evento = new Evento(item.Snippet.AuthorChannelId, liveChatId, hashtag);
 
             var envelope = new EnvelopeEvento<dto.eventos.Evento>
             {

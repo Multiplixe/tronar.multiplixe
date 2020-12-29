@@ -33,6 +33,7 @@ namespace multiplixe.classificador.console
                                         .AddTransient<nivel.Servico>()
                                         .AddTransient<nivel.Regras>()
                                         .AddTransient<nivel.Repositorio>()
+                                        .AddTransient<nivel.FronteiroServico>()
                                         .AddTransient<classificacao.Servico>()
                                         .AddTransient<classificacao.Repositorio>()
                                         .AddTransient<transacao.Saldo>()
