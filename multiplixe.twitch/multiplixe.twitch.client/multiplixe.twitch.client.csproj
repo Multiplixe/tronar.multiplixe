@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackageId>multiplixe.twitch.client</PackageId>
+    <Authors>René Bizelli</Authors>
+    <Company>Rene</Company>
+    <Title>Twitch GRPC client </Title>
+
+    <PackageTags>tiwitter, grpc, client</PackageTags>
+    <PackageDescription>
+      Client de acesso os serviços do GRPC Twitch
+    </PackageDescription>
+    <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>1.0.0</PackageVersion>
+
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(MSBuildProjectDirectory)\bin\release\*.nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <None Remove="protos\oauth.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.1.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.9.1" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.23.2" />
+    <PackageReference Include="Grpc.Tools" Version="2.23.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="multiplixe.comum.dto" Version="1.6.4" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.6" />
+    <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
+    <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="protos\oauth.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>

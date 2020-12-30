@@ -36,7 +36,7 @@ namespace multiplixe.empresas.client
             return response;
         }
 
-        public adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitchInfo> ObterInfoTwitch(Guid empresaId)
+        public adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitchInfo> ObterInfoTwitch(Guid empresaId, string contaRedeSocial)
         {
             var response = new adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitchInfo>();
 
@@ -44,7 +44,8 @@ namespace multiplixe.empresas.client
             {
                 ChannelId = "530843921",
                 ExtensionSecretId = "41pX5DUi1UqaBPIkhT2lVWRrqLB5ic1+/6sskCfWI5g=",
-                ClientId = "wv45gqkjrr8eetuwhzfy045flhs27v"
+                ClientId = "80nsxhmsqq2yo6rg6u44jnhga6svoq",
+                ClientSecret = "qt9y1ayu76obaae28vn45ksvym5fla"
             };
 
             return response;
@@ -95,8 +96,6 @@ namespace multiplixe.empresas.client
             return response;
         }
 
-
-
         public adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitterInfo> ObterInfoTwitter(Guid empresaId, string contaRedeSocial)
         {
             var response = new adduohelper.envelopes.ResponseEnvelope<dto.empresas.TwitterInfo>();
@@ -131,9 +130,5 @@ namespace multiplixe.empresas.client
 
             return response;
         }
-
-
-
-
     }
 }

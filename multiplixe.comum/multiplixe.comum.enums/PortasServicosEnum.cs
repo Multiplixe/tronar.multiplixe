@@ -11,6 +11,7 @@
         compartilhador = 6060,
         publicidadeBanner = 6070,
         facebookGRPC = 6080,
-        twitterGRPC = 6090
+        twitterGRPC = 6090,
+        twitchGRPC = 6005,
     }
 }

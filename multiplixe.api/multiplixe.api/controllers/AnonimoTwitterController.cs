@@ -11,7 +11,6 @@ using System.Text;
 using comum_dto = multiplixe.comum.dto;
 using corehelper = multiplixe.comum.helper;
 using twitter_dto = multiplixe.twitter.dto;
-using twitteroauth = multiplixe.twitter.oauth;
 
 namespace multiplixe.api.controllers
 {

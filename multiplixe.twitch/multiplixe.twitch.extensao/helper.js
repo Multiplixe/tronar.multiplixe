@@ -1,5 +1,5 @@
 window.addEventListener('message', (event) => {
-  console.log(event);
+  console.log('message >>', event);
 });
 //debugger;
 //const local = window.frameElement.attributes.getNamedItem('helperUrl');

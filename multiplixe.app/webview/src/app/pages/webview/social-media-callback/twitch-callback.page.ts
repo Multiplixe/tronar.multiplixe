@@ -17,8 +17,10 @@ export class TwitchCallbackPage extends BasePage implements OnInit {
 
     this.twitchService = AppInjector.get(TwitchService)
 
-    this.route.queryParams.subscribe(params => {
-      this.process(params['code'])
+    this.route.queryParams.subscribe(queryParams => {
+      this.route.params.subscribe(params => {
+        this.process(queryParams['code'], params['username'])
+      });
     });
   }
 
@@ -26,17 +28,17 @@ export class TwitchCallbackPage extends BasePage implements OnInit {
     super.ngOnInit();
   }
 
-  async process(code: string) {
+  async process(code: string, username: string) {
 
     try {
 
       this.runLoading();
 
-      await this.twitchService.process(code);
+      await this.twitchService.process(code, username);
 
     }
     catch (e) {
-      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Twitch. Por favor, tente novamente mais tarde.", async () => { this.process(code) });
+      await this.processError(e, "Ocorreu algum problema ao conectar nosso sistema ao Twitch. Por favor, tente novamente mais tarde.", async () => { this.process(code, username) });
     }
     finally {
       this.stopLoading();

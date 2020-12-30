@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
     <PackageReference Include="multiplixe.comum.interfaces" Version="1.0.1" />
     <PackageReference Include="multiplixe.comum.pontuador" Version="1.0.1" />
-    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.1" />
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
   </ItemGroup>
 

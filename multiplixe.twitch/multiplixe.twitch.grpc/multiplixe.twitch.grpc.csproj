@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\oauth.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="adduo.helper" Version="1.1.1" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
+    <PackageReference Include="multiplixe.comum.enums" Version="1.2.6" />
+    <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\multiplixe.twitch.oauth\multiplixe.twitch.oauth.csproj" />
+    <ProjectReference Include="..\multiplixe.twitch.ping\multiplixe.twitch.ping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\oauth.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

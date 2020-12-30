@@ -8,7 +8,7 @@ using System;
 namespace multiplixe.api.controllers
 {
     [ApiController]
-    [Route("restrito/twitter")]
+    [Route("restrito/twitter/oauth")]
     public class RestritoTwitterController : AppRestritoController
     {
         public RestritoTwitterController(
@@ -18,7 +18,7 @@ namespace multiplixe.api.controllers
         }
 
         [HttpPost]
-        [Route("oauth/process")]
+        [Route("process")]
         public IActionResult Processar([FromBody] RequestEnvelope<TwitterOAuthResponse> request)
         {
             try
@@ -37,14 +37,14 @@ namespace multiplixe.api.controllers
         }
 
         [HttpGet]
-        [Route("oauth/authenticate/{contaRedeSocial}")]
+        [Route("authenticate/{contaRedeSocial}")]
         public IActionResult Authenticate(string contaRedeSocial)
         {
             var empresaId = ObterEmpresaId();
 
-            var twitterRegistrarPerfil = new integracao_grpc.TwitterOAuthObterURL(empresaId, contaRedeSocial);
+            var twitterOAuthObterURL = new integracao_grpc.TwitterOAuthObterURL(empresaId, contaRedeSocial);
 
-            return IntegrarGRPC<string>(twitterRegistrarPerfil);
+            return IntegrarGRPC<string>(twitterOAuthObterURL);
         }
     }
 }

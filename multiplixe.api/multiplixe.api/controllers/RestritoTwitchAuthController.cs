@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using adduo.helper.envelopes;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using multiplixe.api.dto.settings;
+using multiplixe.comum.dto;
 using System;
-using System.Threading.Tasks;
-using adduohelper = adduo.helper.envelopes;
-using comum_dto = multiplixe.comum.dto;
-using twitchoauth = multiplixe.twitch.oauth;
 
 namespace multiplixe.api.controllers
 {
@@ -14,46 +12,41 @@ namespace multiplixe.api.controllers
     [ApiController]
     public class RestritoTwitchAuthController : AppRestritoController
     {
-        private twitchoauth.Servico oauthService { get; }
         public RestritoTwitchAuthController(
-                twitchoauth.Servico oauthService,
                 IConfiguration configuration,
                 EmpresaSettings empresaSettings
             ) : base(configuration, empresaSettings)
         {
-            this.oauthService = oauthService;
         }
 
         [HttpGet]
-        [Route("authorize")]
-        public IActionResult Autorizacao()
+        [Route("authenticate/{contaRedeSocial}")]
+        public IActionResult Authenticate(string contaRedeSocial)
         {
-            var url = oauthService.Autorizar();
-            var response = new adduohelper.ResponseEnvelope<string>(url);
-            return Ok(response);
+            var empresaId = ObterEmpresaId();
+
+            var twitchOAuthObterURL = new integracao_grpc.TwitchOAuthObterURL(empresaId, contaRedeSocial);
+
+            return IntegrarGRPC<string>(twitchOAuthObterURL);
         }
 
 
-        [HttpGet]
-        [Route("process/{code}")]
-        public async Task<IActionResult> Processar(string code)
+        [HttpPost]
+        [Route("process")]
+        public IActionResult Processar([FromBody] RequestEnvelope<TwitchOAuthResponse> request)
         {
             try
             {
-                var perfil = await oauthService.Processar(code);
-
-                var request = new adduohelper.RequestEnvelope<comum_dto.Perfil>(perfil);
-
                 ConfiguraEmpresa(request.Item);
                 ConfiguraUsuario(request.Item);
 
-                var registrarPerfilIntegracaoGRPC = new integracao_grpc.RegistrarPerfil(request);
+                var twitchRegistrarPerfil = new integracao_grpc.TwitchRegistrarPerfil(request.Item);
 
-                return IntegrarGRPC<comum_dto.Perfil>(registrarPerfilIntegracaoGRPC);
+                return IntegrarGRPC(twitchRegistrarPerfil);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(400, ex.Message);
             }
         }
     }

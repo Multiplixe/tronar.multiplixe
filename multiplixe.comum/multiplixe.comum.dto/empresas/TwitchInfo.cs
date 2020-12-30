@@ -5,5 +5,6 @@
         public string ChannelId { get; set; }
         public string ClientId { get; set; }
         public string ExtensionSecretId { get; set; }
+        public string ClientSecret { get; set; }
     }
 }

@@ -46,11 +46,17 @@ export class TwitchService
     }
 
     private async getAuthUrl() {
-        return this.httpService.getAPI<string>('/restrito/twitch/oauth/authorize');
+        return this.httpService.getAPI<string>('/restrito/twitch/oauth/authenticate/voraxnow');
     }
 
-    async process(code: string) {
-        return this.httpService.getAPI<any>('/restrito/twitch/oauth/process/' + code);
+    async process(code: string, username: string) {
+
+        var o = {
+            code : code,
+            username : username
+        }
+
+        return this.httpService.postAPI<any>('/restrito/twitch/oauth/process', o);
     }
 
 }

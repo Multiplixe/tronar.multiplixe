@@ -18,7 +18,7 @@ const routes: Routes = [
     component: TwitterCallbackPage
   },
   {
-    path: 'webview/twitch-callback',
+    path: 'webview/twitch-callback/:username',
     component: TwitchCallbackPage
   },
   {

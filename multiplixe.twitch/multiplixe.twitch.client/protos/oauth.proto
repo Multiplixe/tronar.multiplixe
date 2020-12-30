@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.twitch.grpc.Protos";
+
+service OAuth {
+	rpc RegistrarPerfil(RegistroRequest) returns (RegistroResponse);
+	rpc ObterURL(ObterURLRequest) returns (ObterURLResponse);
+}
+
+message RegistroRequest {
+	string Code = 1;
+	string UsuarioId = 2;
+	string EmpresaId = 3;
+	string ContaRedeSocial = 4;
+}
+
+message RegistroResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+}
+
+message ObterURLRequest {
+	string EmpresaId = 1;
+	string ContaRedeSocial = 2;
+}
+
+message ObterURLResponse {
+	string URL = 1;
+	int32 HttpStatusCode = 2;
+	string Erro = 3;
+}

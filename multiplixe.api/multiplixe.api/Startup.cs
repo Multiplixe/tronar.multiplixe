@@ -15,10 +15,8 @@ using multiplixe.classificador.client;
 using multiplixe.enfileirador.client;
 using System;
 using facebook_dtos = multiplixe.facebook.dto;
-using twitchoauth = multiplixe.twitch.oauth;
 using twitchping = multiplixe.twitch.ping;
 using twitter_dtos = multiplixe.twitter.dto;
-using twitteroauth = multiplixe.twitter.oauth;
 using usuario = multiplixe.usuarios.client;
 
 namespace multiplixe.api
@@ -58,10 +56,7 @@ namespace multiplixe.api
             services.AddScoped<TwitchValidacaoPingActionFilter>();
             services.AddScoped<TwitchTravaPingDuploActionFilter>();
 
-            var twitchAuthContext = Configuration.GetSection("Twitch").GetSection("OAuth").Get<twitchoauth.dtos.AuthContext>();
             var twitchPingConfig = Configuration.GetSection("Twitch").GetSection("PingConfig").Get<twitchping.dtos.PingConfig>();
-
-            services.AddHttpClient<twitchoauth.TwitchHttpClient>();
 
             var empresaSettings = Configuration.GetSection("Empresa").Get<EmpresaSettings>();
             var parametros = Configuration.GetSection("Parametros").Get<Parametros>();
@@ -71,10 +66,8 @@ namespace multiplixe.api
             var youtubeLogSettings = Configuration.GetSection("LogEvento").GetSection("Youtube").Get<LogEventoSettings<YoutubeEventoTest>>();
             var instagramLogSettings = Configuration.GetSection("LogEvento").GetSection("Instagram").Get<LogEventoSettings<InstagramEventTest>>();
 
-
             services.AddSingleton(empresaSettings);
             services.AddSingleton(parametros);
-            services.AddSingleton(twitchAuthContext);
             services.AddSingleton(twitchPingConfig);
             services.AddSingleton<ILogEventoSettings<facebook_dtos.eventos.Evento>>(facebookLogSettings);
             services.AddSingleton<ILogEventoSettings<twitter_dtos.eventos.Evento>>(twitterLogSettings);
@@ -93,7 +86,6 @@ namespace multiplixe.api
             services.AddTransient<RankingClient>();
             
             services.AddTransient<twitchping.PingService>();
-            services.AddTransient<twitchoauth.Servico>();
 
             services.AddTransient<consultas.Setup>();
             services.AddTransient<consultas.Dashboard>();
@@ -120,9 +112,11 @@ namespace multiplixe.api
            })
            .AddJwtBearer("twitch", options =>
            {
+               var extensionSecret = "41pX5DUi1UqaBPIkhT2lVWRrqLB5ic1+/6sskCfWI5g="; // ## TOOD obter do serviço de empresas
+
                options.TokenValidationParameters = new TokenValidationParameters
                {
-                   IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(twitchAuthContext.ExtensionSecret)),
+                   IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(extensionSecret)),
                    ValidateIssuer = false,
                    ValidateAudience = false,
                    ValidateLifetime = true
