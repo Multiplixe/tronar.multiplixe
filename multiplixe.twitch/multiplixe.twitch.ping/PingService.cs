@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using multiplixe.classificador.client;
+﻿using adduo.helper.envelopes;
+using multiplixe.comum.dto;
+using multiplixe.comum.exceptions;
 using multiplixe.comum.helper;
+using multiplixe.enfileirador.client;
 using multiplixe.twitch.dto.eventos;
-using multiplixe.twitch.ping.dtos;
 using multiplixe.usuarios.client;
 using System;
 using System.Net;
-using System.Text;
 using adduohelper = adduo.helper.envelopes;
 using comum_dto = multiplixe.comum.dto;
 using corehelper = multiplixe.comum.helper;
@@ -14,96 +14,77 @@ using enums = multiplixe.comum.enums;
 
 namespace multiplixe.twitch.ping
 {
-    public class PingService
+    public class PingService : BaseService
     {
-        private readonly string pingKeyHeader = "ping-key";
-        private readonly string pingPausaHeader = "ping-pause";
+        private readonly PingKeyService pingKeyService;
+        private readonly EnfileiradorClient enfileiradorClient;
+        private readonly PingValidar pingValidar;
 
-        private PingConfig pingConfig { get; }
-        private PerfilClient perfilClient { get; }
-        private ClassificadorClient classificadorClient { get; }
+        private TwitchPingConfig pingConfig { get; }
 
         public PingService(
-            PingConfig pingConfig,
+            PingKeyService pingKeyService,
+            TwitchPingConfig pingConfig,
             PerfilClient perfilClient,
-            ClassificadorClient classificadorClient)
+            EnfileiradorClient enfileiradorClient,
+            PingValidar pingValidar) : base(perfilClient)
         {
+            this.pingKeyService = pingKeyService;
             this.pingConfig = pingConfig;
-            this.perfilClient = perfilClient;
-            this.classificadorClient = classificadorClient;
+            this.enfileiradorClient = enfileiradorClient;
+            this.pingValidar = pingValidar;
         }
 
-        private string GerarPingkey(DateTime data)
-        {
-            return corehelper.CriptografiaHelper.Criptografar(data.ToString(), pingConfig.ChavePingKey);
-        }
-
-        public adduohelper.ResponseEnvelope<PingResponse> ProximoPingkey()
-        {
-            var pingResponse = new PingResponse();
-
-            var data = corehelper.DateTimeHelper.Now();
-
-            var novoPingHeader = GerarPingkey(data);
-
-            pingResponse.AdicionarUltimoPing(novoPingHeader);
-
-            var response = new adduohelper.ResponseEnvelope<PingResponse>(pingResponse);
-
-            return response;
-        }
-
-        public adduohelper.ResponseEnvelope<PingResponse> PingInicial(string user_id, Guid empresaId)
+        public adduohelper.ResponseEnvelope<TwitchPingResponse> Iniciar(string user_id, Guid empresaId)
         {
             var responsePerfil = ObterPerfil(user_id, empresaId);
 
-            var pingResponse = new PingResponse();
-            pingResponse.Chamada = pingConfig.Chamada;
-
-            var response = new adduohelper.ResponseEnvelope<PingResponse>(pingResponse);
-
-            if (responsePerfil.Success)
+            if (!responsePerfil.Success)
             {
-                var perfil = responsePerfil.Item;
-
-                var data = corehelper.DateTimeHelper.Now();
-
-                var novoPingHeader = GerarPingkey(data);
-
-                pingResponse.AdicionarUltimoPing(novoPingHeader);
-                pingResponse.FrequenciaMinutos = pingConfig.FrequenciaMinutos;
-
-                try
-                {
-                    var responseClassificacao = classificadorClient.ObterClassificacao(perfil.UsuarioId);
-
-                    if (responseClassificacao.Success)
-                    {
-                        pingResponse.Classificacao = responseClassificacao.Item;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // ## TODO logo
-                }
-
-            }
-            else
-            {
-                response.HttpStatusCode = HttpStatusCode.NotFound;
+                throw new NotFoundException();
             }
 
+            var pingResponse = CriarTwitchPingResponse();
+
+            var response = new adduohelper.ResponseEnvelope<TwitchPingResponse>(pingResponse);
 
             return response;
         }
 
-        private adduohelper.ResponseEnvelope<comum_dto.Perfil> ObterPerfil(string user_id, Guid empresaId)
+        private TwitchPingResponse CriarTwitchPingResponse()
         {
-            return perfilClient.Obter(empresaId, enums.RedeSocialEnum.twitch, user_id);
+            var response = new TwitchPingResponse
+            {
+                Chamada = pingConfig.Chamada,
+                FrequenciaMinutos = pingConfig.FrequenciaMinutos,
+            };
 
+            var data = corehelper.DateTimeHelper.Now();
+            var novoPingHeader = pingKeyService.Gerar(data);
+
+            response.AdicionarUltimoPing(novoPingHeader);
+
+            return response;
         }
 
-        public Evento GerarEvento(IHeaderDictionary header, string user_id, string channel_id)
+        public ResponseEnvelope<TwitchPingResponse> Pingar(string twitchUserId, string channelId, string is_unlinked, string pingKeyHeader, string pingPausaHeader, Guid empresaId)
+        {
+            pingValidar.Validar(is_unlinked, twitchUserId, pingKeyHeader);
+
+            var evento = GerarEvento(twitchUserId, channelId, pingKeyHeader, pingPausaHeader);
+
+            var envelope = new comum_dto.EnvelopeEvento<dto.eventos.Evento>(evento);
+            envelope.DataEvento = evento.Ping.Atual;
+            envelope.EmpresaId = empresaId;
+
+            enfileiradorClient.EnfileirarParaTriadorTwitch(envelope);
+
+            var proximoPing = ProximoPingkey();
+
+            return proximoPing;
+        }
+
+        private Evento GerarEvento(string user_id, string channel_id, string pingKeyHeader, string pingPausaHeader)
         {
             var evento = new Evento()
             {
@@ -112,8 +93,8 @@ namespace multiplixe.twitch.ping
                 Ping = new EventoPing()
                 {
                     Atual = corehelper.DateTimeHelper.Now(),
-                    Ultimo = ExtrairPingKey(header),
-                    PausaMilissegundos = ExtrairPingPausa(header),
+                    Ultimo = pingKeyService.ExtrairPingKey(pingKeyHeader),
+                    PausaMilissegundos = pingKeyService.ExtrairPingPausa(pingPausaHeader),
                     FrequenciaMinutos = pingConfig.FrequenciaMinutos,
                     ToleranciaSegundos = pingConfig.ToleranciaSegundos,
                     PerfilId = user_id,
@@ -124,37 +105,13 @@ namespace multiplixe.twitch.ping
             return evento;
         }
 
-
-        private DateTime ExtrairPingKey(IHeaderDictionary header)
+        private ResponseEnvelope<TwitchPingResponse> ProximoPingkey()
         {
-            var pingKeyDecript = corehelper.CriptografiaHelper.Descriptografar(header[pingKeyHeader], pingConfig.ChavePingKey);
+            var pingResponse = CriarTwitchPingResponse();
 
-            var pingkeyDateTime = Convert.ToDateTime(pingKeyDecript);
+            var response = new adduohelper.ResponseEnvelope<TwitchPingResponse>(pingResponse);
 
-            return pingkeyDateTime;
+            return response;
         }
-
-        private int ExtrairPingPausa(IHeaderDictionary header)
-        {
-            var pingPausa = string.Empty;
-
-            if (header.ContainsKey(pingPausaHeader))
-            {
-                pingPausa = header[pingPausaHeader];
-            }
-
-            var pausa = 0;
-
-            if (!string.IsNullOrEmpty(pingPausa))
-            {
-                var f = Convert.FromBase64String(pingPausa);
-                var fatorString = Encoding.UTF8.GetString(f);
-                int.TryParse(fatorString, out pausa);
-            }
-
-            return pausa;
-        }
-
-
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace multiplixe.twitch.ping.dtos
+﻿namespace multiplixe.comum.dto
 {
-    public class PingConfig
+    public class TwitchPingConfig
     {
         public int FrequenciaMinutos { get; set; }
         public int ToleranciaSegundos { get; set; }

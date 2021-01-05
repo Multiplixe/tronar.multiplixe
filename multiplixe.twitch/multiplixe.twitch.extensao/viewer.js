@@ -2,8 +2,8 @@ var token = "";
 var tuid = "";
 var channelId = "";
 var clientId = "";
-var ebs = "https://api.multiplyx.me/restrito/twitch";
-var _ebs = "http://localhost:63623/restrito/twitch";
+var _ebs = "https://api.multiplyx.me/restrito/twitch";
+var ebs = "http://localhost:63623/restrito/twitch";
 var pingTimeout = 0;
 var timePing = 0
 var alreadyInitialized = false;
@@ -23,7 +23,7 @@ var pauseCounter = 0;
 
 var requests =
 {
-    init: () => { send('GET', '/ping-inicial', proccessInitSuccessResponse, proccessInitErrorResponse) },
+    init: () => { send('GET', '/ping', proccessInitSuccessResponse, proccessInitErrorResponse) },
     ping: () => { send('POST', '/ping', proccessPingSuccessResponse, proccessPingErrorResponse, proccessPingCompleteResponse) },
 };
 
@@ -32,7 +32,8 @@ function send(type, method, proccessSuccess, proccessError, proccessComplete, pa
     var options = {
         headers: {
             Authorization: 'Bearer ' + token,
-            'ping-pause': btoa(pauseCounter)
+            'ping-pause': btoa(pauseCounter),
+            'empresa-id' : '5F22E669-8CF2-4702-A828-B32E832A6BA6'
         }
     };
 
@@ -132,7 +133,7 @@ function showScore(o) {
 
         $("#pointing-total").text(value)
 
-        let width = 180 + (value.toString().length * 10);
+        let width = 100 + (value.toString().length * 10);
 
         e.css("width", width + "px");
 
@@ -146,15 +147,6 @@ function showScore(o) {
     }
 
 }
-
-function showScoreInit(o) {
-    if (o &&
-        o.item &&
-        o.item.score) {
-        showScore(o.item.score);
-    }
-}
-
 
 function contextExecuting() {
 
@@ -249,7 +241,6 @@ function proccessInitSuccessResponse(r) {
     setGiveBackHeader(r);
     setPingTimeout(r);
     registered();
-    showScoreInit(r)
     finishedCurrentPing = true;
 }
 
@@ -341,9 +332,6 @@ function error(method, o) {
     console.log("method", method);
     console.log("param", o);
 }
-
-
-
 
 $(function () {
 

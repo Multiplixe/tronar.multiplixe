@@ -27,11 +27,11 @@
 
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.8" />
 
-    <PackageReference Include="multiplixe.classificador.client" Version="1.2.1" />
-
-    <PackageReference Include="multiplixe.comum.dto" Version="1.6.3" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.7.0" />
 
     <PackageReference Include="multiplixe.comum.helper" Version="1.0.0" />
+
+    <PackageReference Include="multiplixe.enfileirador.client" Version="1.0.2" />
 
     <PackageReference Include="multiplixe.twitch.dto" Version="1.0.4" />
 

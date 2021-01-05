@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using multiplixe.comum.dto;
 using multiplixe.empresas.client;
+using multiplixe.enfileirador.client;
 using multiplixe.twitch.grpc.Services;
 using multiplixe.twitch.oauth;
 using multiplixe.twitch.oauth.dtos;
-using multiplixe.twitch.ping.dtos;
 using multiplixe.usuarios.client;
 
 namespace multiplixe.twitch.grpc
@@ -38,10 +35,13 @@ namespace multiplixe.twitch.grpc
             services.AddTransient<oauth.OAuthServico>();
             services.AddTransient<IntegracaoUsuario>();
             services.AddTransient<PerfilClient>();
-
+            services.AddTransient<EnfileiradorClient>();
+            services.AddTransient<ping.PingService>();
+            services.AddTransient<ping.PingKeyService>();
+            services.AddTransient<ping.PingValidar>();
 
             var twitchParams = Configuration.GetSection("OAuth").Get<TwitchParams>();
-            var twitchPing = Configuration.GetSection("Ping").Get<PingConfig>();
+            var twitchPing = Configuration.GetSection("Ping").Get<TwitchPingConfig>();
 
             services.AddSingleton(twitchParams);
             services.AddSingleton(twitchPing);
@@ -60,6 +60,7 @@ namespace multiplixe.twitch.grpc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<OAuthService>();
+                endpoints.MapGrpcService<PingService>();
 
                 endpoints.MapGet("/", async context =>
                 {

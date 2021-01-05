@@ -1,16 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using comum_dto = multiplixe.comum.dto;
 
-namespace multiplixe.twitch.ping.dtos
+namespace multiplixe.comum.dto
 {
-    public class PingResponse
+    public class TwitchPingResponse
     {
         [JsonPropertyName("pingTimeout")]
         public int FrequenciaMinutos { get; set; }
-
-        [JsonPropertyName("pingUrl")]
-        public string PingUrl { get; set; }
 
         [JsonPropertyName("title")]
         public string Chamada { get; set; }
@@ -19,9 +15,9 @@ namespace multiplixe.twitch.ping.dtos
         public Dictionary<string, string> DevolverHeader { get; }
 
         [JsonPropertyName("score")]
-        public comum_dto.classificacao.Classificacao Classificacao { get; set; }
+        public classificacao.Classificacao Classificacao { get; set; }
 
-        public PingResponse()
+        public TwitchPingResponse()
         {
             DevolverHeader = new Dictionary<string, string>();
         }

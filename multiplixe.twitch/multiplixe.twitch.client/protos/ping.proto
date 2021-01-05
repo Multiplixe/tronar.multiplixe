@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "multiplixe.twitch.grpc.Protos";
+
+
+service Ping {
+	rpc Inicial(InicialRequest) returns (InicialResponse);
+	rpc Pingar(PingarRequest) returns (PingarResponse);
+}
+
+message InicialRequest {
+	string TwitterUserId = 1;
+	string EmpresaId = 2;
+}
+
+message InicialResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+	PingMessage Item = 3;
+}
+
+message PingMessage {
+	int32 FrequenciaMinutos = 1;
+	string Chamada = 2;
+	repeated DevolverHeaderItem DevolverHeader = 3;
+}
+
+message DevolverHeaderItem {
+	string Key = 1;
+	string Value = 2;
+}
+
+message PontuacaoItem {
+	int32 Valor = 1; 
+}
+
+message PingarRequest {
+	string TwitchUserId = 1; 
+	string ChannelId = 2; 
+	string IsUnlinked = 3; 
+	string PingKeyHeader = 4;
+	string PingPausaHeader = 5; 
+	string EmpresaId = 6;
+}
+
+message PingarResponse {
+	int32 HttpStatusCode = 1;
+	string Erro = 2;
+	PingMessage Item = 3;
+}

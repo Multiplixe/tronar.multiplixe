@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consoles", "consoles", "{A8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{73F91FB5-C7E9-4240-B34A-4A451FABAD93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.twitch.grpc", "multiplixe.twitch.grpc\multiplixe.twitch.grpc.csproj", "{E27AF4BE-3B4C-44C8-9072-E3C002DBF92B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.grpc", "multiplixe.twitch.grpc\multiplixe.twitch.grpc.csproj", "{E27AF4BE-3B4C-44C8-9072-E3C002DBF92B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplixe.twitch.client", "multiplixe.twitch.client\multiplixe.twitch.client.csproj", "{02809728-F913-4D49-A177-E9FBD682FC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplixe.twitch.client", "multiplixe.twitch.client\multiplixe.twitch.client.csproj", "{02809728-F913-4D49-A177-E9FBD682FC4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

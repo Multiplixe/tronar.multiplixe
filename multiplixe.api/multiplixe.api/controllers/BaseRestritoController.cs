@@ -8,6 +8,7 @@ namespace multiplixe.api.controllers
 {
     public class BaseRestritoController : BaseController
     {
+
         public BaseRestritoController(
                 IConfiguration configuration,
                 EmpresaSettings empresaSettings
@@ -18,6 +19,13 @@ namespace multiplixe.api.controllers
         public void ConfiguraUsuario(IUsuarioID dto)
         {
             dto.UsuarioId = ObterUsuarioId();
+        }
+
+        protected string ObterValorDoClaims(string chave)
+        {
+            var claimHelper = new ClaimHelper(User.Identity);
+
+            return claimHelper.ObterValor(chave);
         }
 
         protected Guid ObterUsuarioId()
@@ -37,6 +45,18 @@ namespace multiplixe.api.controllers
             }
 
             return usuarioId;
+        }
+
+        protected string ObterValorDoHeader(string key)
+        {
+            var valor = string.Empty;
+
+            if (Request.Headers.ContainsKey(key))
+            {
+                valor = Request.Headers[key];
+            }
+
+            return valor;
         }
 
     }

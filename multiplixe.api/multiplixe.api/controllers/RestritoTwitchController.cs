@@ -6,21 +6,30 @@ using multiplixe.api.dto.settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using twitch_dto =  multiplixe.twitch.dto;
+using twitch_dto = multiplixe.twitch.dto;
 using multiplixe.twitch.ping;
 using System;
 using System.Diagnostics;
 using System.Net;
-using comum_dto =  multiplixe.comum.dto;
+using comum_dto = multiplixe.comum.dto;
+using multiplixe.comum.dto;
+using multiplixe.twitch.client;
 
 namespace multiplixe.api.controllers
 {
 
-    [Route("restrito/twitch")]
+    [Route("restrito/twitch/ping")]
     [ApiController]
     [Authorize(Policy = "twitch")]
     public class RestritoTwitchController : BaseRestritoController
     {
+        private readonly string pingKeyNameHeader = "ping-key";
+        private readonly string pingPausaNameHeader = "ping-pause";
+        private readonly string pingEmpresaNameHeader = "empresa-id";
+        private readonly string channel_id = "channel_id";
+        private readonly string user_id = "user_id";
+        private readonly string is_unlinked = "is_unlinked";
+
         private PingService pingService { get; }
 
         public RestritoTwitchController(
@@ -36,64 +45,34 @@ namespace multiplixe.api.controllers
 
 
         [HttpGet]
-        [Route("ping-inicial")]
         [ServiceFilter(typeof(TwitchValidacaoPingActionFilter))]
         public IActionResult PingInicial()
         {
-            var identity = User.Identity;
-            var claimHelper = new ClaimHelper(identity);
-            var user_id = claimHelper.ObterValor("user_id");
+            var twitchUserId = ObterValorDoClaims(user_id);
 
-            var response = pingService.PingInicial(user_id, empresaSettings.Id);
+            var empresaId = ObterValorDoHeader(pingEmpresaNameHeader);
 
-            Debug.WriteLine("Init {0}", DateTimeHelper.Now());
+            var integracaoGrpc = new integracao_grpc.TwitchPingInicial(twitchUserId, Guid.Parse(empresaId));
 
-            return StatusCode((int)response.HttpStatusCode, response);
+            return IntegrarGRPC<TwitchPingResponse>(integracaoGrpc);
         }
 
 
         [HttpPost]
-        [Route("ping")]
-        [ServiceFilter(typeof(TwitchValidacaoPingActionFilter))]
-        [ServiceFilter(typeof(TwitchTravaPingDuploActionFilter))]
         public IActionResult Ping()
         {
-            var httpStatusCode = HttpStatusCode.OK;
+            var twitchChannelId = ObterValorDoClaims(channel_id);
+            var twitchUserId = ObterValorDoClaims(user_id);
+            var twitchIsUnlinked = ObterValorDoClaims(is_unlinked);
 
-            try
-            {
-                EnfileirarPing();
-            }
-            catch (Exception ex)
-            {
-                //## TODO
-                httpStatusCode = HttpStatusCode.InternalServerError;
-            }
+            var pingPausa = ObterValorDoHeader(pingPausaNameHeader);
+            var pingKey = ObterValorDoHeader(pingKeyNameHeader);
 
-            var response = pingService.ProximoPingkey();
-            response.HttpStatusCode = httpStatusCode;
+            var empresaId = ObterValorDoHeader(pingEmpresaNameHeader);
 
-            return StatusCode((int)response.HttpStatusCode, response);
+            var integracaoGrpc = new integracao_grpc.TwitchPing(twitchUserId, twitchChannelId, twitchIsUnlinked, pingKey, pingPausa, Guid.Parse(empresaId));
+
+            return IntegrarGRPC<TwitchPingResponse>(integracaoGrpc);
         }
-
-        private void EnfileirarPing()
-        {
-            var identity = User.Identity;
-
-            var claimHelper = new ClaimHelper(identity);
-
-            var channelId = claimHelper.ObterValor("channel_id");
-            var user_id = claimHelper.ObterValor("user_id");
-
-            var evento = pingService.GerarEvento(Request.Headers, user_id, channelId);
-
-            var envelope = new comum_dto.EnvelopeEvento<twitch_dto.eventos.Evento>(evento);
-            envelope.DataEvento = evento.Ping.Atual;
-
-            ConfiguraEmpresa(envelope);
-
-            enfileiradorClient.EnfileirarParaTriadorTwitch(envelope);
-        }
-
     }
 }
