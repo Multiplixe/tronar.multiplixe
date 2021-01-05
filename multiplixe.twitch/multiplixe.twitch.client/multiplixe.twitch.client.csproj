@@ -36,7 +36,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.7.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.7.1" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.2.6" />
     <PackageReference Include="multiplixe.comum.exceptions" Version="1.0.0" />
     <PackageReference Include="multiplixe.comum.helper.grpc" Version="1.0.0" />

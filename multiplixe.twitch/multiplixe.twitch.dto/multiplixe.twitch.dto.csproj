@@ -24,7 +24,7 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="multiplixe.comum.dto" Version="1.7.0" />
+    <PackageReference Include="multiplixe.comum.dto" Version="1.7.1" />
     <PackageReference Include="multiplixe.comum.enums" Version="1.2.6" />
   </ItemGroup>
 
