@@ -14,12 +14,11 @@ namespace multiplixe.compartilhador.post
         /// <summary>
         /// Obtem os post's pré cadastrados, exceto os que ja foram compartilhados anteriormente.
         /// </summary>
-        public List<object> Obter(Guid usuarioId)
+        public List<object> Obter(Guid usuarioId, Guid empresaId)
         {
-            var results = repositorio.Obter(usuarioId);
+            var results = repositorio.Obter(usuarioId, empresaId);
 
-            var dtos = results; // mudar para DTO que deve ser criado no projeto 
-
+            var dtos = results; // mudar para DTO que deve ser criado no projeto multiplixe.comum.dto
 
             return new List<object>();
         }
