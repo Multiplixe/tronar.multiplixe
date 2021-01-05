@@ -8,19 +8,28 @@ namespace multiplixe.api.controllers
 {
     [Route("restrito/compartilhamento")]
     [ApiController]
-    public class CompartilhamentoController : AppRestritoController
+    public class RestritoCompartilhamentoController : AppRestritoController
     {
-        public CompartilhamentoController(
+        public RestritoCompartilhamentoController(
         IConfiguration configuration,
         EmpresaSettings empresaSettings) : base(configuration, empresaSettings)
         {
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            //var empresaId = ObterEmpresaId();
+            //var compartilhamentoObter = new integracao_grpc.CompartilhamentoObter(empresaId);
+
+            return null; // IntegrarGRPC<List<comum_dto.Compartilhamento>>(compartilhamentoObter);
         }
 
         [HttpPost]
         public IActionResult PostCompartilhar([FromBody] RequestEnvelope<comum_dto.Compartilhamento> request)
         {
             ConfiguraEmpresa(request.Item);
-            ConfiguraUsuario(request.Item);
+            //ConfiguraUsuario(request.Item);
 
             var grpc = new integracao_grpc.Compartilhamento(request);
 

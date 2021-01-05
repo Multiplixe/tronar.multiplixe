@@ -17,7 +17,7 @@ namespace multiplixe.compartilhador.post
               .ResetParameter()
               .AddParameter("_usuarioId", usuarioId)
               .AddParameter("_quantidade", quantidade)
-              .ExecuteWithManyResult<results.Post>("post_Obter");
+              .ExecuteWithManyResult<results.Post>("post_obter");
 
             return results;
         }

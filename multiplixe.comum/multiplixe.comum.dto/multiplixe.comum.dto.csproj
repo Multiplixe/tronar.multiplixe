@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/Multiplixe/tronar.multiplixe.git</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.7.1</PackageVersion>
+    <PackageVersion>1.7.0</PackageVersion>
 
   </PropertyGroup>
 

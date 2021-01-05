@@ -1,25 +1,18 @@
-﻿using multiplixe.comum.dto.interfaces;
-using multiplixe.comum.enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace multiplixe.comum.dto
+namespace multiplixe.comum.dto.Compartilhamento
 {
-    public class Compartilhamento : IEmpresaID, IUsuarioID
+    public class Compartilhamento
     {
-        public Guid EmpresaId { get; set; }
-        public Guid UsuarioId { get; set; }
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
 
-        [JsonPropertyName("postId")]
-        public string PostId { get; set; }
+        [JsonPropertyName("descricao")]
+        public string Descricao { get; set; }
 
-        [JsonPropertyName("socialMedias")]
-        public List<RedeSocialEnum> RedesSociais { get; set; }
-
-        public Compartilhamento()
-        {
-            RedesSociais = new List<RedeSocialEnum>();
-        }
+        [JsonPropertyName("url")]
+        public bool Url { get; set; }
     }
 }
